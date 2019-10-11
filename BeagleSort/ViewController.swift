@@ -9,17 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var btnPracticar: UIButton!
+    @IBOutlet weak var btnJugarOnline: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        StylesHelper.addButtonStyles(button: self.btnPracticar);
+        StylesHelper.addButtonStyles(button: self.btnJugarOnline);
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
