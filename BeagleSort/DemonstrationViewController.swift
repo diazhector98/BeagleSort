@@ -17,7 +17,7 @@ class DemonstrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        array = [4,5,1,3,2,6,7,2]
+        array = [4,5,1,3,7,8,9]
         
         //generar el arreglo de las views para cada numero
         let numViews = generateNumViews(arr: array)
@@ -32,6 +32,7 @@ class DemonstrationViewController: UIViewController {
         
         //Agregar stackview a la vista gris
         grayView.addSubview(stackView)
+        
         
         
         //Agregar constrainst de la stack
@@ -50,6 +51,25 @@ class DemonstrationViewController: UIViewController {
         
         grayView.addConstraints(stackView_H)
         grayView.addConstraints(stackView_V)
+        
+        
+        //Por cada view de números, agregar la label del número
+        var i = 0
+        for numView in numViews {
+            //Crear label y ajustar propiedades
+            let numLabel = UILabel()
+            numLabel.text = "\(array[i])"
+            numLabel.textColor = .black
+            numLabel.textAlignment = .center
+            //translatesAutoresizingMaskIntoConstraints es importante hacer
+            numLabel.translatesAutoresizingMaskIntoConstraints = false
+            //Agregar label al view antes de poner constraints..
+            numView.addSubview(numLabel)
+            //Agregar constraints
+            numLabel.centerYAnchor.constraint(equalTo: numView.centerYAnchor).isActive = true
+            numLabel.centerXAnchor.constraint(equalTo: numView.centerXAnchor).isActive = true
+            i += 1
+        }
         
     }
     
