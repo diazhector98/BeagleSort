@@ -10,23 +10,28 @@ import UIKit
 
 class DemonstrationViewController: UIViewController {
 
-    
+    //Outlets
     @IBOutlet weak var grayView: UIView!
     
+    //Pasados con segue
     var array: [Int]!
     var algorithm: Algorithm!
     
     
+    //Obtenidos en viewDidLoad
+    var stackView: UIStackView!
+    var numViews: [UIView]!
     var algorithmAnimation: AlgorithmAnimation!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //generar el arreglo de las views para cada numero
-        let numViews = generateNumViews(arr: array)
+        numViews = generateNumViews(arr: array)
         algorithmAnimation = AlgorithmAnimation(algorithm: algorithm, array: array)
         
         //crear la stack view con el arreglo de esas views (tal vez refactorar o ajustar coding standards aqui lol)
-        let stackView = UIStackView(arrangedSubviews: numViews)
+        stackView = UIStackView(arrangedSubviews: numViews)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .center
@@ -53,7 +58,6 @@ class DemonstrationViewController: UIViewController {
         grayView.addConstraints(stackView_H)
         grayView.addConstraints(stackView_V)
         
-        
         //Por cada view de números, agregar la label del número
         var i = 0
         for numView in numViews {
@@ -74,10 +78,14 @@ class DemonstrationViewController: UIViewController {
             i += 1
         }
         
+    }
+    
+    //Se deben hacer las animaciones con este método (que corre después de viewDidLoad), cuando ya están establecidos los frames
+    //de los números
+    override func viewDidAppear(_ animated: Bool) {
         for transition in algorithmAnimation.transitions {
             animateTransition(transition: transition)
         }
-        
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
@@ -92,9 +100,31 @@ class DemonstrationViewController: UIViewController {
         return views
     }
     
+    
+    //Este método pone los cuadritos verdes y rojos sobre la stackview
+    //To be removed...
     func animateTransition(transition: Transition) {
         //Animate here
-        print("Animating")
+        
+        //Obtener los indices de los elementos a mover
+        let indexA: Int = transition.fromIndex
+        let indexB: Int = transition.toIndex
+        
+        //Obtener los frames de esos elementos
+        let frameA: CGRect = numViews[indexA].frame
+        let frameB: CGRect = numViews[indexB].frame
+        
+        //Crear views con esos frames
+        let viewA = UIView(frame: frameA)
+        let viewB = UIView(frame: frameB)
+        
+        //Hacer su background diferente para que se vean por lo pronto
+        viewA.backgroundColor = .red
+        viewB.backgroundColor = .green
+        
+        stackView.addSubview(viewA)
+        stackView.addSubview(viewB)
+        
     }
 
     override func didReceiveMemoryWarning() {
