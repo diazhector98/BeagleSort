@@ -23,6 +23,7 @@ class DemonstrationViewController: UIViewController {
         super.viewDidLoad()
         //generar el arreglo de las views para cada numero
         let numViews = generateNumViews(arr: array)
+        algorithmAnimation = AlgorithmAnimation(algorithm: algorithm, array: array)
         
         //crear la stack view con el arreglo de esas views (tal vez refactorar o ajustar coding standards aqui lol)
         let stackView = UIStackView(arrangedSubviews: numViews)
@@ -73,6 +74,10 @@ class DemonstrationViewController: UIViewController {
             i += 1
         }
         
+        for transition in algorithmAnimation.transitions {
+            animateTransition(transition: transition)
+        }
+        
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
@@ -89,6 +94,7 @@ class DemonstrationViewController: UIViewController {
     
     func animateTransition(transition: Transition) {
         //Animate here
+        print("Animating")
     }
 
     override func didReceiveMemoryWarning() {
