@@ -122,8 +122,41 @@ class DemonstrationViewController: UIViewController {
         viewA.backgroundColor = .red
         viewB.backgroundColor = .green
         
+        //Agregar views a stackview (esto es importante ya que las coordenadas estan con respecto a
+        //la stackview y no a la super view
         stackView.addSubview(viewA)
         stackView.addSubview(viewB)
+        
+        
+        UIView.animate(withDuration: 1, animations: {
+            
+            //Mover los cuadros verticalmente
+            viewA.frame.origin.y += viewA.frame.size.height + 10
+            viewB.frame.origin.y -= viewA.frame.size.height + 10
+        
+        }) { (true) in
+            
+            
+            UIView.animate(withDuration: 1, animations: {
+                //Mover los cuadros horizontalmente
+                let xPosA = viewA.frame.origin.x
+                let xPosB = viewB.frame.origin.x
+                
+                viewA.frame.origin.x = xPosB
+                viewB.frame.origin.x = xPosA
+                
+                
+            }, completion: { (true) in
+                //Mover los cuadros verticalment de nuevo...
+                
+                UIView.animate(withDuration: 1, animations: {
+                    viewA.frame.origin.y -= viewA.frame.size.height + 10
+                    viewB.frame.origin.y += viewA.frame.size.height + 10
+                })
+                
+            })
+        
+        }
         
     }
 
