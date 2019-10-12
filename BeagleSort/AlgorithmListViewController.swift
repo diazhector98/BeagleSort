@@ -20,6 +20,7 @@ class AlgorithmListViewController: UIViewController, UITableViewDelegate, UITabl
         
         // add algorithms
         self.algorithms.append(BubbleSort.instance);
+        let algoAnimation = AlgorithmAnimation(algorithm: BubbleSort.instance, array: [3,4,2,5,2,8,7])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
