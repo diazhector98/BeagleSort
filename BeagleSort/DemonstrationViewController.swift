@@ -26,14 +26,12 @@ class DemonstrationViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: numViews)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         //Agregar stackview a la vista gris
         grayView.addSubview(stackView)
-        
-        
         
         //Agregar constrainst de la stack
         let viewsDictionary = ["stackView":stackView]
@@ -68,6 +66,8 @@ class DemonstrationViewController: UIViewController {
             //Agregar constraints
             numLabel.centerYAnchor.constraint(equalTo: numView.centerYAnchor).isActive = true
             numLabel.centerXAnchor.constraint(equalTo: numView.centerXAnchor).isActive = true
+            
+            numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
             i += 1
         }
         
