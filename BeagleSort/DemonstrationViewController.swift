@@ -83,9 +83,7 @@ class DemonstrationViewController: UIViewController {
     //Se deben hacer las animaciones con este método (que corre después de viewDidLoad), cuando ya están establecidos los frames
     //de los números
     override func viewDidAppear(_ animated: Bool) {
-        for transition in algorithmAnimation.transitions {
-            animateTransition(transition: transition)
-        }
+        animateTransitions()
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
@@ -100,15 +98,25 @@ class DemonstrationViewController: UIViewController {
         return views
     }
     
+    func animateTransitions(){
+        animateTransitionsHelper(animIndex: 0)
+    }
     
     //Este método pone los cuadritos verdes y rojos sobre la stackview
     //To be removed...
-    func animateTransition(transition: Transition) {
+    func animateTransitionsHelper(animIndex: Int) {
+        
+        
+        if animIndex >= algorithmAnimation.transitions.count {
+            return
+        }
+        
         //Animate here
+        let t: Transition = algorithmAnimation.transitions[animIndex]
         
         //Obtener los indices de los elementos a mover
-        let indexA: Int = transition.fromIndex
-        let indexB: Int = transition.toIndex
+        let indexA: Int = t.fromIndex
+        let indexB: Int = t.toIndex
         
         //Obtener los frames de esos elementos
         let frameA: CGRect = numViews[indexA].frame
@@ -136,7 +144,6 @@ class DemonstrationViewController: UIViewController {
         
         }) { (true) in
             
-            
             UIView.animate(withDuration: 1, animations: {
                 //Mover los cuadros horizontalmente
                 let xPosA = viewA.frame.origin.x
@@ -152,6 +159,9 @@ class DemonstrationViewController: UIViewController {
                 UIView.animate(withDuration: 1, animations: {
                     viewA.frame.origin.y -= viewA.frame.size.height + 10
                     viewB.frame.origin.y += viewA.frame.size.height + 10
+                }, completion: { (true) in
+                    //Hacer la siguiente transicion
+                    self.animateTransitionsHelper(animIndex: animIndex + 1)
                 })
                 
             })
