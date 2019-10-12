@@ -14,6 +14,10 @@ class DemonstrationViewController: UIViewController {
     @IBOutlet weak var grayView: UIView!
     
     var array: [Int]!
+    var algorithm: Algorithm!
+    
+    
+    var algorithmAnimation: AlgorithmAnimation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +87,10 @@ class DemonstrationViewController: UIViewController {
             views.append(numView)
         }
         return views
+    }
+    
+    func animateTransition(transition: Transition) {
+        //Animate here
     }
 
     override func didReceiveMemoryWarning() {
