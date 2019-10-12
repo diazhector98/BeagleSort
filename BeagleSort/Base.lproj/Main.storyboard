@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="1885.5999999999999" y="26.53673163418291"/>
         </scene>
-        <!--View Controller-->
+        <!--Algorithm View Controller-->
         <scene sceneID="5DE-zz-w3i">
             <objects>
-                <viewController id="U7R-aX-qRQ" sceneMemberID="viewController">
+                <viewController id="U7R-aX-qRQ" customClass="AlgorithmViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ej-3Y-wMD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -21,8 +21,6 @@ class DemonstrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        array = [4,5,1,3,7,8,9]
-        
         //generar el arreglo de las views para cada numero
         let numViews = generateNumViews(arr: array)
         
