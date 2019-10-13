@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,18 +85,18 @@
             <objects>
                 <viewController id="6X9-KX-gS5" customClass="AlgorithmListViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ivG-pd-eW9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-6r-iOZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="algorithmCell" rowHeight="100" id="bLg-fT-yow" customClass="AlgorithmTableViewCell" customModule="BeagleSort" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bLg-fT-yow" id="Efe-w2-Lj4">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SortName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIn-ia-vx0">
@@ -155,14 +152,14 @@
             <objects>
                 <viewController id="U7R-aX-qRQ" customClass="AlgorithmViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ej-3Y-wMD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEv-8G-NIb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="591"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGc-0M-903">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complejidad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOh-U0-EGl">
                                                 <rect key="frame" x="13" y="12" width="101" height="21"/>
@@ -275,13 +272,16 @@
                                                 <state key="normal" title="Practica">
                                                     <color key="titleColor" name="Background"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="pX8-rI-ZV0" kind="show" identifier="practica" id="M2l-ud-K6i"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6L-5A-lg4">
-                                                <rect key="frame" x="0.0" y="398" width="375" height="261.5"/>
+                                                <rect key="frame" x="0.0" y="398" width="375" height="1479"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVz-Ov-pe1">
-                                                        <rect key="frame" x="8" y="8" width="359" height="243.5"/>
-                                                        <string key="text">--codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo--</string>
+                                                        <rect key="frame" x="8" y="8" width="359" height="1461"/>
+                                                        <mutableString key="text">--codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo----codigo--</mutableString>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -353,6 +353,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eUf-Yc-OEA"/>
                     </view>
+                    <connections>
+                        <outlet property="lbCodigo" destination="sVz-Ov-pe1" id="8q4-2o-DBn"/>
+                        <outlet property="lbMemoria" destination="csT-Xw-t2r" id="f6U-wP-7ga"/>
+                        <outlet property="lbPeor" destination="Cjc-WZ-F0b" id="ct5-qM-gRc"/>
+                        <outlet property="lbPromedio" destination="GAY-OC-aUr" id="pEk-mR-oQt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7y-JL-pYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -363,11 +369,11 @@
             <objects>
                 <viewController id="NVp-2v-yZo" customClass="DemonstrationViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EgY-Qo-k7w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRw-QH-GBm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="160"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="5tx-ml-NBu"/>
@@ -390,13 +396,29 @@
             </objects>
             <point key="canvasLocation" x="3615.1999999999998" y="24.7376311844078"/>
         </scene>
+        <!--Practice View Controller-->
+        <scene sceneID="g6F-zL-koH">
+            <objects>
+                <viewController id="pX8-rI-ZV0" customClass="PracticeViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Je5-6x-IFh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bv7-NG-feg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cKu-9Q-drW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1W-Ep-O7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3615" y="797"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="wbT-mw-GfN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y5F-vN-5hY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YAT-M0-LCN">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

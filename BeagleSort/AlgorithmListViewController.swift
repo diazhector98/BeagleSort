@@ -40,4 +40,9 @@ class AlgorithmListViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell;
     }
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextView = segue.destination as! AlgorithmViewController
+        nextView.algorithm = algorithms[tableView.indexPathForSelectedRow!.row]
+    }
 }

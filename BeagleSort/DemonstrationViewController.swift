@@ -130,6 +130,31 @@ class DemonstrationViewController: UIViewController {
         viewA.backgroundColor = .red
         viewB.backgroundColor = .green
         
+        // Agregar labels a las nuevas views
+        let labelA = UILabel()
+        let labelB = UILabel()
+        labelA.text = "\(t.fromValue!)"
+        labelB.text = "\(t.toValue!)"
+        labelA.textColor = .black
+        labelB.textColor = .black
+        labelA.textAlignment = .center
+        labelB.textAlignment = .center
+        //translatesAutoresizingMaskIntoConstraints es importante hacer
+        labelA.translatesAutoresizingMaskIntoConstraints = false
+        labelB.translatesAutoresizingMaskIntoConstraints = false
+        //Agregar label al view antes de poner constraints..
+        viewA.addSubview(labelA)
+        viewB.addSubview(labelB)
+        //Agregar constraints
+        labelA.centerYAnchor.constraint(equalTo: viewA.centerYAnchor).isActive = true
+        labelB.centerYAnchor.constraint(equalTo: viewB.centerYAnchor).isActive = true
+        labelA.centerXAnchor.constraint(equalTo: viewA.centerXAnchor).isActive = true
+        labelB.centerXAnchor.constraint(equalTo: viewB.centerXAnchor).isActive = true
+                   
+        viewA.heightAnchor.constraint(equalTo: viewA.widthAnchor).isActive = true
+        viewB.heightAnchor.constraint(equalTo: viewB.widthAnchor).isActive = true
+
+        
         //Agregar views a stackview (esto es importante ya que las coordenadas estan con respecto a
         //la stackview y no a la super view
         stackView.addSubview(viewA)
