@@ -11,10 +11,14 @@ import UIKit
 class Transition: NSObject {
     public var fromIndex: Int!
     public var toIndex: Int!
+    public var fromValue: Int!
+    public var toValue: Int!
     
-    init(from: Int, to: Int) {
+    init(from: Int, to: Int, fromValue: Int, toValue: Int) {
         self.fromIndex = from
         self.toIndex = to
+        self.fromValue = fromValue
+        self.toValue = toValue
     }
 }
 
@@ -50,7 +54,7 @@ class AlgorithmAnimation: NSObject {
         while (i >= 1){
             for j in 0...i-1{
                 if array[j] > array[j+1] {
-                    let transition = Transition(from: j, to: j+1)
+                    let transition = Transition(from: j, to: j+1, fromValue: array[j], toValue: array[j+1])
                     transitions.append(transition)
                     let temp = array[j]
                     array[j] = array[j+1]
