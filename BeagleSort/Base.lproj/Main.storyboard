@@ -350,6 +350,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eUf-Yc-OEA"/>
                     </view>
+                    <connections>
+                        <outlet property="lbCodigo" destination="sVz-Ov-pe1" id="8q4-2o-DBn"/>
+                        <outlet property="lbMemoria" destination="csT-Xw-t2r" id="f6U-wP-7ga"/>
+                        <outlet property="lbPeor" destination="Cjc-WZ-F0b" id="ct5-qM-gRc"/>
+                        <outlet property="lbPromedio" destination="GAY-OC-aUr" id="pEk-mR-oQt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7y-JL-pYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
