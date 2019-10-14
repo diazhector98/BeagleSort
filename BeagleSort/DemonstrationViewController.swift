@@ -23,7 +23,10 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     var numViews: [UIView]!
     var algorithmAnimation: AlgorithmAnimation!
     
+    
+    //TableView
     @IBOutlet weak var tableView: UITableView!
+    var comparisons: [Comparison]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.dataSource = self
         tableView.delegate = self
+        comparisons = []
         
     }
     
@@ -200,6 +204,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 
             }
         } else if let c = algorithmStep as? Comparison {
+            comparisons.append(c)
+            tableView.reloadData()
             self.animateTransitionsHelper(animIndex: animIndex + 1)
         }
     }
@@ -210,12 +216,13 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return comparisons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
-        cell.textLabel?.text = "if 12 < 13 ..."
+        let comparison = comparisons[indexPath.row]
+        cell.textLabel?.text = "if \(array[comparison.indexA]) \(comparison.sign!) \(array[comparison.indexB])"
         return cell
     }
     
