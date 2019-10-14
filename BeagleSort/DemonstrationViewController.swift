@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DemonstrationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //Outlets
@@ -21,7 +22,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     //Obtenidos en viewDidLoad
     var stackView: UIStackView!
     var numViews: [UIView]!
+    var arrayViewsDictionary: [Int: UIView]!
     var algorithmAnimation: AlgorithmAnimation!
+    
     
     
     //TableView
@@ -97,13 +100,18 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
+        arrayViewsDictionary = [:]
         var views: [UIView] = []
+        var index = 0
         for _ in arr {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
             numView.backgroundColor = .blue
             //Agregar la vista al arreglo
             views.append(numView)
+            //Agregar la vista al diccionario de vistas(index, view)
+            arrayViewsDictionary[index] = numView
+            index += 1
         }
         return views
     }
@@ -125,9 +133,18 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         let algorithmStep: AlgorithmStep = algorithmAnimation.steps[animIndex]
         
         if let t = algorithmStep as? Transition {
+            
             //Obtener los indices de los elementos a mover
             let indexA: Int = t.fromIndex
             let indexB: Int = t.toIndex
+            
+            //Hacer hidden las view que se van a mover
+            let originalViewA = arrayViewsDictionary[indexA]
+            let originalViewB = arrayViewsDictionary[indexB]
+            
+            originalViewA?.backgroundColor = .clear
+            originalViewB?.backgroundColor = .clear
+            
             
             //Obtener los frames de esos elementos
             let frameA: CGRect = numViews[indexA].frame
