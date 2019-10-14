@@ -570,6 +570,7 @@
                         <outlet property="button5" destination="75N-a9-LML" id="RDj-qd-1pl"/>
                         <outlet property="button6" destination="mDP-Gj-K5H" id="nUy-kt-zXK"/>
                         <outlet property="buttonHolder" destination="Uom-F7-k23" id="a5y-q8-V2Y"/>
+                        <outlet property="buttonUndo" destination="54c-LC-sra" id="phg-1u-v43"/>
                         <outlet property="lbEstado" destination="S68-HZ-CCA" id="kwu-gb-cnA"/>
                     </connections>
                 </viewController>

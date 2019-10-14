@@ -19,6 +19,7 @@ class PracticeViewController: UIViewController {
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var buttonHolder: UIView!
     @IBOutlet weak var lbEstado: UILabel!
+    @IBOutlet weak var buttonUndo: UIButton!
     
     // Variables para control de movimientos
     var frames = [CGPoint]()
@@ -111,6 +112,14 @@ class PracticeViewController: UIViewController {
         if (currentState.compareWith(other: states[stateIndex])) {
             if (stateIndex+1 == states.count) {
                 lbEstado.text = "Terminaste!"
+                button0.isEnabled = false
+                button1.isEnabled = false
+                button2.isEnabled = false
+                button3.isEnabled = false
+                button4.isEnabled = false
+                button5.isEnabled = false
+                button6.isEnabled = false
+                buttonUndo.isEnabled = false
             } else {
                 lbEstado.text = "Correcto"
                 stateIndex += 1
@@ -125,10 +134,6 @@ class PracticeViewController: UIViewController {
             storedFrames[4] = button4.frame.origin
             storedFrames[5] = button5.frame.origin
             storedFrames[6] = button6.frame.origin
-            for i in 0...storedFrames.count-1 {
-                frames[i].x += 15
-                frames[i].y += 15
-            }
             
             storedTags[0] = button0.tag
             storedTags[1] = button1.tag
