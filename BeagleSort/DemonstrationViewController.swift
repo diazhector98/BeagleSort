@@ -153,10 +153,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             //Crear views con esos frames
             let viewA = UIView(frame: frameA)
             let viewB = UIView(frame: frameB)
-            
-            //Hacer su background diferente para que se vean por lo pronto
-            viewA.backgroundColor = .red
-            viewB.backgroundColor = .green
+            viewA.backgroundColor = .blue
+            viewB.backgroundColor = .blue
             
             // Agregar labels a las nuevas views
             let labelA = UILabel()
