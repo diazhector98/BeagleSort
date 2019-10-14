@@ -530,6 +530,13 @@
                                     <constraint firstItem="pTi-wf-6h5" firstAttribute="width" secondItem="oSh-Dr-Eg3" secondAttribute="width" id="umj-d9-ltA"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S68-HZ-CCA">
+                                <rect key="frame" x="37" y="201" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -550,6 +557,7 @@
                         <outlet property="button5" destination="75N-a9-LML" id="RDj-qd-1pl"/>
                         <outlet property="button6" destination="mDP-Gj-K5H" id="nUy-kt-zXK"/>
                         <outlet property="buttonHolder" destination="Uom-F7-k23" id="a5y-q8-V2Y"/>
+                        <outlet property="lbEstado" destination="S68-HZ-CCA" id="kwu-gb-cnA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1W-Ep-O7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

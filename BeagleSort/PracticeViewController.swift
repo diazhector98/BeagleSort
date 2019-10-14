@@ -18,16 +18,17 @@ class PracticeViewController: UIViewController {
     @IBOutlet weak var button5: UIButton!
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var buttonHolder: UIView!
+    @IBOutlet weak var lbEstado: UILabel!
     
     // Variables para control de movimientos
     var frames = [CGPoint]()
     var currentState = ArrayState(array: [0, 1, 2, 3, 4, 5, 6])
     var states = [ArrayState]()
-    var stateIndex = 0
+    var stateIndex = 1
     var firstTouched = -1
     
     // Colores para feedback
-    let correctColor = UIColor(red: 120.0/255, green: 255.0/255, blue: 131.0/255, alpha: 1)
+    let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
     let wrongColor = UIColor(red: 255.0/255, green: 78.0/255, blue: 72.0/255, alpha: 1)
     let selectedColor = UIColor(red: 91.0/255, green: 132.0/255, blue: 255, alpha: 1)
     let defaultColor = UIColor.lightGray
@@ -37,6 +38,8 @@ class PracticeViewController: UIViewController {
     var algorithm: Algorithm!
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbEstado.textColor = correctColor
+        
         // Asignar valores a botones
         button0.setTitle("\(array[0])", for: .normal)
         button1.setTitle("\(array[1])", for: .normal)
@@ -99,6 +102,22 @@ class PracticeViewController: UIViewController {
         }
     }
     
+    func verifyState () {
+        print(currentState.array)
+        print(states[stateIndex].array)
+        if (currentState.compareWith(other: states[stateIndex])) {
+            if (stateIndex+1 == states.count) {
+                lbEstado.text = "Terminaste!"
+            } else {
+                lbEstado.text = "Correcto"
+                stateIndex += 1
+            }
+            lbEstado.textColor = correctColor
+        } else {
+            lbEstado.text = "Incorrecto"
+            lbEstado.textColor = wrongColor
+        }
+    }
     
     @IBAction func touched(_ sender: UIButton) {
         if (firstTouched == sender.tag) {
@@ -123,6 +142,7 @@ class PracticeViewController: UIViewController {
             })
             
             // Verificar si el cambio resulta en un estado correcto
+            verifyState()
             
             // Resettear valores
             firstTouched = -1
