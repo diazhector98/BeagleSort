@@ -11,11 +11,15 @@ import UIKit
 class Comparison: AlgorithmStep {
     public var indexA: Int!
     public var indexB: Int!
+    public var valueA: Int!
+    public var valueB: Int!
     public var sign: String!
     
-    init(indexA: Int, indexB: Int, sign: String) {
+    init(indexA: Int, indexB: Int, valueA: Int, valueB: Int, sign: String) {
         self.indexA = indexA
         self.indexB = indexB
+        self.valueA = valueA
+        self.valueB = valueB
         self.sign = sign
     }
 }

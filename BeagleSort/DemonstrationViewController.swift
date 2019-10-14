@@ -265,7 +265,16 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
         let comparison = comparisons[indexPath.row]
-        cell.textLabel?.text = "if \(array[comparison.indexA]) \(comparison.sign!) \(array[comparison.indexB])"
+        cell.textLabel?.text = "if \(comparison.valueA!) \(comparison.sign!) \(comparison.valueB!) \n {\n}"
+        
+        //Si es la comparacion que se esta haciendo actualmente, cambiar estilo un poco
+        if (indexPath.row == comparisons.count-1) {
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+            cell.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
+        } else {
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16.0)
+            cell.backgroundColor = .white
+        }
         return cell
     }
     

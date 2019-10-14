@@ -40,7 +40,7 @@ class AlgorithmAnimation: NSObject {
         var i = n - 1
         while (i >= 1){
             for j in 0...i-1{
-                let comparison = Comparison(indexA: j, indexB: j + 1, sign: ">")
+                let comparison = Comparison(indexA: j, indexB: j + 1, valueA: array[j], valueB: array[j+1], sign: ">")
                 steps.append(comparison)
                 if array[j] > array[j+1] {
                     let transition = Transition(from: j, to: j+1, fromValue: array[j], toValue: array[j+1])
