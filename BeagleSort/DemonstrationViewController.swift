@@ -107,92 +107,93 @@ class DemonstrationViewController: UIViewController {
     func animateTransitionsHelper(animIndex: Int) {
         
         
-        if animIndex >= algorithmAnimation.transitions.count {
+        if animIndex >= algorithmAnimation.steps.count {
             return
         }
         
         //Animate here
-        let t: Transition = algorithmAnimation.transitions[animIndex]
+        let algorithmStep: AlgorithmStep = algorithmAnimation.steps[animIndex]
         
-        //Obtener los indices de los elementos a mover
-        let indexA: Int = t.fromIndex
-        let indexB: Int = t.toIndex
-        
-        //Obtener los frames de esos elementos
-        let frameA: CGRect = numViews[indexA].frame
-        let frameB: CGRect = numViews[indexB].frame
-        
-        //Crear views con esos frames
-        let viewA = UIView(frame: frameA)
-        let viewB = UIView(frame: frameB)
-        
-        //Hacer su background diferente para que se vean por lo pronto
-        viewA.backgroundColor = .red
-        viewB.backgroundColor = .green
-        
-        // Agregar labels a las nuevas views
-        let labelA = UILabel()
-        let labelB = UILabel()
-        labelA.text = "\(t.fromValue!)"
-        labelB.text = "\(t.toValue!)"
-        labelA.textColor = .black
-        labelB.textColor = .black
-        labelA.textAlignment = .center
-        labelB.textAlignment = .center
-        //translatesAutoresizingMaskIntoConstraints es importante hacer
-        labelA.translatesAutoresizingMaskIntoConstraints = false
-        labelB.translatesAutoresizingMaskIntoConstraints = false
-        //Agregar label al view antes de poner constraints..
-        viewA.addSubview(labelA)
-        viewB.addSubview(labelB)
-        //Agregar constraints
-        labelA.centerYAnchor.constraint(equalTo: viewA.centerYAnchor).isActive = true
-        labelB.centerYAnchor.constraint(equalTo: viewB.centerYAnchor).isActive = true
-        labelA.centerXAnchor.constraint(equalTo: viewA.centerXAnchor).isActive = true
-        labelB.centerXAnchor.constraint(equalTo: viewB.centerXAnchor).isActive = true
-                   
-        viewA.heightAnchor.constraint(equalTo: viewA.widthAnchor).isActive = true
-        viewB.heightAnchor.constraint(equalTo: viewB.widthAnchor).isActive = true
-
-        
-        //Agregar views a stackview (esto es importante ya que las coordenadas estan con respecto a
-        //la stackview y no a la super view
-        stackView.addSubview(viewA)
-        stackView.addSubview(viewB)
-        
-        
-        UIView.animate(withDuration: 1, animations: {
+        if let t = algorithmStep as? Transition {
+            //Obtener los indices de los elementos a mover
+            let indexA: Int = t.fromIndex
+            let indexB: Int = t.toIndex
             
-            //Mover los cuadros verticalmente
-            viewA.frame.origin.y += viewA.frame.size.height + 10
-            viewB.frame.origin.y -= viewA.frame.size.height + 10
-        
-        }) { (true) in
+            //Obtener los frames de esos elementos
+            let frameA: CGRect = numViews[indexA].frame
+            let frameB: CGRect = numViews[indexB].frame
+            
+            //Crear views con esos frames
+            let viewA = UIView(frame: frameA)
+            let viewB = UIView(frame: frameB)
+            
+            //Hacer su background diferente para que se vean por lo pronto
+            viewA.backgroundColor = .red
+            viewB.backgroundColor = .green
+            
+            // Agregar labels a las nuevas views
+            let labelA = UILabel()
+            let labelB = UILabel()
+            labelA.text = "\(t.fromValue!)"
+            labelB.text = "\(t.toValue!)"
+            labelA.textColor = .black
+            labelB.textColor = .black
+            labelA.textAlignment = .center
+            labelB.textAlignment = .center
+            //translatesAutoresizingMaskIntoConstraints es importante hacer
+            labelA.translatesAutoresizingMaskIntoConstraints = false
+            labelB.translatesAutoresizingMaskIntoConstraints = false
+            //Agregar label al view antes de poner constraints..
+            viewA.addSubview(labelA)
+            viewB.addSubview(labelB)
+            //Agregar constraints
+            labelA.centerYAnchor.constraint(equalTo: viewA.centerYAnchor).isActive = true
+            labelB.centerYAnchor.constraint(equalTo: viewB.centerYAnchor).isActive = true
+            labelA.centerXAnchor.constraint(equalTo: viewA.centerXAnchor).isActive = true
+            labelB.centerXAnchor.constraint(equalTo: viewB.centerXAnchor).isActive = true
+            
+            viewA.heightAnchor.constraint(equalTo: viewA.widthAnchor).isActive = true
+            viewB.heightAnchor.constraint(equalTo: viewB.widthAnchor).isActive = true
+            
+            
+            //Agregar views a stackview (esto es importante ya que las coordenadas estan con respecto a
+            //la stackview y no a la super view
+            stackView.addSubview(viewA)
+            stackView.addSubview(viewB)
+            
             
             UIView.animate(withDuration: 1, animations: {
-                //Mover los cuadros horizontalmente
-                let xPosA = viewA.frame.origin.x
-                let xPosB = viewB.frame.origin.x
                 
-                viewA.frame.origin.x = xPosB
-                viewB.frame.origin.x = xPosA
+                //Mover los cuadros verticalmente
+                viewA.frame.origin.y += viewA.frame.size.height + 10
+                viewB.frame.origin.y -= viewA.frame.size.height + 10
                 
-                
-            }, completion: { (true) in
-                //Mover los cuadros verticalment de nuevo...
+            }) { (true) in
                 
                 UIView.animate(withDuration: 1, animations: {
-                    viewA.frame.origin.y -= viewA.frame.size.height + 10
-                    viewB.frame.origin.y += viewA.frame.size.height + 10
+                    //Mover los cuadros horizontalmente
+                    let xPosA = viewA.frame.origin.x
+                    let xPosB = viewB.frame.origin.x
+                    
+                    viewA.frame.origin.x = xPosB
+                    viewB.frame.origin.x = xPosA
+                    
+                    
                 }, completion: { (true) in
-                    //Hacer la siguiente transicion
-                    self.animateTransitionsHelper(animIndex: animIndex + 1)
+                    //Mover los cuadros verticalment de nuevo...
+                    
+                    UIView.animate(withDuration: 1, animations: {
+                        viewA.frame.origin.y -= viewA.frame.size.height + 10
+                        viewB.frame.origin.y += viewA.frame.size.height + 10
+                    }, completion: { (true) in
+                        //Hacer la siguiente transicion
+                        self.animateTransitionsHelper(animIndex: animIndex + 1)
+                    })
+                    
                 })
                 
-            })
-        
+            }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

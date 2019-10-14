@@ -13,7 +13,7 @@ class AlgorithmAnimation: NSObject {
     
     public var algorithm: Algorithm!
     public var array: [Int]!
-    public var transitions: [Transition]!
+    public var steps: [AlgorithmStep]!
     
     init(algorithm: Algorithm, array: [Int]) {
         super.init()
@@ -35,14 +35,14 @@ class AlgorithmAnimation: NSObject {
     }
     
     func initBubbleSortTransitions() {
-        transitions = []
+        steps = []
         let n = array.count
         var i = n - 1
         while (i >= 1){
             for j in 0...i-1{
                 if array[j] > array[j+1] {
                     let transition = Transition(from: j, to: j+1, fromValue: array[j], toValue: array[j+1])
-                    transitions.append(transition)
+                    steps.append(transition)
                     let temp = array[j]
                     array[j] = array[j+1]
                     array[j+1] = temp
@@ -53,8 +53,10 @@ class AlgorithmAnimation: NSObject {
     }
     
     func printTransitions() {
-        for t in transitions {
-            print("Swapping indices \(t.fromIndex) and \(t.toIndex)")
+        for step in steps {
+            if let transition = step as? Transition {
+                print("Swapping indices \(transition.fromIndex) and \(transition.toIndex)")
+            }
         }
     }
     
