@@ -22,6 +22,8 @@ class PracticeViewController: UIViewController {
     
     // Variables para control de movimientos
     var frames = [CGPoint]()
+    var storedFrames = [CGPoint]()
+    var storedTags = [1, 2, 3, 4, 5, 6, 7]
     var currentState = ArrayState(array: [0, 1, 2, 3, 4, 5, 6])
     var states = [ArrayState]()
     var stateIndex = 1
@@ -61,6 +63,7 @@ class PracticeViewController: UIViewController {
             frames[i].x += 15
             frames[i].y += 15
         }
+        storedFrames = frames
         
         // Formar arreglo de estados
         createStates()
@@ -113,6 +116,27 @@ class PracticeViewController: UIViewController {
                 stateIndex += 1
             }
             lbEstado.textColor = correctColor
+            
+            // Guardar informacion de estado actual
+            storedFrames[0] = button0.frame.origin
+            storedFrames[1] = button1.frame.origin
+            storedFrames[2] = button2.frame.origin
+            storedFrames[3] = button3.frame.origin
+            storedFrames[4] = button4.frame.origin
+            storedFrames[5] = button5.frame.origin
+            storedFrames[6] = button6.frame.origin
+            for i in 0...storedFrames.count-1 {
+                frames[i].x += 15
+                frames[i].y += 15
+            }
+            
+            storedTags[0] = button0.tag
+            storedTags[1] = button1.tag
+            storedTags[2] = button2.tag
+            storedTags[3] = button3.tag
+            storedTags[4] = button4.tag
+            storedTags[5] = button5.tag
+            storedTags[6] = button6.tag
         } else {
             lbEstado.text = "Incorrecto"
             lbEstado.textColor = wrongColor
@@ -151,6 +175,29 @@ class PracticeViewController: UIViewController {
             firstTouched = sender.tag
             sender.backgroundColor = selectedColor
         }
+    }
+    
+    
+    @IBAction func undo(_ sender: UIButton) {
+        // Cargar ultimo estado correcto
+        currentState.array = states[stateIndex-1].array
+        button0.frame.origin = storedFrames[0]
+        button0.tag = storedTags[0]
+        button1.frame.origin = storedFrames[1]
+        button1.tag = storedTags[1]
+        button2.frame.origin = storedFrames[2]
+        button2.tag = storedTags[2]
+        button3.frame.origin = storedFrames[3]
+        button3.tag = storedTags[3]
+        button4.frame.origin = storedFrames[4]
+        button4.tag = storedTags[4]
+        button5.frame.origin = storedFrames[5]
+        button5.tag = storedTags[5]
+        button6.frame.origin = storedFrames[6]
+        button6.tag = storedTags[6]
+        
+        lbEstado.text = "Correcto"
+        lbEstado.textColor = correctColor
     }
     /*
     // MARK: - Navigation

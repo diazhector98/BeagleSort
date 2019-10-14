@@ -537,13 +537,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54c-LC-sra">
+                                <rect key="frame" x="143.5" y="449" width="88" height="38"/>
+                                <color key="backgroundColor" red="0.60884876939999999" green="0.28390393120000001" blue="0.24110634180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Deshacer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="undo:" destination="pX8-rI-ZV0" eventType="touchUpInside" id="9rw-wO-aXa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Uom-F7-k23" firstAttribute="height" secondItem="bv7-NG-feg" secondAttribute="height" multiplier="0.2" id="4lD-eW-TzQ"/>
+                            <constraint firstItem="bv7-NG-feg" firstAttribute="bottom" secondItem="54c-LC-sra" secondAttribute="bottom" constant="160" id="4qB-s3-gBu"/>
                             <constraint firstItem="Uom-F7-k23" firstAttribute="width" secondItem="bv7-NG-feg" secondAttribute="width" id="UbW-fD-dFL"/>
                             <constraint firstItem="Uom-F7-k23" firstAttribute="centerY" secondItem="Je5-6x-IFh" secondAttribute="centerY" id="Ule-Cd-TMC"/>
                             <constraint firstItem="Uom-F7-k23" firstAttribute="centerX" secondItem="Je5-6x-IFh" secondAttribute="centerX" id="bC7-B0-3DB"/>
+                            <constraint firstItem="54c-LC-sra" firstAttribute="centerX" secondItem="Je5-6x-IFh" secondAttribute="centerX" id="eKK-83-jZE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bv7-NG-feg"/>
                     </view>
