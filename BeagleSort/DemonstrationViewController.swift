@@ -229,7 +229,20 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         } else if let c = algorithmStep as? Comparison {
             comparisons.append(c)
             tableView.reloadData()
-            self.animateTransitionsHelper(animIndex: animIndex + 1)
+            let indexA = c.indexA
+            let indexB = c.indexB
+            
+            let viewA = arrayViewsDictionary[indexA!]
+            let viewB = arrayViewsDictionary[indexB!]
+            
+            viewA?.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
+            viewB?.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                viewA?.backgroundColor = .blue
+                viewB?.backgroundColor = .blue
+                self.animateTransitionsHelper(animIndex: animIndex + 1)
+            }
         }
     }
     
