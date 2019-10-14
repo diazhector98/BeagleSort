@@ -8,19 +8,6 @@
 
 import UIKit
 
-class Transition: NSObject {
-    public var fromIndex: Int!
-    public var toIndex: Int!
-    public var fromValue: Int!
-    public var toValue: Int!
-    
-    init(from: Int, to: Int, fromValue: Int, toValue: Int) {
-        self.fromIndex = from
-        self.toIndex = to
-        self.fromValue = fromValue
-        self.toValue = toValue
-    }
-}
 
 class AlgorithmAnimation: NSObject {
     
