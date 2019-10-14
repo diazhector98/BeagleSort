@@ -193,6 +193,8 @@ class DemonstrationViewController: UIViewController {
                 })
                 
             }
+        } else if let c = algorithmStep as? Comparison {
+            self.animateTransitionsHelper(animIndex: animIndex + 1)
         }
     }
 
