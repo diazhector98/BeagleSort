@@ -17,6 +17,9 @@
 		9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */; };
 		9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC313102351931C00A6195E /* DemonstrationViewController.swift */; };
 		9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31312235201A700A6195E /* AlgorithmViewController.swift */; };
+		9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31314235416BF00A6195E /* AlgorithmStep.swift */; };
+		9DC3131723541E7F00A6195E /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131623541E7F00A6195E /* Comparison.swift */; };
+		9DC3131923541EE900A6195E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131823541EE900A6195E /* Transition.swift */; };
 		9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */; };
 		9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */; };
 		9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */; };
@@ -37,6 +40,9 @@
 		9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmAnimation.swift; sourceTree = "<group>"; };
 		9DC313102351931C00A6195E /* DemonstrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonstrationViewController.swift; sourceTree = "<group>"; };
 		9DC31312235201A700A6195E /* AlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
+		9DC31314235416BF00A6195E /* AlgorithmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStep.swift; sourceTree = "<group>"; };
+		9DC3131623541E7F00A6195E /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
+		9DC3131823541EE900A6195E /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesHelper.swift; sourceTree = "<group>"; };
 		9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTableViewCell.swift; sourceTree = "<group>"; };
 		9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmListViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +95,9 @@
 				9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */,
 				9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */,
 				9EA43B94234FF9BE008DC827 /* Algorithm.swift */,
+				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
+				9DC3131623541E7F00A6195E /* Comparison.swift */,
+				9DC3131823541EE900A6195E /* Transition.swift */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
 			);
 			path = BeagleSort;
@@ -173,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC3131923541EE900A6195E /* Transition.swift in Sources */,
 				75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */,
 				9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */,
 				9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */,
@@ -185,6 +195,8 @@
 				9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */,
 				9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */,
 				9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */,
+				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
+				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
