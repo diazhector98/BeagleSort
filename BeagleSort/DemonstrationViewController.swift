@@ -196,7 +196,11 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                         viewA.frame.origin.y -= viewA.frame.size.height + 10
                         viewB.frame.origin.y += viewA.frame.size.height + 10
                     }, completion: { (true) in
-                        //Hacer la siguiente transicion
+                        //Campiar los números en el arreglo original y hacer la siguiente transicion
+                        let temp = self.array[indexA]
+                        self.array[indexA] = self.array[indexB]
+                        self.array[indexB] = temp
+                        
                         self.animateTransitionsHelper(animIndex: animIndex + 1)
                     })
                     
