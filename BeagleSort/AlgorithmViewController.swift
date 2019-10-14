@@ -33,13 +33,16 @@ class AlgorithmViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
         if segue.identifier == "demostracion" {
             let vista = segue.destination as! DemonstrationViewController
             vista.algorithm = algorithm
             vista.array = [3,4,2,5,2,8,7]
+            
+        } else if segue.identifier == "practica" {
+            let vista = segue.destination as! PracticeViewController
+            vista.algorithm = algorithm
+            vista.array = [3,4,2,5,2,8,7]
         }
-        
     }
 
 }
