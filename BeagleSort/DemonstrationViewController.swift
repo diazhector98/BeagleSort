@@ -142,8 +142,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             let originalViewA = arrayViewsDictionary[indexA]
             let originalViewB = arrayViewsDictionary[indexB]
             
-            originalViewA?.backgroundColor = .clear
-            originalViewB?.backgroundColor = .clear
+            disappearView(vista: originalViewA!)
+            disappearView(vista: originalViewB!)
             
             
             //Obtener los frames de esos elementos
@@ -188,6 +188,10 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             stackView.addSubview(viewA)
             stackView.addSubview(viewB)
             
+            //Updatear el diccionario de views (deben ser al reves por el swap que se hace despues)
+            arrayViewsDictionary[indexA] = viewB
+            arrayViewsDictionary[indexB] = viewA
+            
             
             UIView.animate(withDuration: 1, animations: {
                 
@@ -228,6 +232,13 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             comparisons.append(c)
             tableView.reloadData()
             self.animateTransitionsHelper(animIndex: animIndex + 1)
+        }
+    }
+    
+    func disappearView(vista: UIView) {
+        vista.backgroundColor = .clear
+        for sv in vista.subviews {
+            sv.removeFromSuperview()
         }
     }
 
