@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DemonstrationViewController: UIViewController {
+class DemonstrationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //Outlets
     @IBOutlet weak var grayView: UIView!
@@ -23,6 +23,7 @@ class DemonstrationViewController: UIViewController {
     var numViews: [UIView]!
     var algorithmAnimation: AlgorithmAnimation!
     
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,11 @@ class DemonstrationViewController: UIViewController {
             numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
             i += 1
         }
+        
+        //tableview setup
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
     }
     
@@ -202,6 +208,17 @@ class DemonstrationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
+        cell.textLabel?.text = "if 12 < 13 ..."
+        return cell
+    }
+    
     
 
     /*
