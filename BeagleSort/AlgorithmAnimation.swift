@@ -54,6 +54,36 @@ class AlgorithmAnimation: NSObject {
         }
     }
     
+    
+    func initInsertionSortTransitions() {
+        /*
+        [2,5,3,7,9,4]
+         n = 6
+         curr = 1
+         c = 0
+         
+         
+         curr = 2
+         c = 1
+         
+         PUEDE QUE ESTE MAL ESTO LOLZ
+        */
+        var curr = 1
+        let n = array.count
+        while(curr < n) {
+            var c = curr-1
+            while(c >= 0 && array[c] > array[c+1]){
+                //swap
+                let temp = array[c+1]
+                array[c+1] = array[c]
+                array[c] = temp
+                c -= 1
+            }
+            curr += 1
+        }
+    }
+    
+    
     func merge(array: [Int], start: Int, middle: Int, end: Int) {
         var arrA: [Int]
         var arrB: [Int]
@@ -65,8 +95,6 @@ class AlgorithmAnimation: NSObject {
         
         
         //Constructing new array from both
-        
-        
     }
     
     func MergeSort(array: [Int], startIndex: Int, endIndex: Int){
@@ -78,6 +106,9 @@ class AlgorithmAnimation: NSObject {
             merge(array: array, start: startIndex, middle: middle, end: endIndex)
         }
     }
+    
+    
+    
     
     func printTransitions() {
         for step in steps {
