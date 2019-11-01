@@ -54,6 +54,31 @@ class AlgorithmAnimation: NSObject {
         }
     }
     
+    func merge(array: [Int], start: Int, middle: Int, end: Int) {
+        var arrA: [Int]
+        var arrB: [Int]
+        
+        //Constructing array A from start to middle
+        
+        
+        //Constructing array B from middle + 1 to end
+        
+        
+        //Constructing new array from both
+        
+        
+    }
+    
+    func MergeSort(array: [Int], startIndex: Int, endIndex: Int){
+        
+        if (startIndex < endIndex){
+            let middle = (startIndex + endIndex) / 2
+            MergeSort(array: array, startIndex: startIndex, endIndex: middle)
+            MergeSort(array: array, startIndex: middle+1, endIndex: endIndex)
+            merge(array: array, start: startIndex, middle: middle, end: endIndex)
+        }
+    }
+    
     func printTransitions() {
         for step in steps {
             if let transition = step as? Transition {
