@@ -13,10 +13,12 @@ class Merge: AlgorithmStep {
     public var start: Int!
     public var middle: Int!
     public var end: Int!
+    public var steps: [AlgorithmStep]!
     
-    init(start: Int, middle: Int, end: Int) {
+    init(start: Int, middle: Int, end: Int, steps: [AlgorithmStep]) {
         self.start = start
         self.middle = middle
         self.end = end
+        self.steps = steps
     }
 }
