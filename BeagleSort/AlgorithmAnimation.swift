@@ -84,26 +84,65 @@ class AlgorithmAnimation: NSObject {
     }
     
     
-    func merge(array: [Int], start: Int, middle: Int, end: Int) {
-        var arrA: [Int]
-        var arrB: [Int]
+    func merge(start: Int, middle: Int, end: Int) {
+        
+        /*
+
+         TAMBIEN PUEDE QUE ESTE MAL, NO PROBADO
+         */
+        
+        var arrA: [Int] = []
+        var arrB: [Int] = []
         
         //Constructing array A from start to middle
         
-        
+        var i = start
+        while(i <= middle) {
+            arrA.append(array[i])
+            i += 1
+        }
         //Constructing array B from middle + 1 to end
-        
-        
+        i = middle + 1
+        while(i <= end){
+            arrB.append(array[i])
+            i += 1
+        }
         //Constructing new array from both
+        var currA = 0
+        var currB = 0
+        var curr = start
+        
+        while(currA < arrA.count && currB < arrB.count) {
+            if (arrA[currA] < arrB[currB]){
+                array[curr] = arrA[currA]
+                currA += 1
+            } else {
+                array[curr] = arrB[currB]
+                currB += 1
+            }
+            curr += 1
+        }
+        
+        while(currA < arrA.count){
+            array[curr] = arrA[currA]
+            currA += 1
+            curr += 1
+        }
+        
+        while(currB < arrB.count){
+            array[curr] = arrB[currB]
+            currB += 1
+            curr += 1
+        }
     }
     
-    func MergeSort(array: [Int], startIndex: Int, endIndex: Int){
+    func MergeSort(startIndex: Int, endIndex: Int){
         
         if (startIndex < endIndex){
             let middle = (startIndex + endIndex) / 2
-            MergeSort(array: array, startIndex: startIndex, endIndex: middle)
-            MergeSort(array: array, startIndex: middle+1, endIndex: endIndex)
-            merge(array: array, start: startIndex, middle: middle, end: endIndex)
+            MergeSort(startIndex: startIndex, endIndex: middle)
+            MergeSort(startIndex: middle+1, endIndex: endIndex)
+            merge(start: startIndex, middle: middle, end: endIndex)
         }
     }
     
