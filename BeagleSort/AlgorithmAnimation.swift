@@ -28,6 +28,10 @@ class AlgorithmAnimation: NSObject {
         switch(algorithmName) {
         case "BubbleSort":
             initBubbleSortTransitions()
+        case "MergeSort":
+            initMergeSortTransitions()
+        case "InsertionSort":
+            initInsertionSortTransitions()
         case .none:
             print("What")
         case .some(_):
@@ -153,6 +157,10 @@ class AlgorithmAnimation: NSObject {
             MergeSort(startIndex: middle+1, endIndex: endIndex)
             merge(start: startIndex, middle: middle, end: endIndex)
         }
+    }
+    
+    func initMergeSortTransitions(){
+        MergeSort(startIndex: 0, endIndex: array.count-1)
     }
     
     
