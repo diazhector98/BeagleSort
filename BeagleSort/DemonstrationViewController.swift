@@ -275,6 +275,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             
             //Crear views con esos frames
             i = merge.start!
+            var numberViews: [UIView] = []
             for frame in numberFrames {
                 let vista = UIView(frame: frame)
                 vista.backgroundColor = .green
@@ -294,8 +295,26 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
                 
                 stackView.addSubview(vista)
+                numberViews.append(vista)
             }
             
+            //Animar las views
+            
+            UIView.animate(withDuration: 2, animations: {
+                for vista in numberViews {
+                    vista.frame.origin.y += vista.frame.size.height + 20
+                }
+            }) { (true) in
+                //Manejar cada uno de los animation steps del merge
+                let mergeSteps: [AlgorithmStep] = merge.steps
+                
+                for step in mergeSteps {
+                    //Por cada step manejar animacion
+                    
+                }
+                
+                self.animateTransitionsHelper(animIndex: animIndex + 1)
+            }
         }
     }
     
