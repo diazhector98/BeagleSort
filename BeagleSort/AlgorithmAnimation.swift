@@ -19,6 +19,7 @@ class AlgorithmAnimation: NSObject {
         super.init()
         self.algorithm = algorithm
         self.array = array
+        self.steps = []
         calculateTransitions()
     }
     
@@ -35,7 +36,6 @@ class AlgorithmAnimation: NSObject {
     }
     
     func initBubbleSortTransitions() {
-        steps = []
         let n = array.count
         var i = n - 1
         while (i >= 1){
@@ -56,24 +56,21 @@ class AlgorithmAnimation: NSObject {
     
     
     func initInsertionSortTransitions() {
-        /*
-        [2,5,3,7,9,4]
-         n = 6
-         curr = 1
-         c = 0
-         
-         
-         curr = 2
-         c = 1
-         
-         PUEDE QUE ESTE MAL ESTO LOLZ
-        */
         var curr = 1
         let n = array.count
         while(curr < n) {
             var c = curr-1
+            let firstComparison = Comparison(indexA: c, indexB: c+1, valueA: array[c], valueB: array[c+1], sign: ">")
+            steps.append(firstComparison)
             while(c >= 0 && array[c] > array[c+1]){
+                let loopComparison = Comparison(indexA: c, indexB: c+1, valueA: array[c], valueB: array[c+1], sign: ">")
+                if (c != curr-1){
+                    //Add loop comparison if it's not the first one
+                    steps.append(loopComparison)
+                }
                 //swap
+                let swap = Transition(from: c+1, to: c, fromValue: array[c+1], toValue: array[c])
+                steps.append(swap)
                 let temp = array[c+1]
                 array[c+1] = array[c]
                 array[c] = temp
