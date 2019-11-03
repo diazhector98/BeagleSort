@@ -243,6 +243,59 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 viewB?.backgroundColor = .blue
                 self.animateTransitionsHelper(animIndex: animIndex + 1)
             }
+        } else if let merge = algorithmStep as? Merge {
+            var originalViews: [UIView] = []
+            var i = merge.start!
+            
+            /*
+            
+             Desaparecer las views del merge
+ 
+            */
+            while(i <= merge.end){
+                originalViews.append(arrayViewsDictionary[i]!)
+                i += 1
+            }
+            for originalView in originalViews {
+                disappearView(vista: originalView)
+            }
+            /*
+ 
+            Crear views de los números del merge
+ 
+            */
+            
+            //Obtener frames
+            var numberFrames: [CGRect] = []
+            i = merge.start!
+            while(i <= merge.end!){
+                numberFrames.append(numViews[i].frame)
+                i += 1
+            }
+            
+            //Crear views con esos frames
+            i = merge.start!
+            for frame in numberFrames {
+                let vista = UIView(frame: frame)
+                vista.backgroundColor = .green
+                
+                //Crear labels
+                let label = UILabel()
+                label.text = "\(array[i])"
+                label.textColor = .black
+                label.textAlignment = .center
+                label.translatesAutoresizingMaskIntoConstraints = false
+                
+                vista.addSubview(label)
+                
+                label.centerXAnchor.constraint(equalTo: vista.centerXAnchor).isActive = true
+                label.centerYAnchor.constraint(equalTo: vista.centerYAnchor).isActive = true
+                
+                vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
+                
+                stackView.addSubview(vista)
+            }
+            
         }
     }
     
