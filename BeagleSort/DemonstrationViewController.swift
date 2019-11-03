@@ -278,7 +278,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             var numberViews: [UIView] = []
             for frame in numberFrames {
                 let vista = UIView(frame: frame)
-                vista.backgroundColor = .green
+                vista.backgroundColor = .blue
                 
                 //Crear labels
                 let label = UILabel()
@@ -300,9 +300,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             //Animar las views
-            UIView.animate(withDuration: 2, animations: {
+            UIView.animate(withDuration: 1, animations: {
                 for vista in numberViews {
-                    vista.frame.origin.y += vista.frame.size.height + 20
+                    vista.frame.origin.y += vista.frame.size.height + 18
                 }
             }) { (true) in
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: 0, animIndex: animIndex)
@@ -331,13 +331,16 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 vistaB.backgroundColor = .red
             }) { (true) in
                 
-                let vistaA = numberViews[indexA! - merge.start]
-                let vistaB = numberViews[indexB! - merge.start]
-                
-                vistaA.backgroundColor = .green
-                vistaB.backgroundColor = .green
-
-                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
+                UIView.animate(withDuration: 1, animations: {
+                    let vistaA = numberViews[indexA! - merge.start]
+                    let vistaB = numberViews[indexB! - merge.start]
+                    
+                    vistaA.backgroundColor = .blue
+                    vistaB.backgroundColor = .blue
+                }, completion: { (true) in
+                    self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
+                    
+                })
             }
             
         } else if let insertion = algoStep as? Insertion {
@@ -349,6 +352,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 let vista = numberViews[fromIndex!-merge.start]
                 vista.frame = self.numViews[toIndex!].frame
                 self.array[toIndex!] = insertion.value
+                self.arrayViewsDictionary[toIndex!] = vista
                 
             }) { (true) in
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
