@@ -345,6 +345,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             
             UIView.animate(withDuration: 1, animations: {
                 
+                let vista = numberViews[fromIndex!-merge.start]
+                vista.frame = self.numViews[toIndex!].frame
+                
             }) { (true) in
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
             }
