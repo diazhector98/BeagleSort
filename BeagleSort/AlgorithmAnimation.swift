@@ -114,31 +114,42 @@ class AlgorithmAnimation: NSObject {
         var curr = start
         
         while(currA < arrA.count && currB < arrB.count) {
+            let comparison = Comparison(indexA: currA + start, indexB: currB + middle + 1, valueA: arrA[currA], valueB: arrB[currB], sign: "<")
+            var insertion: Insertion
             if (arrA[currA] < arrB[currB]){
                 array[curr] = arrA[currA]
+                insertion = Insertion(fromIndex: currA + start, toIndex: curr)
                 currA += 1
             } else {
                 array[curr] = arrB[currB]
+                insertion = Insertion(fromIndex: currB + middle + 1, toIndex: curr)
                 currB += 1
             }
+            mergeSteps.append(comparison)
+            mergeSteps.append(insertion)
             curr += 1
         }
         
         while(currA < arrA.count){
             array[curr] = arrA[currA]
+            let insertion = Insertion(fromIndex: currA+start, toIndex: curr)
+            mergeSteps.append(insertion)
             currA += 1
             curr += 1
         }
         
         while(currB < arrB.count){
             array[curr] = arrB[currB]
+            let insertion = Insertion(fromIndex: currB+middle+1, toIndex: curr)
+            mergeSteps.append(insertion)
             currB += 1
             curr += 1
         }
+        let merge = Merge(start: start, middle: (start+end)/2, end: end, steps: mergeSteps)
+        steps.append(merge)
     }
     
     func MergeSort(startIndex: Int, endIndex: Int){
-        
         if (startIndex < endIndex){
             let middle = (startIndex + endIndex) / 2
             MergeSort(startIndex: startIndex, endIndex: middle)

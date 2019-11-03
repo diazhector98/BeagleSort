@@ -10,6 +10,7 @@
 		75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21D92353A6A1007B1196 /* PracticeViewController.swift */; };
 		75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21DB2353EAB8007B1196 /* ArrayState.swift */; };
 		9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01FEFD236CC72600C85E06 /* Merge.swift */; };
+		9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD6236E804800CCC78E /* Insertion.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
 		9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EAB234B8C6B0060ECDE /* ViewController.swift */; };
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		75CE21D92353A6A1007B1196 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		75CE21DB2353EAB8007B1196 /* ArrayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayState.swift; sourceTree = "<group>"; };
 		9D01FEFD236CC72600C85E06 /* Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
+		9D09DCD6236E804800CCC78E /* Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertion.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D683EAB234B8C6B0060ECDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */ = {
+			isa = PBXGroup;
+			children = (
+				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
+				9DC3131623541E7F00A6195E /* Comparison.swift */,
+				9DC3131823541EE900A6195E /* Transition.swift */,
+				9D01FEFD236CC72600C85E06 /* Merge.swift */,
+				9D09DCD6236E804800CCC78E /* Insertion.swift */,
+			);
+			path = AlgorithmSteps;
+			sourceTree = "<group>";
+		};
 		9D683E9D234B8C6B0060ECDE = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +111,7 @@
 				9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */,
 				9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */,
 				9EA43B94234FF9BE008DC827 /* Algorithm.swift */,
-				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
-				9DC3131623541E7F00A6195E /* Comparison.swift */,
-				9DC3131823541EE900A6195E /* Transition.swift */,
-				9D01FEFD236CC72600C85E06 /* Merge.swift */,
+				9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
 			);
 			path = BeagleSort;
@@ -185,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */,
 				9DC3131923541EE900A6195E /* Transition.swift in Sources */,
 				75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */,
 				9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */,
