@@ -299,21 +299,44 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             //Animar las views
-            
             UIView.animate(withDuration: 2, animations: {
                 for vista in numberViews {
                     vista.frame.origin.y += vista.frame.size.height + 20
                 }
             }) { (true) in
-                //Manejar cada uno de los animation steps del merge
-                let mergeSteps: [AlgorithmStep] = merge.steps
+                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: 0, animIndex: animIndex)
+            }
+        }
+    }
+    
+    func handleMergeSteps(merge: Merge, numberViews: [UIView], mergeStepIndex: Int, animIndex: Int){
+        if (mergeStepIndex >= merge.steps.count){
+            self.animateTransitionsHelper(animIndex: animIndex + 1)
+            return
+        }
+        
+        let algoStep = merge.steps[mergeStepIndex]
+        
+        if let comparison = algoStep as? Comparison {
+            
+            let indexA = comparison.indexA
+            let indexB = comparison.indexB
+            
+            UIView.animate(withDuration: 1, animations: {
                 
-                for step in mergeSteps {
-                    //Por cada step manejar animacion
-                    
-                }
+            }) { (true) in
                 
-                self.animateTransitionsHelper(animIndex: animIndex + 1)
+                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
+            }
+            
+        } else if let insertion = algoStep as? Insertion {
+            let fromIndex = insertion.fromIndex
+            let toIndex = insertion.toIndex
+            
+            UIView.animate(withDuration: 1, animations: {
+                
+            }) { (true) in
+                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
             }
         }
     }
