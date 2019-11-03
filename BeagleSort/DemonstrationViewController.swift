@@ -323,9 +323,19 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             let indexB = comparison.indexB
             
             UIView.animate(withDuration: 1, animations: {
+                let vistaA = numberViews[indexA! - merge.start]
+                let vistaB = numberViews[indexB! - merge.start]
                 
+                vistaA.backgroundColor = .red
+                vistaB.backgroundColor = .red
             }) { (true) in
                 
+                let vistaA = numberViews[indexA! - merge.start]
+                let vistaB = numberViews[indexB! - merge.start]
+                
+                vistaA.backgroundColor = .green
+                vistaB.backgroundColor = .green
+
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
             }
             
