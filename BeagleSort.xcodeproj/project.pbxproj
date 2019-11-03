@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21D92353A6A1007B1196 /* PracticeViewController.swift */; };
 		75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21DB2353EAB8007B1196 /* ArrayState.swift */; };
+		9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01FEFD236CC72600C85E06 /* Merge.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
 		9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EAB234B8C6B0060ECDE /* ViewController.swift */; };
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		75CE21D92353A6A1007B1196 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		75CE21DB2353EAB8007B1196 /* ArrayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayState.swift; sourceTree = "<group>"; };
+		9D01FEFD236CC72600C85E06 /* Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D683EAB234B8C6B0060ECDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
 				9DC3131623541E7F00A6195E /* Comparison.swift */,
 				9DC3131823541EE900A6195E /* Transition.swift */,
+				9D01FEFD236CC72600C85E06 /* Merge.swift */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
 			);
 			path = BeagleSort;
@@ -188,6 +191,7 @@
 				9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */,
 				9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */,
 				9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */,
+				9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */,
 				9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */,
 				9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */,
 				75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */,

@@ -86,6 +86,7 @@ class AlgorithmAnimation: NSObject {
     
     func merge(start: Int, middle: Int, end: Int) {
         
+        var mergeSteps: [AlgorithmStep] = []
         /*
 
          TAMBIEN PUEDE QUE ESTE MAL, NO PROBADO
