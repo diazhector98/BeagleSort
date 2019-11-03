@@ -11,9 +11,11 @@ import UIKit
 class Insertion: AlgorithmStep {
     public var fromIndex: Int!
     public var toIndex: Int!
+    public var value: Int!
 
-    init(fromIndex: Int, toIndex: Int) {
+    init(fromIndex: Int, toIndex: Int, value: Int) {
         self.fromIndex = fromIndex
         self.toIndex = toIndex
+        self.value = value
     }
 }

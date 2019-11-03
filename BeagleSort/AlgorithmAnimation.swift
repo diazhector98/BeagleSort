@@ -119,11 +119,11 @@ class AlgorithmAnimation: NSObject {
             var insertion: Insertion
             if (arrA[currA] < arrB[currB]){
                 array[curr] = arrA[currA]
-                insertion = Insertion(fromIndex: currA + start, toIndex: curr)
+                insertion = Insertion(fromIndex: currA + start, toIndex: curr, value: arrA[currA])
                 currA += 1
             } else {
                 array[curr] = arrB[currB]
-                insertion = Insertion(fromIndex: currB + middle + 1, toIndex: curr)
+                insertion = Insertion(fromIndex: currB + middle + 1, toIndex: curr, value: arrB[currB])
                 currB += 1
             }
             mergeSteps.append(comparison)
@@ -133,7 +133,7 @@ class AlgorithmAnimation: NSObject {
         
         while(currA < arrA.count){
             array[curr] = arrA[currA]
-            let insertion = Insertion(fromIndex: currA+start, toIndex: curr)
+            let insertion = Insertion(fromIndex: currA+start, toIndex: curr, value: arrA[currA])
             mergeSteps.append(insertion)
             currA += 1
             curr += 1
@@ -141,7 +141,7 @@ class AlgorithmAnimation: NSObject {
         
         while(currB < arrB.count){
             array[curr] = arrB[currB]
-            let insertion = Insertion(fromIndex: currB+middle+1, toIndex: curr)
+            let insertion = Insertion(fromIndex: currB+middle+1, toIndex: curr, value:  arrB[currB])
             mergeSteps.append(insertion)
             currB += 1
             curr += 1

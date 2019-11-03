@@ -274,7 +274,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             //Crear views con esos frames
-            i = merge.start!
+            var arrayIndex = merge.start!
             var numberViews: [UIView] = []
             for frame in numberFrames {
                 let vista = UIView(frame: frame)
@@ -282,7 +282,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 //Crear labels
                 let label = UILabel()
-                label.text = "\(array[i])"
+                label.text = "\(array[arrayIndex])"
                 label.textColor = .black
                 label.textAlignment = .center
                 label.translatesAutoresizingMaskIntoConstraints = false
@@ -296,6 +296,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 stackView.addSubview(vista)
                 numberViews.append(vista)
+                arrayIndex += 1
             }
             
             //Animar las views
@@ -347,6 +348,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 let vista = numberViews[fromIndex!-merge.start]
                 vista.frame = self.numViews[toIndex!].frame
+                self.array[toIndex!] = insertion.value
                 
             }) { (true) in
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
