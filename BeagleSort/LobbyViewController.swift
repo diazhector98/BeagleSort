@@ -46,15 +46,17 @@ class LobbyViewController: UIViewController {
     }
     
     @IBAction func onBuscarPress(_ sender: Any) {
-        self.socket.emit("enter_game_queue", Auth.auth().currentUser!.email!);
+        self.socket.emit("enter_game_queue", Auth.auth().currentUser!.email!, Auth.auth().currentUser!.uid);
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! GameViewController;
-        let data = sender as! NSArray;
-        vc.otherPlayerName = (data[0] as! String);
-        vc.algorithm = (data[1] as! String);
-        vc.arr = data[2] as! [Int];
-        vc.socket = self.socket;
+        if (segue.identifier == "enterGame") {
+            let vc = segue.destination as! GameViewController;
+            let data = sender as! NSArray;
+            vc.otherPlayerName = (data[0] as! String);
+            vc.algorithm = (data[1] as! String);
+            vc.arr = data[2] as! [Int];
+            vc.socket = self.socket;
+            }
     }
 }

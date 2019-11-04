@@ -21,6 +21,9 @@
 		9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31314235416BF00A6195E /* AlgorithmStep.swift */; };
 		9DC3131723541E7F00A6195E /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131623541E7F00A6195E /* Comparison.swift */; };
 		9DC3131923541EE900A6195E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131823541EE900A6195E /* Transition.swift */; };
+		9E474683236E802A0032C77E /* HighscoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E474682236E802A0032C77E /* HighscoresViewController.swift */; };
+		9E474685236E80960032C77E /* HighscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E474684236E80960032C77E /* HighscoreTableViewCell.swift */; };
+		9E474687236E81D00032C77E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E474686236E81D00032C77E /* UserModel.swift */; };
 		9E8B2D662363AC20007D122B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E8B2D652363AC20007D122B /* GoogleService-Info.plist */; };
 		9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */; };
 		9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */; };
@@ -51,6 +54,9 @@
 		9DC31314235416BF00A6195E /* AlgorithmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStep.swift; sourceTree = "<group>"; };
 		9DC3131623541E7F00A6195E /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
 		9DC3131823541EE900A6195E /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		9E474682236E802A0032C77E /* HighscoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresViewController.swift; sourceTree = "<group>"; };
+		9E474684236E80960032C77E /* HighscoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreTableViewCell.swift; sourceTree = "<group>"; };
+		9E474686236E81D00032C77E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9E8B2D652363AC20007D122B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesHelper.swift; sourceTree = "<group>"; };
 		9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +144,9 @@
 				9EF3F84F2363B4D5006ED88A /* CreateUserViewController.swift */,
 				9EF3F8512363B4DD006ED88A /* LobbyViewController.swift */,
 				9EF3F8532364FFA3006ED88A /* GameViewController.swift */,
+				9E474682236E802A0032C77E /* HighscoresViewController.swift */,
+				9E474684236E80960032C77E /* HighscoreTableViewCell.swift */,
+				9E474686236E81D00032C77E /* UserModel.swift */,
 			);
 			path = BeagleSort;
 			sourceTree = "<group>";
@@ -271,12 +280,15 @@
 				9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */,
 				9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */,
 				9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */,
+				9E474685236E80960032C77E /* HighscoreTableViewCell.swift in Sources */,
 				9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */,
 				9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */,
 				9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */,
 				9EF3F8542364FFA3006ED88A /* GameViewController.swift in Sources */,
+				9E474687236E81D00032C77E /* UserModel.swift in Sources */,
 				75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */,
 				9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */,
+				9E474683236E802A0032C77E /* HighscoresViewController.swift in Sources */,
 				9EF3F8502363B4D5006ED88A /* CreateUserViewController.swift in Sources */,
 				9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */,
 				9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */,

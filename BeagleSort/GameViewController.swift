@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var lblPlayer1: UILabel!
     @IBOutlet weak var lblPlayer2: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
+    @IBOutlet weak var btnBack: UIButton!
     
     // instance variables
     private var user: User!;
@@ -74,6 +75,7 @@ class GameViewController: UIViewController {
     }
     
     private func createSocketHandlers() {
+        // listen for when server determines if move was correct or not
         self.socket.on("player_move_response") { (data, ack) in
             let dict = (data[0] as? NSDictionary)!;
             let res = dict["res"] as! String;
@@ -87,6 +89,7 @@ class GameViewController: UIViewController {
             }
         }
         
+        // listen for when other player makes a move so we can animate
         self.socket.on("other_player_move") { (data, ack) in
             let dict = (data[0] as? NSDictionary)!;
             let fromIndex = dict["fromIndex"] as! Int;
@@ -105,8 +108,31 @@ class GameViewController: UIViewController {
             UIView.animate(withDuration: 0.5, animations: {
                 firstButton.frame.origin = self.player2Frames[toIndex];
                 secondButton.frame.origin = self.player2Frames[fromIndex];
-            })
+            });
+        }
+        
+        // listen for when the game has ended
+        self.socket.on("game_ended") { (data, ack) in
+            let dict = (data[0] as? NSDictionary)!;
+            let won = dict["won"] as! Bool;
             
+            if (won) {
+                self.lblStatus.text = "Has ganado!!!";
+                self.lblStatus.textColor = self.correctColor;
+            } else {
+                self.lblStatus.text = "Has perdido.";
+                self.lblStatus.textColor = self.wrongColor;
+            }
+            self.lblStatus.isHidden = false;
+            
+            // disable buttons
+            for i in 0...6 {
+                let button = self.player1Holder.viewWithTag(i + 1) as! UIButton;
+                button.isEnabled = false;
+            }
+            
+            // allow player to go back
+            self.btnBack.isHidden = false;
         }
     }
     
@@ -140,5 +166,9 @@ class GameViewController: UIViewController {
             firstTouched = sender.tag;
             sender.backgroundColor = selectedColor;
         }
+    }
+    
+    @IBAction func onBackPress(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil);
     }
 }

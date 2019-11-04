@@ -1,10 +1,14 @@
 const BubbleSort = require('./algorithms/BubbleSort');
 const ArrayState = require('./ArrayState');
+const firebase = require('firebase');
+require('firebase/database');
 
 class Game {
   constructor(player1, player2) {
     this.player1 = player1;
     this.player2 = player2;
+    this.hasEnded = false;
+    this.states = [];
 
     // generate array
     const arr = [];
@@ -29,6 +33,7 @@ class Game {
   }
 }
 
+var a = 0;
 Game.prototype.playerMove = function(player, fromIndex, toIndex) {
   // swap state
   const temp = player.arrState.arr[fromIndex];
@@ -45,10 +50,63 @@ Game.prototype.playerMove = function(player, fromIndex, toIndex) {
   // send to player
   player.socket.emit('player_move_response', {res});
 
+  // send to other player
+  let otherPlayer = null;
   if (player === this.player1) {
-    this.player2.socket.emit('other_player_move', {fromIndex, toIndex});
+    otherPlayer = this.player2;
   } else {
-    this.player1.socket.emit('other_player_move', {fromIndex, toIndex});
+    otherPlayer = this.player1;
+  }
+  otherPlayer.socket.emit('other_player_move', {fromIndex, toIndex});
+
+  // check if current player won
+  if (res === 'Correcto' && player.stateIndex === this.states.length) {
+    player.socket.emit('game_ended', {won: true});
+    otherPlayer.socket.emit('game_ended', {won: false});
+    this.hasEnded = true;
+
+    // update user that won
+    const userRef = firebase.database().ref(`/users/${player.id}`);
+    userRef.once('value', snapshot => {
+      const user = snapshot.val();
+
+      if (user != null) {
+        userRef.set({
+          username: player.name,
+          won: user.won + 1,
+          lost: user.lost,
+        });
+      } else {
+        userRef.set({
+          username: player.name,
+          won: 1,
+          lost: 0,
+        });
+      }
+    });
+
+    // update user that lost
+    const otherUserRef = firebase.database().ref(`/users/${otherPlayer.id}`);
+    otherUserRef.once('value', snapshot => {
+      const user = snapshot.val();
+
+      if (user != null) {
+        otherUserRef.set({
+          username: otherPlayer.name,
+          won: user.won,
+          lost: user.lost + 1,
+        });
+      } else {
+        otherUserRef.set({
+          username: otherPlayer.name,
+          won: 0,
+          lost: 1,
+        });
+      }
+    });
+
+    this.player1.destroy();
+    this.player2.destroy();
   }
 };
 
