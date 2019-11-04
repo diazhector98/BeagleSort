@@ -243,6 +243,120 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 viewB?.backgroundColor = .blue
                 self.animateTransitionsHelper(animIndex: animIndex + 1)
             }
+        } else if let merge = algorithmStep as? Merge {
+            var originalViews: [UIView] = []
+            var i = merge.start!
+            
+            /*
+            
+             Desaparecer las views del merge
+ 
+            */
+            while(i <= merge.end){
+                originalViews.append(arrayViewsDictionary[i]!)
+                i += 1
+            }
+            for originalView in originalViews {
+                disappearView(vista: originalView)
+            }
+            /*
+ 
+            Crear views de los números del merge
+ 
+            */
+            
+            //Obtener frames
+            var numberFrames: [CGRect] = []
+            i = merge.start!
+            while(i <= merge.end!){
+                numberFrames.append(numViews[i].frame)
+                i += 1
+            }
+            
+            //Crear views con esos frames
+            var arrayIndex = merge.start!
+            var numberViews: [UIView] = []
+            for frame in numberFrames {
+                let vista = UIView(frame: frame)
+                vista.backgroundColor = .blue
+                
+                //Crear labels
+                let label = UILabel()
+                label.text = "\(array[arrayIndex])"
+                label.textColor = .black
+                label.textAlignment = .center
+                label.translatesAutoresizingMaskIntoConstraints = false
+                
+                vista.addSubview(label)
+                
+                label.centerXAnchor.constraint(equalTo: vista.centerXAnchor).isActive = true
+                label.centerYAnchor.constraint(equalTo: vista.centerYAnchor).isActive = true
+                
+                vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
+                
+                stackView.addSubview(vista)
+                numberViews.append(vista)
+                arrayIndex += 1
+            }
+            
+            //Animar las views
+            UIView.animate(withDuration: 1, animations: {
+                for vista in numberViews {
+                    vista.frame.origin.y += vista.frame.size.height + 18
+                }
+            }) { (true) in
+                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: 0, animIndex: animIndex)
+            }
+        }
+    }
+    
+    func handleMergeSteps(merge: Merge, numberViews: [UIView], mergeStepIndex: Int, animIndex: Int){
+        if (mergeStepIndex >= merge.steps.count){
+            self.animateTransitionsHelper(animIndex: animIndex + 1)
+            return
+        }
+        
+        let algoStep = merge.steps[mergeStepIndex]
+        
+        if let comparison = algoStep as? Comparison {
+            
+            let indexA = comparison.indexA
+            let indexB = comparison.indexB
+            
+            UIView.animate(withDuration: 1, animations: {
+                let vistaA = numberViews[indexA! - merge.start]
+                let vistaB = numberViews[indexB! - merge.start]
+                
+                vistaA.backgroundColor = .red
+                vistaB.backgroundColor = .red
+            }) { (true) in
+                
+                UIView.animate(withDuration: 1, animations: {
+                    let vistaA = numberViews[indexA! - merge.start]
+                    let vistaB = numberViews[indexB! - merge.start]
+                    
+                    vistaA.backgroundColor = .blue
+                    vistaB.backgroundColor = .blue
+                }, completion: { (true) in
+                    self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
+                    
+                })
+            }
+            
+        } else if let insertion = algoStep as? Insertion {
+            let fromIndex = insertion.fromIndex
+            let toIndex = insertion.toIndex
+            
+            UIView.animate(withDuration: 1, animations: {
+                
+                let vista = numberViews[fromIndex!-merge.start]
+                vista.frame = self.numViews[toIndex!].frame
+                self.array[toIndex!] = insertion.value
+                self.arrayViewsDictionary[toIndex!] = vista
+                
+            }) { (true) in
+                self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
+            }
         }
     }
     

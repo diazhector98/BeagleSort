@@ -19,6 +19,7 @@ class AlgorithmAnimation: NSObject {
         super.init()
         self.algorithm = algorithm
         self.array = array
+        self.steps = []
         calculateTransitions()
     }
     
@@ -27,6 +28,10 @@ class AlgorithmAnimation: NSObject {
         switch(algorithmName) {
         case "BubbleSort":
             initBubbleSortTransitions()
+        case "MergeSort":
+            initMergeSortTransitions()
+        case "InsertionSort":
+            initInsertionSortTransitions()
         case .none:
             print("What")
         case .some(_):
@@ -35,7 +40,6 @@ class AlgorithmAnimation: NSObject {
     }
     
     func initBubbleSortTransitions() {
-        steps = []
         let n = array.count
         var i = n - 1
         while (i >= 1){
@@ -53,6 +57,114 @@ class AlgorithmAnimation: NSObject {
             i = i - 1
         }
     }
+    
+    
+    func initInsertionSortTransitions() {
+        var curr = 1
+        let n = array.count
+        while(curr < n) {
+            var c = curr-1
+            let firstComparison = Comparison(indexA: c, indexB: c+1, valueA: array[c], valueB: array[c+1], sign: ">")
+            steps.append(firstComparison)
+            while(c >= 0 && array[c] > array[c+1]){
+                let loopComparison = Comparison(indexA: c, indexB: c+1, valueA: array[c], valueB: array[c+1], sign: ">")
+                if (c != curr-1){
+                    //Add loop comparison if it's not the first one
+                    steps.append(loopComparison)
+                }
+                //swap
+                let swap = Transition(from: c+1, to: c, fromValue: array[c+1], toValue: array[c])
+                steps.append(swap)
+                let temp = array[c+1]
+                array[c+1] = array[c]
+                array[c] = temp
+                c -= 1
+            }
+            curr += 1
+        }
+    }
+    
+    
+    func merge(start: Int, middle: Int, end: Int) {
+        
+        var mergeSteps: [AlgorithmStep] = []
+        /*
+
+         TAMBIEN PUEDE QUE ESTE MAL, NO PROBADO
+         */
+        
+        var arrA: [Int] = []
+        var arrB: [Int] = []
+        
+        //Constructing array A from start to middle
+        
+        var i = start
+        while(i <= middle) {
+            arrA.append(array[i])
+            i += 1
+        }
+        //Constructing array B from middle + 1 to end
+        i = middle + 1
+        while(i <= end){
+            arrB.append(array[i])
+            i += 1
+        }
+        //Constructing new array from both
+        var currA = 0
+        var currB = 0
+        var curr = start
+        
+        while(currA < arrA.count && currB < arrB.count) {
+            let comparison = Comparison(indexA: currA + start, indexB: currB + middle + 1, valueA: arrA[currA], valueB: arrB[currB], sign: "<")
+            var insertion: Insertion
+            if (arrA[currA] < arrB[currB]){
+                array[curr] = arrA[currA]
+                insertion = Insertion(fromIndex: currA + start, toIndex: curr, value: arrA[currA])
+                currA += 1
+            } else {
+                array[curr] = arrB[currB]
+                insertion = Insertion(fromIndex: currB + middle + 1, toIndex: curr, value: arrB[currB])
+                currB += 1
+            }
+            mergeSteps.append(comparison)
+            mergeSteps.append(insertion)
+            curr += 1
+        }
+        
+        while(currA < arrA.count){
+            array[curr] = arrA[currA]
+            let insertion = Insertion(fromIndex: currA+start, toIndex: curr, value: arrA[currA])
+            mergeSteps.append(insertion)
+            currA += 1
+            curr += 1
+        }
+        
+        while(currB < arrB.count){
+            array[curr] = arrB[currB]
+            let insertion = Insertion(fromIndex: currB+middle+1, toIndex: curr, value:  arrB[currB])
+            mergeSteps.append(insertion)
+            currB += 1
+            curr += 1
+        }
+        let merge = Merge(start: start, middle: (start+end)/2, end: end, steps: mergeSteps)
+        steps.append(merge)
+    }
+    
+    func MergeSort(startIndex: Int, endIndex: Int){
+        if (startIndex < endIndex){
+            let middle = (startIndex + endIndex) / 2
+            MergeSort(startIndex: startIndex, endIndex: middle)
+            MergeSort(startIndex: middle+1, endIndex: endIndex)
+            merge(start: startIndex, middle: middle, end: endIndex)
+        }
+    }
+    
+    func initMergeSortTransitions(){
+        MergeSort(startIndex: 0, endIndex: array.count-1)
+    }
+    
+    
+    
     
     func printTransitions() {
         for step in steps {

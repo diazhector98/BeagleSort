@@ -10,6 +10,10 @@
 		75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21D92353A6A1007B1196 /* PracticeViewController.swift */; };
 		75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21DB2353EAB8007B1196 /* ArrayState.swift */; };
 		9B3B114C015552BA4D28E105 /* Pods_BeagleSort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2F9480C4A7D7030D6FF3965 /* Pods_BeagleSort.framework */; };
+		9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01FEFD236CC72600C85E06 /* Merge.swift */; };
+		9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD6236E804800CCC78E /* Insertion.swift */; };
+		9D09DCD9236E8E5E00CCC78E /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */; };
+		9D09DCDB236EA51200CCC78E /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCDA236EA51200CCC78E /* InsertionSort.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
 		9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EAB234B8C6B0060ECDE /* ViewController.swift */; };
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 		75CE21DB2353EAB8007B1196 /* ArrayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayState.swift; sourceTree = "<group>"; };
 		896EBE0B9109963D8CF3545C /* Pods-BeagleSort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.release.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.release.xcconfig"; sourceTree = "<group>"; };
 		93DE64FBE60ADBA17002FE40 /* Pods-BeagleSort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.debug.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.debug.xcconfig"; sourceTree = "<group>"; };
+		9D01FEFD236CC72600C85E06 /* Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
+		9D09DCD6236E804800CCC78E /* Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertion.swift; sourceTree = "<group>"; };
+		9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
+		9D09DCDA236EA51200CCC78E /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D683EAB234B8C6B0060ECDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,16 @@
 				896EBE0B9109963D8CF3545C /* Pods-BeagleSort.release.xcconfig */,
 			);
 			path = Pods;
+		9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */ = {
+			isa = PBXGroup;
+			children = (
+				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
+				9DC3131623541E7F00A6195E /* Comparison.swift */,
+				9DC3131823541EE900A6195E /* Transition.swift */,
+				9D01FEFD236CC72600C85E06 /* Merge.swift */,
+				9D09DCD6236E804800CCC78E /* Insertion.swift */,
+			);
+			path = AlgorithmSteps;
 			sourceTree = "<group>";
 		};
 		9D683E9D234B8C6B0060ECDE = {
@@ -140,6 +158,7 @@
 				9DC31314235416BF00A6195E /* AlgorithmStep.swift */,
 				9DC3131623541E7F00A6195E /* Comparison.swift */,
 				9DC3131823541EE900A6195E /* Transition.swift */,
+				9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
 				9EF3F84F2363B4D5006ED88A /* CreateUserViewController.swift */,
 				9EF3F8512363B4DD006ED88A /* LobbyViewController.swift */,
@@ -154,7 +173,10 @@
 		9EA43B96234FFC1D008DC827 /* algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				9EA43B94234FF9BE008DC827 /* Algorithm.swift */,
 				9EA43B97234FFC2A008DC827 /* BubbleSort.swift */,
+				9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */,
+				9D09DCDA236EA51200CCC78E /* InsertionSort.swift */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -275,13 +297,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D09DCDB236EA51200CCC78E /* InsertionSort.swift in Sources */,
+				9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */,
 				9DC3131923541EE900A6195E /* Transition.swift in Sources */,
 				75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */,
 				9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */,
 				9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */,
 				9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */,
 				9E474685236E80960032C77E /* HighscoreTableViewCell.swift in Sources */,
+				9D09DCD9236E8E5E00CCC78E /* MergeSort.swift in Sources */,
 				9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */,
+				9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */,
 				9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */,
 				9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */,
 				9EF3F8542364FFA3006ED88A /* GameViewController.swift in Sources */,
