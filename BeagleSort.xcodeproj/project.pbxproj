@@ -13,6 +13,7 @@
 		9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD6236E804800CCC78E /* Insertion.swift */; };
 		9D09DCD9236E8E5E00CCC78E /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */; };
 		9D09DCDB236EA51200CCC78E /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCDA236EA51200CCC78E /* InsertionSort.swift */; };
+		9D33A400237C79C500865650 /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A3FF237C79C500865650 /* QuickSort.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
 		9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EAB234B8C6B0060ECDE /* ViewController.swift */; };
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		9D09DCD6236E804800CCC78E /* Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertion.swift; sourceTree = "<group>"; };
 		9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 		9D09DCDA236EA51200CCC78E /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		9D33A3FF237C79C500865650 /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D683EAB234B8C6B0060ECDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				9EA43B97234FFC2A008DC827 /* BubbleSort.swift */,
 				9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */,
 				9D09DCDA236EA51200CCC78E /* InsertionSort.swift */,
+				9D33A3FF237C79C500865650 /* QuickSort.swift */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */,
 				9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */,
 				9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */,
+				9D33A400237C79C500865650 /* QuickSort.swift in Sources */,
 				9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */,
 				75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */,
 				9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */,

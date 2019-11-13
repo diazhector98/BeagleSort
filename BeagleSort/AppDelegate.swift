@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BubbleSort.create()
         MergeSort.create()
         InsertionSort.create()
+        QuickSort.create()
         return true
     }
 
