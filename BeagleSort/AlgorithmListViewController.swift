@@ -22,6 +22,7 @@ class AlgorithmListViewController: UIViewController, UITableViewDelegate, UITabl
         self.algorithms.append(BubbleSort.instance)
         self.algorithms.append(MergeSort.instance)
         self.algorithms.append(InsertionSort.instance)
+        self.algorithms.append(QuickSort.instance)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -307,6 +307,13 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             }) { (true) in
                 self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: 0, animIndex: animIndex)
             }
+        } else if let pivotSelection = algorithmStep as? PivotSelection {
+            let pivotView = arrayViewsDictionary[pivotSelection.index]
+            UIView.animate(withDuration: 1, animations: {
+                pivotView?.backgroundColor = .red
+            }) { (true) in
+                self.animateTransitionsHelper(animIndex: animIndex + 1)
+            }
         }
     }
     

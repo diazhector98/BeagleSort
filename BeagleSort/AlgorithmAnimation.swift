@@ -32,6 +32,8 @@ class AlgorithmAnimation: NSObject {
             initMergeSortTransitions()
         case "InsertionSort":
             initInsertionSortTransitions()
+        case "QuickSort":
+            initQuickSortTransitions()
         case .none:
             print("What")
         case .some(_):
