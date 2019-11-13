@@ -164,6 +164,32 @@ class AlgorithmAnimation: NSObject {
     }
     
     
+    func QuickSort(startIndex: Int, endIndex: Int){
+        
+        if (startIndex > endIndex){
+            return;
+        }
+        let pivot = array[startIndex]
+        var left = startIndex + 1
+        var right = endIndex
+        while(left <= right){
+            if (array[left] <= pivot){
+                left += 1;
+            }
+            
+            if (array[right] >= pivot){
+                right -= 1;
+            }
+        }
+        //swap right with pivot
+        QuickSort(startIndex: startIndex, endIndex: right-1)
+        QuickSort(startIndex: right+1, endIndex: endIndex)
+        
+    }
+    func initQuickSortTransitions(){
+    }
+    
+    
     
     
     func printTransitions() {
