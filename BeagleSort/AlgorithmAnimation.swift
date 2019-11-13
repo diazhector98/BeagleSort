@@ -169,24 +169,44 @@ class AlgorithmAnimation: NSObject {
         if (startIndex > endIndex){
             return;
         }
+        //Pivot Selection
         let pivot = array[startIndex]
+        steps.append(PivotSelection(index: startIndex, value: pivot))
         var left = startIndex + 1
         var right = endIndex
         while(left <= right){
+            //Comparison of both left and right pointers
+            steps.append(Comparison(indexA: left, indexB: right, valueA: array[left], valueB: array[right], sign: " > pivot and pivot > "))
+            if (array[left] > pivot && array[right] < pivot){
+                
+                //Swap of both pointers
+                steps.append(Transition(from: left, to: right, fromValue: array[left], toValue: array[right]))
+                let temp = array[left]
+                array[left] = array[right]
+                array[right] = temp
+            }
+            //Comparison of pivot and left
+            steps.append(Comparison(indexA: left, indexB: startIndex, valueA: array[left], valueB: pivot, sign: "<="))
             if (array[left] <= pivot){
                 left += 1;
             }
-            
+            //Comparison of pivot and right
+            steps.append(Comparison(indexA: right, indexB: startIndex, valueA: array[right], valueB: pivot, sign: ">="))
             if (array[right] >= pivot){
                 right -= 1;
             }
         }
-        //swap right with pivot
+        //Swap of right and pivot (if swapping with pivot, should DESELECT pivot in animation)
+        steps.append(Transition(from: startIndex, to: right, fromValue: pivot, toValue: array[right]))
+        array[startIndex] = array[right]
+        array[right] = pivot
+        
         QuickSort(startIndex: startIndex, endIndex: right-1)
         QuickSort(startIndex: right+1, endIndex: endIndex)
         
     }
     func initQuickSortTransitions(){
+        QuickSort(startIndex: 0, endIndex: array.count-1)
     }
     
     
