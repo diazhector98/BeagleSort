@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MergeSort.create()
         InsertionSort.create()
         QuickSort.create()
+        SelectionSort.create()
         return true
     }
 

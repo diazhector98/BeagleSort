@@ -13,6 +13,7 @@
 		9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD6236E804800CCC78E /* Insertion.swift */; };
 		9D09DCD9236E8E5E00CCC78E /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */; };
 		9D09DCDB236EA51200CCC78E /* InsertionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D09DCDA236EA51200CCC78E /* InsertionSort.swift */; };
+		9D31DD28237DDEDC006AEEEA /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31DD27237DDEDC006AEEEA /* SelectionSort.swift */; };
 		9D33A400237C79C500865650 /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A3FF237C79C500865650 /* QuickSort.swift */; };
 		9D33A402237CC45900865650 /* PivotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A401237CC45900865650 /* PivotSelection.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		9D09DCD6236E804800CCC78E /* Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertion.swift; sourceTree = "<group>"; };
 		9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 		9D09DCDA236EA51200CCC78E /* InsertionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertionSort.swift; sourceTree = "<group>"; };
+		9D31DD27237DDEDC006AEEEA /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		9D33A3FF237C79C500865650 /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		9D33A401237CC45900865650 /* PivotSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivotSelection.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */,
 				9D09DCDA236EA51200CCC78E /* InsertionSort.swift */,
 				9D33A3FF237C79C500865650 /* QuickSort.swift */,
+				9D31DD27237DDEDC006AEEEA /* SelectionSort.swift */,
 			);
 			path = algorithms;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				9D09DCD7236E804800CCC78E /* Insertion.swift in Sources */,
 				9DC3131923541EE900A6195E /* Transition.swift in Sources */,
 				75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */,
+				9D31DD28237DDEDC006AEEEA /* SelectionSort.swift in Sources */,
 				9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */,
 				9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */,
 				9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */,
