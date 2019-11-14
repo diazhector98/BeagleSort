@@ -15,23 +15,36 @@ class MergeSort {
     
     public static func create() -> Void {
         instance = Algorithm(name: "MergeSort", image: UIImage(named: "bubble-icon")!);
-        instance.averageCase = "O(n ^ 2)";
-        instance.worstCase = "O(n ^ 2)";
-        instance.spaceComplexity = "O(1)";
+        instance.averageCase = "O(nlog(n))";
+        instance.worstCase = "O(nlog(n))";
+        instance.spaceComplexity = "O(n)";
         instance.implementation =
         """
-        for (i = 0; i < n - 1; i++) {
-        flag = false;
-        for (j = 0; j < n - i - 1; j++) {
-        if (arr[j] > arr[j + 1]) {
-        swap(arr[j], arr[j + 1]);
-        flag = true;
-        }
+        void merge(arr , start, mid, end) {
+            p = start ,q = mid+1;
+            tempArr[end-start+1] , k=0;
+            for(i = start ;i <= end ;i++) {
+                if(p > mid)
+                    tempArr[ k++ ] = arr[ q++] ;
+                else if ( q > end)
+                    tempArr[ k++ ] = arr[ p++ ];
+                else if( arr[ p ] < arr[ q ])
+                    tempArr[ k++ ] = arr[ p++ ];
+                else
+                    tempArr[ k++ ] = arr[ q++];
+            }
+            for (p=0 ; p< k ;p ++) {
+                arr[ start++ ] = tempArr[ p ] ;
+            }
         }
         
-        if (!flag) {
-        break;
-        }
+        void merge_sort (arr, start ,end ) {
+            if( start < end ) {
+                mid = (start + end ) / 2 ;
+                merge_sort (arr, start , mid ) ;
+                merge_sort (arr,mid+1 , end ) ;
+                merge(arr,start , mid , end );
+            }
         }
         """;
     }
