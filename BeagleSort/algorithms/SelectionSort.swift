@@ -20,18 +20,15 @@ class SelectionSort {
         instance.spaceComplexity = "O(1)";
         instance.implementation =
         """
-        for (i = 0; i < n - 1; i++) {
-        flag = false;
-        for (j = 0; j < n - i - 1; j++) {
-        if (arr[j] > arr[j + 1]) {
-        swap(arr[j], arr[j + 1]);
-        flag = true;
-        }
-        }
-        
-        if (!flag) {
-        break;
-        }
+        int minimum;
+        for(int i = 0; i < n-1 ; i++)  {
+            minimum = i ;
+            for(int j = i+1; j < n ; j++ ) {
+                if(arr[ j ] < arr[ minimum ]){
+                    minimum = j ;
+                }
+            }
+            swap ( arr[ minimum ], arr[ i ]) ;
         }
         """;
     }
