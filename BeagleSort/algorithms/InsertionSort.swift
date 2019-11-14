@@ -20,18 +20,14 @@ class InsertionSort {
         instance.spaceComplexity = "O(1)";
         instance.implementation =
         """
-        for (i = 0; i < n - 1; i++) {
-        flag = false;
-        for (j = 0; j < n - i - 1; j++) {
-        if (arr[j] > arr[j + 1]) {
-        swap(arr[j], arr[j + 1]);
-        flag = true;
-        }
-        }
-        
-        if (!flag) {
-        break;
-        }
+        for( int i = 0 ;i < n ; i++ ) {
+            int temp = arr[ i ];
+            int j = i;
+            while(  j > 0  && temp < arr[ j -1]) {
+                arr[ j ] = arr[ j-1];
+                j= j - 1;
+            }
+            arr[ j ] = temp;
         }
         """;
     }
