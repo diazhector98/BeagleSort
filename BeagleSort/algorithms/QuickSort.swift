@@ -15,23 +15,30 @@ class QuickSort {
     
     public static func create() -> Void {
         instance = Algorithm(name: "QuickSort", image: UIImage(named: "bubble-icon")!);
-        instance.averageCase = "O(n ^ 2)";
-        instance.worstCase = "O(n ^ 2)";
-        instance.spaceComplexity = "O(1)";
+        instance.averageCase = "O(nlg(n))";
+        instance.worstCase = "O(n^2)";
+        instance.spaceComplexity = "O(nlgn)";
         instance.implementation =
         """
-        for (i = 0; i < n - 1; i++) {
-        flag = false;
-        for (j = 0; j < n - i - 1; j++) {
-        if (arr[j] > arr[j + 1]) {
-        swap(arr[j], arr[j + 1]);
-        flag = true;
-        }
+        int partition (arr, start , end) {
+            i = start + 1;
+            piv = arr[start] ;
+                for(j =start + 1; j <= end ; j++ )  {
+                if ( arr[ j ] < piv) {
+                    swap (arr[ i ],arr[ j ]);
+                    i += 1;
+                }
+            }
+            swap ( arr[ start ] ,arr[ i-1 ] ) ;
+            return i-1;
         }
         
-        if (!flag) {
-        break;
-        }
+        void quick_sort (arr, start, end ) {
+            if( start < end ) {
+                int piv_pos = partition (arr,start , end ) ;
+                quick_sort (arr,start , piv_pos - 1);
+                quick_sort ( arr,piv_pos +1 , end) ;
+            }
         }
         """;
     }
