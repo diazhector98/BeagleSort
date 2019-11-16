@@ -66,7 +66,7 @@ class MergePracticeViewController: UIViewController {
         }
         print("Creating container views of level two:" , levelTwoContainers)
         
-        stackLevelTwoContainerViews = generateContainerViews(num: 4)
+        stackLevelTwoContainerViews = generateContainerViews(num: 4, color: .blue)
         
         stackLevelTwo = UIStackView(arrangedSubviews: stackLevelTwoContainerViews)
         stackLevelTwo.axis = .horizontal
@@ -83,7 +83,7 @@ class MergePracticeViewController: UIViewController {
             levelThreeContainers.append(v)
         }
         
-        stackLevelThreeContainerViews = generateContainerViews(num: 2)
+        stackLevelThreeContainerViews = generateContainerViews(num: 2, color: .blue)
         let stackLevelThree = UIStackView(arrangedSubviews: stackLevelThreeContainerViews)
         stackLevelThree.axis = .horizontal
         stackLevelThree.distribution = .fillEqually
@@ -92,7 +92,7 @@ class MergePracticeViewController: UIViewController {
         stackLevelThree.translatesAutoresizingMaskIntoConstraints = false
         
         //Adding one containers to level four
-        stackLevelFourContainerViews = generateContainerViews(num: 1)
+        stackLevelFourContainerViews = generateContainerViews(num: 1, color: .blue)
         let stackLevelFour = UIStackView(arrangedSubviews: stackLevelFourContainerViews)
         stackLevelFour.axis = .horizontal
         stackLevelFour.distribution = .fillEqually
@@ -175,33 +175,68 @@ class MergePracticeViewController: UIViewController {
             numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
         }
         
-        for v in stackLevelTwoContainerViews {
-            v.heightAnchor.constraint(equalTo: v.widthAnchor).isActive = true
+        for container in stackLevelTwoContainerViews {
+            container.heightAnchor.constraint(equalTo: container.widthAnchor).isActive = true
         }
         
-        for v in stackLevelThreeContainerViews {
-            v.heightAnchor.constraint(equalTo: v.widthAnchor).isActive = true
+        for container in stackLevelThreeContainerViews {
+            container.heightAnchor.constraint(equalTo: container.widthAnchor).isActive = true
         }
         
-        for v in stackLevelFourContainerViews {
-            v.heightAnchor.constraint(equalTo: v.widthAnchor).isActive = true
+        for container in stackLevelFourContainerViews {
+            container.heightAnchor.constraint(equalTo: container.widthAnchor).isActive = true
         }
         
         
-        //Adding a stack to each of the containers of level two
-        for v in stackLevelTwoContainerViews {
+        //Adding a stack with views to each of the containers of level three
+        for container in stackLevelThreeContainerViews {
             
+            //Create views where numbers will be
+            let vistas = generateContainerViews(num: 4, color: .cyan)
+            //Create stack view with it
+            let stackView = UIStackView(arrangedSubviews: vistas)
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.alignment = .center
+            stackView.spacing = 10
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            //Add stack view to container
+            container.addSubview(stackView)
+            
+            //Add constraints
+            let stackDictionary = ["stackView":stackView]
+            
+            let stackViewLevelFour_H = NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+                options: NSLayoutFormatOptions(rawValue: 0),
+                metrics: nil,
+                views: stackDictionary)
+            
+            let stackViewLevelFour_V = NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+                options: NSLayoutFormatOptions(rawValue:0),
+                metrics: nil,
+                views: stackDictionary)
+            
+            container.addConstraints(stackViewLevelFour_H)
+            container.addConstraints(stackViewLevelFour_V)
+            
+            //Add constraints to views inside this stack
+            for vista in vistas {
+                 vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
+            }
         }
         
     }
     
-    func generateContainerViews(num: Int) -> [UIView] {
+    func generateContainerViews(num: Int, color: UIColor) -> [UIView] {
         var views: [UIView] = []
         var index = 0
         for _ in 1...num {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
-            numView.backgroundColor = .blue
+            numView.backgroundColor = color
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
