@@ -21,6 +21,7 @@
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
 		9D683EB1234B8C6E0060ECDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EB0234B8C6E0060ECDE /* Assets.xcassets */; };
 		9D683EB4234B8C6E0060ECDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EB2234B8C6E0060ECDE /* LaunchScreen.storyboard */; };
+		9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D788F1323807AD500260078 /* MergePracticeViewController.swift */; };
 		9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */; };
 		9DC313112351931C00A6195E /* DemonstrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC313102351931C00A6195E /* DemonstrationViewController.swift */; };
 		9DC31313235201A700A6195E /* AlgorithmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31312235201A700A6195E /* AlgorithmViewController.swift */; };
@@ -51,6 +52,7 @@
 		9D683EB0234B8C6E0060ECDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D683EB3234B8C6E0060ECDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D683EB5234B8C6E0060ECDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D788F1323807AD500260078 /* MergePracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergePracticeViewController.swift; sourceTree = "<group>"; };
 		9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmAnimation.swift; sourceTree = "<group>"; };
 		9DC313102351931C00A6195E /* DemonstrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemonstrationViewController.swift; sourceTree = "<group>"; };
 		9DC31312235201A700A6195E /* AlgorithmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				9D683EAB234B8C6B0060ECDE /* ViewController.swift */,
 				9D683EAD234B8C6B0060ECDE /* Main.storyboard */,
 				75CE21DB2353EAB8007B1196 /* ArrayState.swift */,
+				9D788F1323807AD500260078 /* MergePracticeViewController.swift */,
 				75CE21D92353A6A1007B1196 /* PracticeViewController.swift */,
 				9DC31312235201A700A6195E /* AlgorithmViewController.swift */,
 				9DC313102351931C00A6195E /* DemonstrationViewController.swift */,
@@ -230,6 +233,7 @@
 				9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */,
 				9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */,
 				9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */,
+				9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */,
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
 				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,

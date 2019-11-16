@@ -29,6 +29,15 @@ class AlgorithmViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func pressPractica(_ sender: Any) {
+        if (algorithm.name == "MergeSort"){
+            performSegue(withIdentifier: "practicaMerge", sender: self)
+        } else {
+            performSegue(withIdentifier: "practica", sender: self)
+        }
+    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -39,9 +48,13 @@ class AlgorithmViewController: UIViewController {
             vista.array = [3,4,2,5,2,8,7]
             
         } else if segue.identifier == "practica" {
+            
             let vista = segue.destination as! PracticeViewController
             vista.algorithm = algorithm
             vista.array = [3,4,2,5,2,8,7]
+            
+        } else if segue.identifier == "practicaMerge" {
+            let vista = segue.destination as! MergePracticeViewController
         }
     }
 
