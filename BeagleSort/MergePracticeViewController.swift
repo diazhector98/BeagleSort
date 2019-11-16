@@ -86,6 +86,27 @@ class MergePracticeViewController: UIViewController {
         let containerLevelFour = UIView()
         containerLevelFour.backgroundColor = .green
         levelFourContainers.append(containerLevelFour)
+        
+        
+        
+        //Adding constraints to stack of level 2
+        let stackLevelTwoDictionary = ["stackView":stackLevelTwo]
+        
+        let stackView_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-20-[stackView]-20-|",  //horizontal constraint 20 points from left and right side
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: stackLevelTwoDictionary)
+        
+        let stackView_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-30-[stackView]-30-|", //vertical constraint 30 points from top and bottom
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: nil,
+            views: stackLevelTwoDictionary)
+        
+        levelTwoView.addSubview(stackLevelTwo)
+        levelTwoView.addConstraints(stackView_H)
+        levelTwoView.addConstraints(stackView_V)
 
     }
     
