@@ -227,8 +227,9 @@ class PracticeViewController: UIViewController {
         for i in 0...6 {
             buttons[i].frame.origin = storedFrames[i]
             buttons[i].tag = storedTags[i]
+            buttons[i].backgroundColor = defaultColor
         }
-        
+        firstTouched = -1
         lbEstado.text = "Correcto"
         lbEstado.textColor = correctColor
     }
