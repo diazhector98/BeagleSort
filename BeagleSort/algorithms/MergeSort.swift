@@ -14,7 +14,7 @@ class MergeSort {
     public static var instance: Algorithm!;
     
     public static func create() -> Void {
-        instance = Algorithm(name: "MergeSort", image: UIImage(named: "bubble-icon")!);
+        instance = Algorithm(name: "MergeSort", image: UIImage(named: "merge-icon")!);
         instance.averageCase = "O(nlog(n))";
         instance.worstCase = "O(nlog(n))";
         instance.spaceComplexity = "O(n)";

@@ -14,7 +14,7 @@ class QuickSort {
     public static var instance: Algorithm!;
     
     public static func create() -> Void {
-        instance = Algorithm(name: "QuickSort", image: UIImage(named: "bubble-icon")!);
+        instance = Algorithm(name: "QuickSort", image: UIImage(named: "quick-icon")!);
         instance.averageCase = "O(nlg(n))";
         instance.worstCase = "O(n^2)";
         instance.spaceComplexity = "O(nlgn)";

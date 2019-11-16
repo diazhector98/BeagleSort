@@ -14,7 +14,7 @@ class InsertionSort {
     public static var instance: Algorithm!;
     
     public static func create() -> Void {
-        instance = Algorithm(name: "InsertionSort", image: UIImage(named: "bubble-icon")!);
+        instance = Algorithm(name: "InsertionSort", image: UIImage(named: "insertion-icon")!);
         instance.averageCase = "O(n ^ 2)";
         instance.worstCase = "O(n ^ 2)";
         instance.spaceComplexity = "O(1)";

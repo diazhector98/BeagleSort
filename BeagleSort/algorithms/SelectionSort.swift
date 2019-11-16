@@ -14,7 +14,7 @@ class SelectionSort {
     public static var instance: Algorithm!;
     
     public static func create() -> Void {
-        instance = Algorithm(name: "SelectionSort", image: UIImage(named: "bubble-icon")!);
+        instance = Algorithm(name: "SelectionSort", image: UIImage(named: "selection-icon")!);
         instance.averageCase = "O(n ^ 2)";
         instance.worstCase = "O(n ^ 2)";
         instance.spaceComplexity = "O(1)";
