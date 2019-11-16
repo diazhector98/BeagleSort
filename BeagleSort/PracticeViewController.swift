@@ -23,6 +23,7 @@ class PracticeViewController: UIViewController {
     var buttons = [UIButton]()
     var stateIndex = 1
     var firstTouched = -1
+    var quickOrder = [0, 1, 2, 3, 4, 5, 6]
     
     // Colores para feedback
     let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
@@ -68,6 +69,9 @@ class PracticeViewController: UIViewController {
             insertionSortStates()
         case "SelectionSort":
             selectionSortStates()
+        case "QuickSort":
+            states.append(ArrayState(array: quickOrder))
+            quickSortStates(startIndex: 0, endIndex: array.count-1)
         case .none:
             print("What")
         case .some(_):
@@ -144,23 +148,89 @@ class PracticeViewController: UIViewController {
             }
         }
     }
+    
+    func quickSortStates(startIndex: Int, endIndex: Int) {
+        if (startIndex > endIndex) {
+            return
+        }
+        let pivot = array[startIndex]
+        let pivot2 = quickOrder[startIndex]
+        var left = startIndex + 1
+        var right = endIndex
+        while (left <= right) {
+            if (array[left] > pivot && array[right] < pivot) {
+                if (left != right) {
+                    let temp = array[left]
+                    array[left] = array[right]
+                    array[right] = temp
+                    let temp2 = quickOrder[left]
+                    quickOrder[left] = quickOrder[right]
+                    quickOrder[right] = temp2
+                    print(quickOrder)
+                    states.append(ArrayState(array: quickOrder))
+                }
+            }
+            if (array[left] <= pivot) {
+                left += 1
+            }
+            if (array[right] >= pivot) {
+                right -= 1
+            }
+        }
+        if (startIndex != right) {
+            array[startIndex] = array[right]
+            array[right] = pivot
+            quickOrder[startIndex] = quickOrder[right]
+            quickOrder[right] = pivot2
+            print(quickOrder)
+            states.append(ArrayState(array: quickOrder))
+        }
+        quickSortStates(startIndex: startIndex, endIndex: right-1)
+        quickSortStates(startIndex: right+1, endIndex: endIndex)
+    }
     /*
-     func initSelectionSort(){
-         let n = array.count;
-         for i in 0...n-1{
-             var minimum = i
-             for j in i + 1 ... n-1 {
-                 if (array[j] < array[minimum]){
-                     minimum = j
-                 }
-             }
-             let temp = array[i]
-             array[i] = array[minimum]
-             array[minimum] = temp
+     func QuickSort(startIndex: Int, endIndex: Int){
+         
+         if (startIndex > endIndex){
+             return;
          }
+         //Pivot Selection
+         let pivot = array[startIndex]
+         steps.append(PivotSelection(index: startIndex, value: pivot))
+         var left = startIndex + 1
+         var right = endIndex
+         while(left <= right){
+             //Comparison of both left and right pointers
+             steps.append(Comparison(indexA: left, indexB: right, valueA: array[left], valueB: array[right], sign: " > pivot and pivot > "))
+             if (array[left] > pivot && array[right] < pivot){
+                 
+                 //Swap of both pointers
+                 steps.append(Transition(from: left, to: right, fromValue: array[left], toValue: array[right]))
+                 let temp = array[left]
+                 array[left] = array[right]
+                 array[right] = temp
+             }
+             //Comparison of pivot and left
+             steps.append(Comparison(indexA: left, indexB: startIndex, valueA: array[left], valueB: pivot, sign: "<="))
+             if (array[left] <= pivot){
+                 left += 1;
+             }
+             //Comparison of pivot and right
+             steps.append(Comparison(indexA: right, indexB: startIndex, valueA: array[right], valueB: pivot, sign: ">="))
+             if (array[right] >= pivot){
+                 right -= 1;
+             }
+         }
+         //Swap of right and pivot (if swapping with pivot, should DESELECT pivot in animation)
+         steps.append(Transition(from: startIndex, to: right, fromValue: pivot, toValue: array[right]))
+         array[startIndex] = array[right]
+         array[right] = pivot
+         
+         QuickSort(startIndex: startIndex, endIndex: right-1)
+         QuickSort(startIndex: right+1, endIndex: endIndex)
+         
      }
      */
-    
     func verifyState () {
         if (currentState.compareWith(other: states[stateIndex])) {
             if (stateIndex+1 == states.count) {
