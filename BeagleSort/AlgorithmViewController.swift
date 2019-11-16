@@ -13,6 +13,9 @@ class AlgorithmViewController: UIViewController {
     @IBOutlet weak var lbPeor: UILabel!
     @IBOutlet weak var lbMemoria: UILabel!
     @IBOutlet weak var lbCodigo: UILabel!
+    @IBOutlet weak var btnViewAnimation: UIButton!
+    @IBOutlet weak var btnPractice: UIButton!
+    @IBOutlet weak var sgmOrder: UISegmentedControl!
     
     var algorithm : Algorithm!
     
@@ -22,6 +25,11 @@ class AlgorithmViewController: UIViewController {
         lbPeor.text = algorithm.worstCase
         lbMemoria.text = algorithm.spaceComplexity
         lbCodigo.text = algorithm.implementation
+        
+        StylesHelper.addButtonStyles(button: self.btnViewAnimation);
+        StylesHelper.addButtonStyles(button: self.btnPractice);
+        
+        self.sgmOrder.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
     }
 
     override func didReceiveMemoryWarning() {
