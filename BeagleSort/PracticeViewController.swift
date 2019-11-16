@@ -10,13 +10,6 @@ import UIKit
 
 class PracticeViewController: UIViewController {
     // Outlets
-    @IBOutlet weak var button0: UIButton!
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var button5: UIButton!
-    @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var buttonHolder: UIView!
     @IBOutlet weak var lbEstado: UILabel!
     @IBOutlet weak var buttonUndo: UIButton!
@@ -27,6 +20,7 @@ class PracticeViewController: UIViewController {
     var storedTags = [1, 2, 3, 4, 5, 6, 7]
     var currentState = ArrayState(array: [0, 1, 2, 3, 4, 5, 6])
     var states = [ArrayState]()
+    var buttons = [UIButton]()
     var stateIndex = 1
     var firstTouched = -1
     
@@ -42,29 +36,24 @@ class PracticeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lbEstado.textColor = correctColor
-        
-        // Asignar valores a botones
-        button0.setTitle("\(array[0])", for: .normal)
-        button1.setTitle("\(array[1])", for: .normal)
-        button2.setTitle("\(array[2])", for: .normal)
-        button3.setTitle("\(array[3])", for: .normal)
-        button4.setTitle("\(array[4])", for: .normal)
-        button5.setTitle("\(array[5])", for: .normal)
-        button6.setTitle("\(array[6])", for: .normal)
-        
-        // Formar arreglo de frames
-        frames.append(button0.frame.origin)
-        frames.append(button1.frame.origin)
-        frames.append(button2.frame.origin)
-        frames.append(button3.frame.origin)
-        frames.append(button4.frame.origin)
-        frames.append(button5.frame.origin)
-        frames.append(button6.frame.origin)
-        for i in 0...frames.count-1 {
-            frames[i].x += 15
-            frames[i].y += 15
+        // Hacer los botones desde cero
+        let fullWidth = self.buttonHolder.frame.size.width
+        let buttonWidth = fullWidth / 7.0
+        for i in 0...6 {
+            let button = UIButton(type: .system)
+            button.frame = CGRect(x: 20 + CGFloat(i) * buttonWidth, y: 0, width: buttonWidth - 8, height: buttonWidth - 8)
+            button.setTitle(String(self.array[i]), for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = defaultColor
+            button.tag = i + 1
+            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+            frames.append(button.frame.origin)
+            buttonHolder.addSubview(button)
+            buttons.append(button)
+            
         }
         storedFrames = frames
+        StylesHelper.addButtonStyles(button: buttonUndo);
         
         // Formar arreglo de estados
         createStates()
@@ -112,13 +101,9 @@ class PracticeViewController: UIViewController {
         if (currentState.compareWith(other: states[stateIndex])) {
             if (stateIndex+1 == states.count) {
                 lbEstado.text = "Terminaste!"
-                button0.isEnabled = false
-                button1.isEnabled = false
-                button2.isEnabled = false
-                button3.isEnabled = false
-                button4.isEnabled = false
-                button5.isEnabled = false
-                button6.isEnabled = false
+                for i in 0...6 {
+                    buttons[i].isEnabled = false
+                }
                 buttonUndo.isEnabled = false
             } else {
                 lbEstado.text = "Correcto"
@@ -127,28 +112,17 @@ class PracticeViewController: UIViewController {
             lbEstado.textColor = correctColor
             
             // Guardar informacion de estado actual
-            storedFrames[0] = button0.frame.origin
-            storedFrames[1] = button1.frame.origin
-            storedFrames[2] = button2.frame.origin
-            storedFrames[3] = button3.frame.origin
-            storedFrames[4] = button4.frame.origin
-            storedFrames[5] = button5.frame.origin
-            storedFrames[6] = button6.frame.origin
-            
-            storedTags[0] = button0.tag
-            storedTags[1] = button1.tag
-            storedTags[2] = button2.tag
-            storedTags[3] = button3.tag
-            storedTags[4] = button4.tag
-            storedTags[5] = button5.tag
-            storedTags[6] = button6.tag
+            for i in 0...6 {
+                storedFrames[i] = buttons[i].frame.origin
+                storedTags[i] = buttons[i].tag
+            }
         } else {
             lbEstado.text = "Incorrecto"
             lbEstado.textColor = wrongColor
         }
     }
     
-    @IBAction func touched(_ sender: UIButton) {
+    @objc func buttonPressed(_ sender: UIButton) {
         if (firstTouched == sender.tag) {
             firstTouched = -1
             sender.backgroundColor = defaultColor
@@ -186,20 +160,10 @@ class PracticeViewController: UIViewController {
     @IBAction func undo(_ sender: UIButton) {
         // Cargar ultimo estado correcto
         currentState.array = states[stateIndex-1].array
-        button0.frame.origin = storedFrames[0]
-        button0.tag = storedTags[0]
-        button1.frame.origin = storedFrames[1]
-        button1.tag = storedTags[1]
-        button2.frame.origin = storedFrames[2]
-        button2.tag = storedTags[2]
-        button3.frame.origin = storedFrames[3]
-        button3.tag = storedTags[3]
-        button4.frame.origin = storedFrames[4]
-        button4.tag = storedTags[4]
-        button5.frame.origin = storedFrames[5]
-        button5.tag = storedTags[5]
-        button6.frame.origin = storedFrames[6]
-        button6.tag = storedTags[6]
+        for i in 0...6 {
+            buttons[i].frame.origin = storedFrames[i]
+            buttons[i].tag = storedTags[i]
+        }
         
         lbEstado.text = "Correcto"
         lbEstado.textColor = correctColor
