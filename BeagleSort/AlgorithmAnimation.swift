@@ -34,6 +34,8 @@ class AlgorithmAnimation: NSObject {
             initInsertionSortTransitions()
         case "QuickSort":
             initQuickSortTransitions()
+        case "SelectionSort":
+            initSelectionSort()
         case .none:
             print("What")
         case .some(_):
@@ -212,14 +214,18 @@ class AlgorithmAnimation: NSObject {
     }
     
     func initSelectionSort(){
-        let n = array.count;        
+        let n = array.count;
         for i in 0...n-1{
             var minimum = i
-            for j in i + 1 ... n-1 {
+            var j = i + 1
+            while (j < n){
+                steps.append(Comparison(indexA: j, indexB: minimum, valueA: array[j], valueB: array[minimum], sign: "<"))
                 if (array[j] < array[minimum]){
                     minimum = j
                 }
+                j += 1
             }
+            steps.append(Transition(from: i, to: minimum, fromValue: array[i], toValue: array[minimum]))
             let temp = array[i]
             array[i] = array[minimum]
             array[minimum] = temp
