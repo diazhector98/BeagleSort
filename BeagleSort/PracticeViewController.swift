@@ -64,6 +64,8 @@ class PracticeViewController: UIViewController {
         switch(algorithmName) {
         case "BubbleSort":
             bubbleSortStates()
+        case "InsertionSort":
+            insertionSortStates()
         case .none:
             print("What")
         case .some(_):
@@ -95,9 +97,28 @@ class PracticeViewController: UIViewController {
         }
     }
     
+    func insertionSortStates() {
+        var curr = 1
+        let n = array.count
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        while (curr < n) {
+            var c = curr - 1
+            while (c >= 0 && array[c] > array[c+1]) {
+                let temp = array[c+1]
+                array[c+1] = array[c]
+                array[c] = temp
+                let temp2 = order[c+1]
+                order[c+1] = order[c]
+                order[c] = temp2
+                states.append(ArrayState(array: order))
+                c -= 1
+            }
+            curr += 1
+        }
+    }
+    
     func verifyState () {
-        print(currentState.array)
-        print(states[stateIndex].array)
         if (currentState.compareWith(other: states[stateIndex])) {
             if (stateIndex+1 == states.count) {
                 lbEstado.text = "Terminaste!"
