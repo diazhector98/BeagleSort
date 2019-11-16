@@ -66,6 +66,8 @@ class PracticeViewController: UIViewController {
             bubbleSortStates()
         case "InsertionSort":
             insertionSortStates()
+        case "SelectionSort":
+            selectionSortStates()
         case .none:
             print("What")
         case .some(_):
@@ -117,6 +119,47 @@ class PracticeViewController: UIViewController {
             curr += 1
         }
     }
+    
+    func selectionSortStates() {
+        let n = array.count;
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        for i in 0...n-1 {
+            var minimum = i
+            var j = i + 1
+            while(j < n) {
+                if (array[j] < array[minimum]) {
+                    minimum = j
+                }
+                j += 1
+            }
+            if (minimum != i) {
+                let temp = array[i]
+                array[i] = array[minimum]
+                array[minimum] = temp
+                let temp2 = order[i]
+                order[i] = order[minimum]
+                order[minimum] = temp2
+                states.append(ArrayState(array: order))
+            }
+        }
+    }
+    /*
+     func initSelectionSort(){
+         let n = array.count;
+         for i in 0...n-1{
+             var minimum = i
+             for j in i + 1 ... n-1 {
+                 if (array[j] < array[minimum]){
+                     minimum = j
+                 }
+             }
+             let temp = array[i]
+             array[i] = array[minimum]
+             array[minimum] = temp
+         }
+     }
+     */
     
     func verifyState () {
         if (currentState.compareWith(other: states[stateIndex])) {
