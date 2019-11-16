@@ -211,6 +211,21 @@ class AlgorithmAnimation: NSObject {
         QuickSort(startIndex: 0, endIndex: array.count-1)
     }
     
+    func initSelectionSort(){
+        let n = array.count;        
+        for i in 0...n-1{
+            var minimum = i
+            for j in i + 1 ... n-1 {
+                if (array[j] < array[minimum]){
+                    minimum = j
+                }
+            }
+            let temp = array[i]
+            array[i] = array[minimum]
+            array[minimum] = temp
+        }
+    }
+    
     
     
     
