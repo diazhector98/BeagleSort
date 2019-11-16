@@ -85,7 +85,7 @@ class MergePracticeViewController: UIViewController {
         }
         print("Creating container views of level two:" , levelTwoContainers)
         
-        stackLevelTwoContainerViews = generateContainerViews(num: 4, color: .blue)
+        stackLevelTwoContainerViews = generateContainerViews(num: 4, color: .blue, level: 2, container: -1)
         
         stackLevelTwo = UIStackView(arrangedSubviews: stackLevelTwoContainerViews)
         stackLevelTwo.axis = .horizontal
@@ -102,7 +102,7 @@ class MergePracticeViewController: UIViewController {
             levelThreeContainers.append(v)
         }
         
-        stackLevelThreeContainerViews = generateContainerViews(num: 2, color: .blue)
+        stackLevelThreeContainerViews = generateContainerViews(num: 2, color: .blue, level: 3, container: -1)
         let stackLevelThree = UIStackView(arrangedSubviews: stackLevelThreeContainerViews)
         stackLevelThree.axis = .horizontal
         stackLevelThree.distribution = .fillEqually
@@ -111,7 +111,7 @@ class MergePracticeViewController: UIViewController {
         stackLevelThree.translatesAutoresizingMaskIntoConstraints = false
         
         //Adding one containers to level four
-        stackLevelFourContainerViews = generateContainerViews(num: 1, color: .blue)
+        stackLevelFourContainerViews = generateContainerViews(num: 1, color: .blue, level: 4, container: -1)
         let stackLevelFour = UIStackView(arrangedSubviews: stackLevelFourContainerViews)
         stackLevelFour.axis = .horizontal
         stackLevelFour.distribution = .fillEqually
@@ -212,7 +212,8 @@ class MergePracticeViewController: UIViewController {
             let container = stackLevelTwoContainerViews[i]
             //Create views where numbers will be
             let num = i == 3 ? 1 : 2
-            let vistas = generateContainerViews(num: num, color: .cyan)
+            //level 2, container i
+            let vistas = generateContainerViews(num: num, color: .cyan, level: 2, container: i)
             //Create stack view with it
             let stackView = UIStackView(arrangedSubviews: vistas)
             stackView.axis = .horizontal
@@ -251,11 +252,12 @@ class MergePracticeViewController: UIViewController {
         }
         
         
+        i = 0
         //Adding a stack with views to each of the containers of level three
         for container in stackLevelThreeContainerViews {
             
             //Create views where numbers will be
-            let vistas = generateContainerViews(num: 4, color: .cyan)
+            let vistas = generateContainerViews(num: 4, color: .cyan, level: 3, container: i)
             //Create stack view with it
             let stackView = UIStackView(arrangedSubviews: vistas)
             stackView.axis = .horizontal
@@ -289,13 +291,15 @@ class MergePracticeViewController: UIViewController {
             for vista in vistas {
                  vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
             }
+            i += 1
         }
         
+        i = 0
         //Adding a stack with views to each of the containers of level four
         for container in stackLevelFourContainerViews {
             
             //Create views where numbers will be
-            let vistas = generateContainerViews(num: 7, color: .cyan)
+            let vistas = generateContainerViews(num: 7, color: .cyan, level: 4, container: i)
             //Create stack view with it
             let stackView = UIStackView(arrangedSubviews: vistas)
             stackView.axis = .horizontal
@@ -330,14 +334,24 @@ class MergePracticeViewController: UIViewController {
                 vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
             }
         }
+        i += 1
     }
     
-    func generateContainerViews(num: Int, color: UIColor) -> [UIView] {
+    @objc func spacePressed (_ sender: MergeSpaceViewTapGestureRecognizer) {
+        print("Level: \(sender.level) , Container: \(sender.container) , Space: \(sender.space) ")
+    }
+    
+    func generateContainerViews(num: Int, color: UIColor, level: Int, container: Int) -> [UIView] {
         var views: [UIView] = []
         var index = 0
-        for _ in 1...num {
+        for i in 1...num {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
+            let gestureRecognizer = MergeSpaceViewTapGestureRecognizer(target: self, action: #selector(self.spacePressed(_:)))
+            gestureRecognizer.level = level
+            gestureRecognizer.container = container
+            gestureRecognizer.space = i - 1
+            numView.addGestureRecognizer(gestureRecognizer)
             numView.backgroundColor = color
             //Agregar la vista al arreglo
             views.append(numView)
@@ -374,6 +388,7 @@ class MergePracticeViewController: UIViewController {
         }
         return views
     }
+    
     
     
 
