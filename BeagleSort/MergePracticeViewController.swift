@@ -37,6 +37,10 @@ class MergePracticeViewController: UIViewController {
         // Creating the array element views for the first level
         numViews = generateNumViews(arr: array)
         let stackLevelOne = UIStackView(arrangedSubviews: numViews)
+        stackLevelOne.axis = .horizontal
+        stackLevelOne.distribution = .fillEqually
+        stackLevelOne.alignment = .center
+        stackLevelOne.spacing = 10
         
         //Creating the containers array views for second level (4 comparisosn)
         var levelOneContainers: [UIView] = []
@@ -47,19 +51,23 @@ class MergePracticeViewController: UIViewController {
         
         //Adding one container to level one
         let containerLevelOne = UIView()
+        containerLevelOne.backgroundColor = .yellow
         levelOneContainers.append(containerLevelOne)
         //Adding four containers to level two
         for _ in 1...4 {
             let v = UIView()
+            v.backgroundColor = .red
             levelTwoContainers.append(v)
         }
         //Adding two containers to level three
         for _ in 1...2 {
             let v = UIView()
+            v.backgroundColor = .blue
             levelThreeContainers.append(v)
         }
         //Adding one containers to level four
         let containerLevelFour = UIView()
+        containerLevelFour.backgroundColor = .green
         levelFourContainers.append(containerLevelFour)
 
     }
