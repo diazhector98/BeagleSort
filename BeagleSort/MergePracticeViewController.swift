@@ -20,6 +20,11 @@ class MergePracticeViewController: UIViewController {
     
     var arrayViewsDictionary: [Int: UIView]!
     var numViews: [UIView]!
+    
+    var stackLevelTwoContainerViews: [UIView]!
+    
+    var stackLevelTwo: UIStackView!
+
 
     
     override func viewDidLoad() {
@@ -28,9 +33,7 @@ class MergePracticeViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //Creating the general stacks for the four levels
-        
-        let stackLevelFour = UIStackView()
-        
+        print("Loading MergePracticeViewController")
         
         // Creating the array element views for the first level
         numViews = generateNumViews(arr: array)
@@ -38,14 +41,13 @@ class MergePracticeViewController: UIViewController {
         stackLevelOne.axis = .horizontal
         stackLevelOne.distribution = .fillEqually
         stackLevelOne.alignment = .center
-        stackLevelOne.spacing = 10
+        //stackLevelOne.spacing = 10
         
         //Creating the containers array views for second level (4 comparisosn)
         var levelOneContainers: [UIView] = []
         var levelTwoContainers: [UIView] = []
         var levelThreeContainers: [UIView] = []
         var levelFourContainers: [UIView] = []
-        
         
         //Adding one container to level one
         let containerLevelOne = UIView()
@@ -59,11 +61,17 @@ class MergePracticeViewController: UIViewController {
             v.backgroundColor = .red
             levelTwoContainers.append(v)
         }
-        let stackLevelTwo = UIStackView(arrangedSubviews: levelTwoContainers)
+        print("Creating container views of level two:" , levelTwoContainers)
+        
+        stackLevelTwoContainerViews = generateContainerViews(num: 4)
+        
+        stackLevelTwo = UIStackView(arrangedSubviews: stackLevelTwoContainerViews)
         stackLevelTwo.axis = .horizontal
         stackLevelTwo.distribution = .fillEqually
         stackLevelTwo.alignment = .center
         stackLevelTwo.spacing = 10
+        stackLevelTwo.translatesAutoresizingMaskIntoConstraints = false
+
 
         
         
@@ -79,8 +87,7 @@ class MergePracticeViewController: UIViewController {
         stackLevelThree.distribution = .fillEqually
         stackLevelThree.alignment = .center
         stackLevelThree.spacing = 10
-
-        
+        stackLevelThree.translatesAutoresizingMaskIntoConstraints = false
         
         //Adding one containers to level four
         let containerLevelFour = UIView()
@@ -88,26 +95,47 @@ class MergePracticeViewController: UIViewController {
         levelFourContainers.append(containerLevelFour)
         
         
-        
+        levelTwoView.addSubview(stackLevelTwo)
+
         //Adding constraints to stack of level 2
         let stackLevelTwoDictionary = ["stackView":stackLevelTwo]
         
         let stackView_H = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-20-[stackView]-20-|",  //horizontal constraint 20 points from left and right side
+            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: stackLevelTwoDictionary)
         
         let stackView_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-30-[stackView]-30-|", //vertical constraint 30 points from top and bottom
+            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: stackLevelTwoDictionary)
         
-        levelTwoView.addSubview(stackLevelTwo)
         levelTwoView.addConstraints(stackView_H)
         levelTwoView.addConstraints(stackView_V)
-
+        
+        for numView in numViews {
+            numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
+        }
+        
+        for v in stackLevelTwoContainerViews {
+            v.heightAnchor.constraint(equalTo: v.widthAnchor).isActive = true
+        }
+    }
+    
+    func generateContainerViews(num: Int) -> [UIView] {
+        var views: [UIView] = []
+        var index = 0
+        for _ in 1...num {
+            //Crear la vista contenedor del numero y agregar propiedades
+            let numView = UIView()
+            numView.backgroundColor = .blue
+            //Agregar la vista al arreglo
+            views.append(numView)
+            //Agregar la vista al diccionario de vistas(index, view)
+        }
+        return views
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
