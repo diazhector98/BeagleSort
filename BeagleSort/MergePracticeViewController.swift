@@ -10,10 +10,54 @@ import UIKit
 
 class MergePracticeViewController: UIViewController {
 
+    
+    @IBOutlet weak var levelOneView: UIView!
+    @IBOutlet weak var levelTwoView: UIView!
+    @IBOutlet weak var levelThreeView: UIView!
+    @IBOutlet weak var levelFourView: UIView!
+    
+    var array: [Int]!
+    
+    var arrayViewsDictionary: [Int: UIView]!
+    var numViews: [UIView]!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Creating the general stacks for the four levels
+        
+        let stackLevelTwo = UIStackView()
+        let stackLevelThree = UIStackView()
+        let stackLevelFour = UIStackView()
+        
+        
+        // Creating the array element views for the first level
+        numViews = generateNumViews(arr: array)
+        let stackLevelOne = UIStackView(arrangedSubviews: numViews)
+        
+        //Creating the container views for second level (4 comparisosn)
+        let levelOneContainers: [UIView]
+
+    }
+    
+    func generateNumViews(arr: [Int]) -> [UIView] {
+        arrayViewsDictionary = [:]
+        var views: [UIView] = []
+        var index = 0
+        for _ in arr {
+            //Crear la vista contenedor del numero y agregar propiedades
+            let numView = UIView()
+            numView.backgroundColor = .blue
+            //Agregar la vista al arreglo
+            views.append(numView)
+            //Agregar la vista al diccionario de vistas(index, view)
+            arrayViewsDictionary[index] = numView
+            index += 1
+        }
+        return views
     }
 
     override func didReceiveMemoryWarning() {

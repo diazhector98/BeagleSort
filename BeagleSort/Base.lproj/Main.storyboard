@@ -463,6 +463,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="X3D-7P-ucw"/>
                     </view>
+                    <connections>
+                        <outlet property="levelFourView" destination="BxD-kh-rqs" id="RbA-Uo-4Ad"/>
+                        <outlet property="levelOneView" destination="ulz-qk-tve" id="cBP-Dt-dee"/>
+                        <outlet property="levelThreeView" destination="EgW-zM-x4O" id="yZf-nc-JUI"/>
+                        <outlet property="levelTwoView" destination="NE9-le-3Ui" id="qjg-cj-hVR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kkr-Ax-QE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
