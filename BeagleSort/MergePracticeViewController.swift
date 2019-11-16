@@ -25,6 +25,7 @@ class MergePracticeViewController: UIViewController {
     var stackLevelThreeContainerViews: [UIView]!
     var stackLevelFourContainerViews: [UIView]!
     
+    
     var stackLevelTwo: UIStackView!
 
 
@@ -185,6 +186,13 @@ class MergePracticeViewController: UIViewController {
         for v in stackLevelFourContainerViews {
             v.heightAnchor.constraint(equalTo: v.widthAnchor).isActive = true
         }
+        
+        
+        //Adding a stack to each of the containers of level two
+        for v in stackLevelTwoContainerViews {
+            
+        }
+        
     }
     
     func generateContainerViews(num: Int) -> [UIView] {
