@@ -29,7 +29,6 @@ class MergePracticeViewController: UIViewController {
         
         //Creating the general stacks for the four levels
         
-        let stackLevelTwo = UIStackView()
         let stackLevelThree = UIStackView()
         let stackLevelFour = UIStackView()
         
@@ -53,18 +52,31 @@ class MergePracticeViewController: UIViewController {
         let containerLevelOne = UIView()
         containerLevelOne.backgroundColor = .yellow
         levelOneContainers.append(containerLevelOne)
-        //Adding four containers to level two
+        
+        
+        //Adding four containers to level two and adding them to stack
         for _ in 1...4 {
             let v = UIView()
             v.backgroundColor = .red
             levelTwoContainers.append(v)
         }
+        let stackLevelTwo = UIStackView(arrangedSubviews: levelTwoContainers)
+        stackLevelTwo.axis = .horizontal
+        stackLevelTwo.distribution = .fillEqually
+        stackLevelTwo.alignment = .center
+        stackLevelTwo.spacing = 10
+
+        
+        
+        
         //Adding two containers to level three
         for _ in 1...2 {
             let v = UIView()
             v.backgroundColor = .blue
             levelThreeContainers.append(v)
         }
+        
+        
         //Adding one containers to level four
         let containerLevelFour = UIView()
         containerLevelFour.backgroundColor = .green
