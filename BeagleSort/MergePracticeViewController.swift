@@ -38,13 +38,29 @@ class MergePracticeViewController: UIViewController {
         numViews = generateNumViews(arr: array)
         let stackLevelOne = UIStackView(arrangedSubviews: numViews)
         
-        //Creating the container views for second level (4 comparisosn)
-        let levelOneContainers: [UIView]
-        let levelTwoContainers: [UIView]
-        let levelThreeContainers: [UIView]
-        let levelFourContainers: [UIView]
+        //Creating the containers array views for second level (4 comparisosn)
+        var levelOneContainers: [UIView] = []
+        var levelTwoContainers: [UIView] = []
+        var levelThreeContainers: [UIView] = []
+        var levelFourContainers: [UIView] = []
         
         
+        //Adding one container to level one
+        let containerLevelOne = UIView()
+        levelOneContainers.append(containerLevelOne)
+        //Adding four containers to level two
+        for _ in 1...4 {
+            let v = UIView()
+            levelTwoContainers.append(v)
+        }
+        //Adding two containers to level three
+        for _ in 1...2 {
+            let v = UIView()
+            levelThreeContainers.append(v)
+        }
+        //Adding one containers to level four
+        let containerLevelFour = UIView()
+        levelFourContainers.append(containerLevelFour)
 
     }
     
