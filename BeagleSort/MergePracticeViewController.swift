@@ -44,8 +44,28 @@ class MergePracticeViewController: UIViewController {
         stackLevelOne.axis = .horizontal
         stackLevelOne.distribution = .fillEqually
         stackLevelOne.alignment = .center
-        //stackLevelOne.spacing = 10
+        stackLevelOne.spacing = 10
+        stackLevelOne.translatesAutoresizingMaskIntoConstraints = false
+
+        levelOneView.addSubview(stackLevelOne)
         
+        let stackLevelOneDictionary = ["stackView":stackLevelOne]
+        
+        let stackViewOne_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: stackLevelOneDictionary)
+        
+        let stackViewOne_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: nil,
+            views: stackLevelOneDictionary)
+        
+        levelOneView.addConstraints(stackViewOne_H)
+        levelOneView.addConstraints(stackViewOne_V)
+
         //Creating the containers array views for second level (4 comparisosn)
         var levelOneContainers: [UIView] = []
         var levelTwoContainers: [UIView] = []
@@ -56,7 +76,6 @@ class MergePracticeViewController: UIViewController {
         let containerLevelOne = UIView()
         containerLevelOne.backgroundColor = .yellow
         levelOneContainers.append(containerLevelOne)
-        
         
         //Adding four containers to level two and adding them to stack
         for _ in 1...4 {
