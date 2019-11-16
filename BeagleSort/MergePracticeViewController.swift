@@ -330,7 +330,6 @@ class MergePracticeViewController: UIViewController {
                 vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
             }
         }
-        
     }
     
     func generateContainerViews(num: Int, color: UIColor) -> [UIView] {
@@ -347,14 +346,26 @@ class MergePracticeViewController: UIViewController {
         return views
     }
     
+    @objc func numberViewPressed (_ sender: MergeNumberViewTapGestureRecognizer) {
+        print(sender.index)
+    }
+    
     func generateNumViews(arr: [Int]) -> [UIView] {
         arrayViewsDictionary = [:]
         var views: [UIView] = []
         var index = 0
-        for _ in arr {
+        for i in arr {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
             numView.backgroundColor = .blue
+            
+            numView.tag = i
+            
+            let gestureRecognizer = MergeNumberViewTapGestureRecognizer(target: self, action: #selector(self.numberViewPressed(_:)))
+            gestureRecognizer.index = i
+            
+            numView.addGestureRecognizer(gestureRecognizer)
+            
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -363,6 +374,8 @@ class MergePracticeViewController: UIViewController {
         }
         return views
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
