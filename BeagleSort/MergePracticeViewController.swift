@@ -188,11 +188,12 @@ class MergePracticeViewController: UIViewController {
         }
         
         var i = 0
-        //Adding a stack with views to the three first containers of level two
-        while (i < 3){
+        //Adding a stack with views to the containers of level two
+        while (i < 4){
             let container = stackLevelTwoContainerViews[i]
             //Create views where numbers will be
-            let vistas = generateContainerViews(num: 2, color: .cyan)
+            let num = i == 3 ? 1 : 2
+            let vistas = generateContainerViews(num: num, color: .cyan)
             //Create stack view with it
             let stackView = UIStackView(arrangedSubviews: vistas)
             stackView.axis = .horizontal
@@ -229,10 +230,6 @@ class MergePracticeViewController: UIViewController {
             
             i += 1
         }
-        
-        //Adding a stack with views to the last container of level three
-
-        
         
         
         //Adding a stack with views to each of the containers of level three
@@ -272,6 +269,46 @@ class MergePracticeViewController: UIViewController {
             //Add constraints to views inside this stack
             for vista in vistas {
                  vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
+            }
+        }
+        
+        //Adding a stack with views to each of the containers of level four
+        for container in stackLevelFourContainerViews {
+            
+            //Create views where numbers will be
+            let vistas = generateContainerViews(num: 7, color: .cyan)
+            //Create stack view with it
+            let stackView = UIStackView(arrangedSubviews: vistas)
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.alignment = .center
+            stackView.spacing = 10
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            
+            //Add stack view to container
+            container.addSubview(stackView)
+            
+            //Add constraints
+            let stackDictionary = ["stackView":stackView]
+            
+            let stackView_H = NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+                options: NSLayoutFormatOptions(rawValue: 0),
+                metrics: nil,
+                views: stackDictionary)
+            
+            let stackView_V = NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+                options: NSLayoutFormatOptions(rawValue:0),
+                metrics: nil,
+                views: stackDictionary)
+            
+            container.addConstraints(stackView_H)
+            container.addConstraints(stackView_V)
+            
+            //Add constraints to views inside this stack
+            for vista in vistas {
+                vista.heightAnchor.constraint(equalTo: vista.widthAnchor).isActive = true
             }
         }
         
