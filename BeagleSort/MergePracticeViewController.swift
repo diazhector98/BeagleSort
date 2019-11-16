@@ -40,6 +40,11 @@ class MergePracticeViewController: UIViewController {
         
         //Creating the container views for second level (4 comparisosn)
         let levelOneContainers: [UIView]
+        let levelTwoContainers: [UIView]
+        let levelThreeContainers: [UIView]
+        let levelFourContainers: [UIView]
+        
+        
 
     }
     
