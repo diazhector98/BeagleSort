@@ -63,6 +63,7 @@ class AlgorithmViewController: UIViewController {
             
         } else if segue.identifier == "practicaMerge" {
             let vista = segue.destination as! MergePracticeViewController
+            vista.array = [3,4,2,5,2,8,7]
         }
     }
 
