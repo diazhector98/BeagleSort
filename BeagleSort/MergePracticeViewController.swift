@@ -25,7 +25,10 @@ class MergePracticeViewController: UIViewController {
     var array: [Int]!
     
     var arrayViewsDictionary: [Int: UIView]!
+    //Views in respect to stack
     var numViews: [UIView]!
+    //Views in respect to the whole view
+    var numSuperViews: [UIView]!
     
     var stackLevelTwoContainerViews: [UIView]!
     var stackLevelThreeContainerViews: [UIView]!
@@ -374,6 +377,11 @@ class MergePracticeViewController: UIViewController {
         }
         spaces.append(spacesLevelFour)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //After knowing constraints and actual frames
+        numSuperViews = generateNumSuperViews(nums: numViews)
+    }
 
     
     func getViewInSpace(space: Space) -> UIView{
@@ -391,7 +399,9 @@ class MergePracticeViewController: UIViewController {
         
         vista.backgroundColor = .green
         
-        let numView = numViews[numberViewIndexSelected]
+        let superViews = numSuperViews
+        let index = numberViewIndexSelected
+        let numView = numSuperViews[numberViewIndexSelected]
         numView.backgroundColor = .yellow
         
         
@@ -429,11 +439,13 @@ class MergePracticeViewController: UIViewController {
         print("Point In Respect To Whole View: ", pointInRespectToTheWholeView!)
 
         
+        print("Dimensions of whole view: ", view.frame.height, view.frame.width)
         
         let spaceFrame: CGRect = vista.frame
         let numViewFrame: CGRect = numView.frame
+        print("Frame of number: ", numViewFrame)
         UIView.animate(withDuration: 2, animations: {
-            numView.frame = spaceFrame
+            numView.frame.origin = pointInRespectToTheWholeView!
         }) { (true) in
             self.isNumberSelected = false
         }
@@ -462,7 +474,7 @@ class MergePracticeViewController: UIViewController {
     }
     
     @objc func numberViewPressed (_ sender: MergeNumberViewTapGestureRecognizer) {
-        print(sender.index)
+        print("Index pressed: ", sender.index)
         numberViewIndexSelected = sender.index
         isNumberSelected = true
         
@@ -489,6 +501,35 @@ class MergePracticeViewController: UIViewController {
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
             arrayViewsDictionary[index] = numView
+            index += 1
+        }
+        return views
+    }
+    
+    func generateNumSuperViews(nums: [UIView]) -> [UIView] {
+        var views: [UIView] = []
+        var index = 0
+        for numView in nums {
+            //Get frame with respect to whole view
+            let stackView = numView.superview
+            let levelView = stackView?.superview
+            
+            let pointWithRespectToLevel = stackView?.convert(numView.frame.origin, to: levelView)
+            let pointWithRespectToWholeView = levelView?.convert(pointWithRespectToLevel!, to: view)
+            
+            print(numView.frame)
+            var frame = numView.frame
+            frame.origin = pointWithRespectToWholeView!
+            let superNumView = UIView(frame: frame)
+            
+            let gestureRecognizer = MergeNumberViewTapGestureRecognizer(target: self, action: #selector(self.numberViewPressed(_:)))
+            gestureRecognizer.index = index
+            gestureRecognizer.value = array[index]
+            print("Adding gr with index: ", index, "value: ", array[index])
+            superNumView.backgroundColor = .orange
+            superNumView.addGestureRecognizer(gestureRecognizer)
+            view.addSubview(superNumView)
+            views.append(superNumView)
             index += 1
         }
         return views
