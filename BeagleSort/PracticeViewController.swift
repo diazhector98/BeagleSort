@@ -10,13 +10,6 @@ import UIKit
 
 class PracticeViewController: UIViewController {
     // Outlets
-    @IBOutlet weak var button0: UIButton!
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
-    @IBOutlet weak var button3: UIButton!
-    @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var button5: UIButton!
-    @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var buttonHolder: UIView!
     @IBOutlet weak var lbEstado: UILabel!
     @IBOutlet weak var buttonUndo: UIButton!
@@ -27,8 +20,11 @@ class PracticeViewController: UIViewController {
     var storedTags = [1, 2, 3, 4, 5, 6, 7]
     var currentState = ArrayState(array: [0, 1, 2, 3, 4, 5, 6])
     var states = [ArrayState]()
+    var buttons = [UIButton]()
     var stateIndex = 1
     var firstTouched = -1
+    var quickOrder = [0, 1, 2, 3, 4, 5, 6]
+    var dictionary: [Int: UIButton]!;
     
     // Colores para feedback
     let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
@@ -39,42 +35,123 @@ class PracticeViewController: UIViewController {
     // Variables de segue
     var array : [Int]!
     var algorithm: Algorithm!
+    var buttonStackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        lbEstado.textColor = correctColor
         
-        // Asignar valores a botones
-        button0.setTitle("\(array[0])", for: .normal)
-        button1.setTitle("\(array[1])", for: .normal)
-        button2.setTitle("\(array[2])", for: .normal)
-        button3.setTitle("\(array[3])", for: .normal)
-        button4.setTitle("\(array[4])", for: .normal)
-        button5.setTitle("\(array[5])", for: .normal)
-        button6.setTitle("\(array[6])", for: .normal)
+        buttons = generateButtons(arr: array)
+        buttonStackView = UIStackView(arrangedSubviews: buttons)
         
-        // Formar arreglo de frames
-        frames.append(button0.frame.origin)
-        frames.append(button1.frame.origin)
-        frames.append(button2.frame.origin)
-        frames.append(button3.frame.origin)
-        frames.append(button4.frame.origin)
-        frames.append(button5.frame.origin)
-        frames.append(button6.frame.origin)
-        for i in 0...frames.count-1 {
-            frames[i].x += 15
-            frames[i].y += 15
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.alignment = .center
+        buttonStackView.spacing = 10
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonHolder.addSubview(buttonStackView)
+        
+        //Agregar constrainst de la stack
+        let viewsDictionary = ["stackView":buttonStackView]
+        let stackView_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-20-[stackView]-20-|",  //horizontal constraint 20 points from left and right side
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: viewsDictionary)
+        
+        let stackView_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-30-[stackView]-30-|", //vertical constraint 30 points from top and bottom
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: nil,
+            views: viewsDictionary)
+        
+        buttonHolder.addConstraints(stackView_H)
+        buttonHolder.addConstraints(stackView_V)
+        
+        for button in buttons {
+            button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
         }
-        storedFrames = frames
         
+        
+        
+
+       lbEstado.textColor = correctColor
+//        // Hacer los botones desde cero
+//        let fullWidth = self.buttonHolder.frame.size.width
+//
+//        buttonHolder.backgroundColor = selectedColor
+//        let buttonWidth = buttonHolder.frame.size.width / 7.0
+//
+//        let margin: CGFloat = 10.0;
+//        let width = fullWidth - 2.0 * margin;
+//        var availableWidth = width / 7.0;
+//        var padding = (availableWidth - buttonWidth) / 2.0;
+//
+//        if (padding < 0) {
+//            padding = 0;
+//            availableWidth = (width - buttonWidth) / (7.0 - 1.0);
+//        }
+//
+//        padding += margin;
+//        let y: CGFloat = 0;
+//
+//        for i in 0...6 {
+//            let button = UIButton(type: .system)
+//            let x = CGFloat(i) * availableWidth + padding;
+//            button.frame = CGRect(x: x, y: y, width: buttonWidth - padding, height: buttonWidth)
+//
+//            button.setTitle(String(self.array[i]), for: .normal)
+//            button.setTitleColor(.black, for: .normal)
+//            button.backgroundColor = defaultColor
+//            button.tag = i + 1
+//            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//            frames.append(button.frame.origin)
+//            buttonHolder.addSubview(button)
+//            buttons.append(button)
+//
+//        }
+        storedFrames = frames
+        StylesHelper.addButtonStyles(button: buttonUndo);
+
         // Formar arreglo de estados
         createStates()
     }
+    
+    func generateButtons(arr: [Int]) -> [UIButton] {
+        var views: [UIButton] = []
+        var index = 0
+        for i in arr {
+            //Crear la vista contenedor del numero y agregar propiedades
+            let button = UIButton()
+            button.setTitle(String(i), for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.backgroundColor = defaultColor
+            button.tag = index + 1;
+            button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+            frames.append(button.frame.origin)
+            buttons.append(button)
+            //Agregar la vista al arreglo
+            views.append(button)
+            //Agregar la vista al diccionario de vistas(index, view)
+            dictionary[index] = button;
+            
+            index += 1
+        }
+        return views
+    }
+    
     
     func createStates() {
         let algorithmName = algorithm.name
         switch(algorithmName) {
         case "BubbleSort":
             bubbleSortStates()
+        case "InsertionSort":
+            insertionSortStates()
+        case "SelectionSort":
+            selectionSortStates()
+        case "QuickSort":
+            states.append(ArrayState(array: quickOrder))
+            quickSortStates(startIndex: 0, endIndex: array.count-1)
         case .none:
             print("What")
         case .some(_):
@@ -82,7 +159,7 @@ class PracticeViewController: UIViewController {
         }
     }
     
-    // Crea ArrayStates para Bubble Sort 
+    // Crea ArrayStates para Bubble Sort
     func bubbleSortStates() {
         var changed = true
         var limit = array.count-2
@@ -106,19 +183,139 @@ class PracticeViewController: UIViewController {
         }
     }
     
+    func insertionSortStates() {
+        var curr = 1
+        let n = array.count
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        while (curr < n) {
+            var c = curr - 1
+            while (c >= 0 && array[c] > array[c+1]) {
+                let temp = array[c+1]
+                array[c+1] = array[c]
+                array[c] = temp
+                let temp2 = order[c+1]
+                order[c+1] = order[c]
+                order[c] = temp2
+                states.append(ArrayState(array: order))
+                c -= 1
+            }
+            curr += 1
+        }
+    }
+    
+    func selectionSortStates() {
+        let n = array.count;
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        for i in 0...n-1 {
+            var minimum = i
+            var j = i + 1
+            while(j < n) {
+                if (array[j] < array[minimum]) {
+                    minimum = j
+                }
+                j += 1
+            }
+            if (minimum != i) {
+                let temp = array[i]
+                array[i] = array[minimum]
+                array[minimum] = temp
+                let temp2 = order[i]
+                order[i] = order[minimum]
+                order[minimum] = temp2
+                states.append(ArrayState(array: order))
+            }
+        }
+    }
+    
+    func quickSortStates(startIndex: Int, endIndex: Int) {
+        if (startIndex > endIndex) {
+            return
+        }
+        let pivot = array[startIndex]
+        let pivot2 = quickOrder[startIndex]
+        var left = startIndex + 1
+        var right = endIndex
+        while (left <= right) {
+            if (array[left] > pivot && array[right] < pivot) {
+                if (left != right) {
+                    let temp = array[left]
+                    array[left] = array[right]
+                    array[right] = temp
+                    let temp2 = quickOrder[left]
+                    quickOrder[left] = quickOrder[right]
+                    quickOrder[right] = temp2
+                    states.append(ArrayState(array: quickOrder))
+                }
+            }
+            if (array[left] <= pivot) {
+                left += 1
+            }
+            if (array[right] >= pivot) {
+                right -= 1
+            }
+        }
+        if (startIndex != right) {
+            array[startIndex] = array[right]
+            array[right] = pivot
+            quickOrder[startIndex] = quickOrder[right]
+            quickOrder[right] = pivot2
+            states.append(ArrayState(array: quickOrder))
+        }
+        quickSortStates(startIndex: startIndex, endIndex: right-1)
+        quickSortStates(startIndex: right+1, endIndex: endIndex)
+    }
+    /*
+     func QuickSort(startIndex: Int, endIndex: Int){
+         
+         if (startIndex > endIndex){
+             return;
+         }
+         //Pivot Selection
+         let pivot = array[startIndex]
+         steps.append(PivotSelection(index: startIndex, value: pivot))
+         var left = startIndex + 1
+         var right = endIndex
+         while(left <= right){
+             //Comparison of both left and right pointers
+             steps.append(Comparison(indexA: left, indexB: right, valueA: array[left], valueB: array[right], sign: " > pivot and pivot > "))
+             if (array[left] > pivot && array[right] < pivot){
+                 
+                 //Swap of both pointers
+                 steps.append(Transition(from: left, to: right, fromValue: array[left], toValue: array[right]))
+                 let temp = array[left]
+                 array[left] = array[right]
+                 array[right] = temp
+             }
+             //Comparison of pivot and left
+             steps.append(Comparison(indexA: left, indexB: startIndex, valueA: array[left], valueB: pivot, sign: "<="))
+             if (array[left] <= pivot){
+                 left += 1;
+             }
+             //Comparison of pivot and right
+             steps.append(Comparison(indexA: right, indexB: startIndex, valueA: array[right], valueB: pivot, sign: ">="))
+             if (array[right] >= pivot){
+                 right -= 1;
+             }
+         }
+         //Swap of right and pivot (if swapping with pivot, should DESELECT pivot in animation)
+         steps.append(Transition(from: startIndex, to: right, fromValue: pivot, toValue: array[right]))
+         array[startIndex] = array[right]
+         array[right] = pivot
+         
+         QuickSort(startIndex: startIndex, endIndex: right-1)
+         QuickSort(startIndex: right+1, endIndex: endIndex)
+         
+     }
+     */
     func verifyState () {
-        print(currentState.array)
-        print(states[stateIndex].array)
         if (currentState.compareWith(other: states[stateIndex])) {
             if (stateIndex+1 == states.count) {
                 lbEstado.text = "Terminaste!"
-                button0.isEnabled = false
-                button1.isEnabled = false
-                button2.isEnabled = false
-                button3.isEnabled = false
-                button4.isEnabled = false
-                button5.isEnabled = false
-                button6.isEnabled = false
+                for i in 0...6 {
+                    buttons[i].isEnabled = false
+                }
                 buttonUndo.isEnabled = false
             } else {
                 lbEstado.text = "Correcto"
@@ -127,33 +324,22 @@ class PracticeViewController: UIViewController {
             lbEstado.textColor = correctColor
             
             // Guardar informacion de estado actual
-            storedFrames[0] = button0.frame.origin
-            storedFrames[1] = button1.frame.origin
-            storedFrames[2] = button2.frame.origin
-            storedFrames[3] = button3.frame.origin
-            storedFrames[4] = button4.frame.origin
-            storedFrames[5] = button5.frame.origin
-            storedFrames[6] = button6.frame.origin
-            
-            storedTags[0] = button0.tag
-            storedTags[1] = button1.tag
-            storedTags[2] = button2.tag
-            storedTags[3] = button3.tag
-            storedTags[4] = button4.tag
-            storedTags[5] = button5.tag
-            storedTags[6] = button6.tag
+            for i in 0...6 {
+                storedFrames[i] = buttons[i].frame.origin
+                storedTags[i] = buttons[i].tag
+            }
         } else {
             lbEstado.text = "Incorrecto"
             lbEstado.textColor = wrongColor
         }
     }
     
-    @IBAction func touched(_ sender: UIButton) {
+    @objc func buttonPressed(_ sender: UIButton) {
         if (firstTouched == sender.tag) {
             firstTouched = -1
             sender.backgroundColor = defaultColor
         } else if (firstTouched != -1) {
-            let firstButton = buttonHolder.viewWithTag(firstTouched) as! UIButton
+            let firstButton = buttonStackView.viewWithTag(firstTouched) as! UIButton
             // Usa tags para actualizar el estado
             let tempState = currentState.array[firstButton.tag-1]
             currentState.array[firstButton.tag-1] = currentState.array[sender.tag-1]
@@ -165,6 +351,7 @@ class PracticeViewController: UIViewController {
             sender.tag = tempTag
             
             // Usa nuevas tags para actualizar posiciones con animacion
+            
             UIView.animate(withDuration: 0.5, animations: {
                 firstButton.frame.origin = self.frames[firstButton.tag-1]
                 sender.frame.origin = self.frames[sender.tag-1]
@@ -186,21 +373,12 @@ class PracticeViewController: UIViewController {
     @IBAction func undo(_ sender: UIButton) {
         // Cargar ultimo estado correcto
         currentState.array = states[stateIndex-1].array
-        button0.frame.origin = storedFrames[0]
-        button0.tag = storedTags[0]
-        button1.frame.origin = storedFrames[1]
-        button1.tag = storedTags[1]
-        button2.frame.origin = storedFrames[2]
-        button2.tag = storedTags[2]
-        button3.frame.origin = storedFrames[3]
-        button3.tag = storedTags[3]
-        button4.frame.origin = storedFrames[4]
-        button4.tag = storedTags[4]
-        button5.frame.origin = storedFrames[5]
-        button5.tag = storedTags[5]
-        button6.frame.origin = storedFrames[6]
-        button6.tag = storedTags[6]
-        
+        for i in 0...6 {
+            buttons[i].frame.origin = storedFrames[i]
+            buttons[i].tag = storedTags[i]
+            buttons[i].backgroundColor = defaultColor
+        }
+        firstTouched = -1
         lbEstado.text = "Correcto"
         lbEstado.textColor = correctColor
     }
