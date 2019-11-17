@@ -435,7 +435,7 @@ class MergePracticeViewController: UIViewController {
         print("Point In Respect To Level: ", pointInRespectToLevelView!)
         
         //5
-        let pointInRespectToTheWholeView = levelView?.convert(pointInRespectToLevelView!, to: view)
+        var pointInRespectToTheWholeView = levelView?.convert(pointInRespectToLevelView!, to: view)
         print("Point In Respect To Whole View: ", pointInRespectToTheWholeView!)
 
         
@@ -445,6 +445,10 @@ class MergePracticeViewController: UIViewController {
         let numViewFrame: CGRect = numView.frame
         print("Frame of number: ", numViewFrame)
         UIView.animate(withDuration: 2, animations: {
+            let diffBetweenHeights = numViewFrame.size.height - spaceFrame.size.height
+            let diffBetweenWidths = numViewFrame.size.width - spaceFrame.size.width
+            pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
+            pointInRespectToTheWholeView?.y -= diffBetweenHeights / 2
             numView.frame.origin = pointInRespectToTheWholeView!
         }) { (true) in
             self.isNumberSelected = false
