@@ -8,6 +8,12 @@
 
 import UIKit
 
+class Space {
+    var level: Int!
+    var container: Int!
+    var space: Int!
+}
+
 class MergePracticeViewController: UIViewController {
 
     
@@ -51,6 +57,7 @@ class MergePracticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spaces = []
         
         // Do any additional setup after loading the view.
         
@@ -367,9 +374,21 @@ class MergePracticeViewController: UIViewController {
     }
 
     
+    func getViewInSpace(space: Space) -> UIView{
+        return spaces[space.level-2][space.container][space.space]
+    }
     
     @objc func spacePressed (_ sender: MergeSpaceViewTapGestureRecognizer) {
         print("Level: \(sender.level) , Container: \(sender.container) , Space: \(sender.space) ")
+        var space = Space()
+        space.level = sender.level
+        space.container = sender.container
+        space.space = sender.space
+        
+        let vista = getViewInSpace(space: space)
+        
+        vista.backgroundColor = .green
+        
     }
     
     func generateContainerViews(num: Int, color: UIColor, level: Int, container: Int) -> [UIView] {
@@ -378,11 +397,13 @@ class MergePracticeViewController: UIViewController {
         for i in 1...num {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
-            let gestureRecognizer = MergeSpaceViewTapGestureRecognizer(target: self, action: #selector(self.spacePressed(_:)))
-            gestureRecognizer.level = level
-            gestureRecognizer.container = container
-            gestureRecognizer.space = i - 1
-            numView.addGestureRecognizer(gestureRecognizer)
+            if (container != -1){
+                let gestureRecognizer = MergeSpaceViewTapGestureRecognizer(target: self, action: #selector(self.spacePressed(_:)))
+                gestureRecognizer.level = level
+                gestureRecognizer.container = container
+                gestureRecognizer.space = i - 1
+                numView.addGestureRecognizer(gestureRecognizer)
+            }
             numView.backgroundColor = color
             //Agregar la vista al arreglo
             views.append(numView)
