@@ -117,6 +117,7 @@ class PracticeViewController: UIViewController {
     }
     
     func generateButtons(arr: [Int]) -> [UIButton] {
+        dictionary = [:];
         var views: [UIButton] = []
         var index = 0
         for i in arr {
@@ -340,21 +341,59 @@ class PracticeViewController: UIViewController {
             sender.backgroundColor = defaultColor
         } else if (firstTouched != -1) {
             let firstButton = buttonStackView.viewWithTag(firstTouched) as! UIButton
+            let indexA = firstButton.tag - 1;
+            let indexB = sender.tag - 1;
+            
             // Usa tags para actualizar el estado
-            let tempState = currentState.array[firstButton.tag-1]
-            currentState.array[firstButton.tag-1] = currentState.array[sender.tag-1]
-            currentState.array[sender.tag-1] = tempState
+            let tempState = currentState.array[indexA]
+            currentState.array[indexA] = currentState.array[indexB]
+            currentState.array[indexB] = tempState
+            
+            // hacer hidden las views que se van a mover
+            let originalViewA = dictionary[indexA];
+            let originalViewB = dictionary[indexB];
+            disappearView(vista: originalViewA!);
+            disappearView(vista: originalViewB!);
+            
+            // obtener los frames de esos elementos
+            let frameA: CGRect = buttons[indexA].frame;
+            let frameB: CGRect = buttons[indexB].frame;
+            
+            // crear buttons con esos frames
+            let buttonA = UIButton(frame: frameA);
+            let buttonB = UIButton(frame: frameB);
+            
+            // poner valores a botones nuevos
+            buttonA.setTitle(String(originalViewA!.titleLabel!.text!), for: .normal);
+            buttonA.setTitleColor(.black, for: .normal);
+            buttonA.backgroundColor = defaultColor;
+            buttonA.tag = originalViewA!.tag;
+            buttonA.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside);
+            
+            buttonB.setTitle(String(originalViewB!.titleLabel!.text!), for: .normal);
+            buttonB.setTitleColor(.black, for: .normal);
+            buttonB.backgroundColor = defaultColor;
+            buttonB.tag = originalViewB!.tag;
+            buttonB.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside);
+            
+            // agregar a stackview
+            buttonStackView.addSubview(buttonA);
+            buttonStackView.addSubview(buttonB);
             
             // Intercambia tags
-            let tempTag = firstButton.tag
-            firstButton.tag = sender.tag
-            sender.tag = tempTag
+            let tempTag = buttonA.tag
+            buttonA.tag = buttonB.tag
+            buttonB.tag = tempTag
             
-            // Usa nuevas tags para actualizar posiciones con animacion
+            // updatear diccionario de views
+            dictionary[indexA] = buttonB;
+            dictionary[indexB] = buttonA;
             
+            // animar
             UIView.animate(withDuration: 0.5, animations: {
-                firstButton.frame.origin = self.frames[firstButton.tag-1]
-                sender.frame.origin = self.frames[sender.tag-1]
+                let tempFrame = buttonA.frame.origin;
+                buttonA.frame.origin = buttonB.frame.origin;
+                buttonB.frame.origin = tempFrame;
             })
             
             // Verificar si el cambio resulta en un estado correcto
@@ -369,6 +408,12 @@ class PracticeViewController: UIViewController {
         }
     }
     
+    func disappearView(vista: UIView) {
+        vista.alpha = 0;
+        for sv in vista.subviews {
+            sv.removeFromSuperview();
+        }
+    }
     
     @IBAction func undo(_ sender: UIButton) {
         // Cargar ultimo estado correcto
