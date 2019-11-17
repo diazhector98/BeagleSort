@@ -14,6 +14,16 @@ class Space {
     var space: Int!
 }
 
+class Number{
+    var numView: UIView!
+    var value: Int!
+}
+
+class State {
+    var space: Space!
+    var number: Number!
+}
+
 class MergePracticeViewController: UIViewController {
 
     
@@ -56,6 +66,7 @@ class MergePracticeViewController: UIViewController {
     */
     var spaces: [[[UIView]]]!
     var isNumberSelected: Bool!
+    var numbers: [Number]!
 
 
     
@@ -63,6 +74,7 @@ class MergePracticeViewController: UIViewController {
         super.viewDidLoad()
         isNumberSelected = false
         spaces = []
+        numbers = []
         
         // Do any additional setup after loading the view.
         
@@ -521,22 +533,74 @@ class MergePracticeViewController: UIViewController {
             let pointWithRespectToLevel = stackView?.convert(numView.frame.origin, to: levelView)
             let pointWithRespectToWholeView = levelView?.convert(pointWithRespectToLevel!, to: view)
             
-            print(numView.frame)
             var frame = numView.frame
             frame.origin = pointWithRespectToWholeView!
+            
+            //Create super num view with that frame
             let superNumView = UIView(frame: frame)
             
+            //Create and add gesture recognizer
             let gestureRecognizer = MergeNumberViewTapGestureRecognizer(target: self, action: #selector(self.numberViewPressed(_:)))
             gestureRecognizer.index = index
             gestureRecognizer.value = array[index]
-            print("Adding gr with index: ", index, "value: ", array[index])
-            superNumView.backgroundColor = .orange
             superNumView.addGestureRecognizer(gestureRecognizer)
+
+            //Change background
+            superNumView.backgroundColor = .orange
+            
+            //Add to view
             view.addSubview(superNumView)
+            //Add to array of superviews
             views.append(superNumView)
+            
+            //Create Number object with that view and add it to array
+            let number = Number()
+            number.numView = superNumView
+            number.value = array[index]
+            numbers.append(number)
+            
             index += 1
         }
         return views
+    }
+    
+    func generateStatesInOrder() {
+        
+        
+        /*
+         Create states of level 2
+        */
+        
+        
+        /*
+         Create states of level 3
+         */
+        
+        
+        /*
+         Create states of level 4
+         */
+        
+    }
+    
+    func createLevelTwoState (numberA: Number, numberB: Number, space0: Space, space1: Space)->(State, State){
+        let stateA = State()
+        stateA.number = numberA
+        let stateB = State()
+        stateB.number = numberB
+        
+        if (numberA.value <= numberB.value) {
+            stateA.space = space0
+            stateB.space = space1
+        } else {
+            stateA.space = space1
+            stateB.space = space0
+        }
+        return (stateA, stateB)
+    }
+    
+    func createLevelThreeState (numberA: Number, numberB: Number, numberC: Number, numberD: Number){
+        
     }
     
     
