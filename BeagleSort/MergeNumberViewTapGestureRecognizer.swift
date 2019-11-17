@@ -10,4 +10,5 @@ import UIKit
 
 class MergeNumberViewTapGestureRecognizer: UITapGestureRecognizer {
     var index = Int()
+    var value = Int()
 }

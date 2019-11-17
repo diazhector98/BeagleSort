@@ -36,7 +36,7 @@ class MergePracticeViewController: UIViewController {
     
     
     
-    var numberSelected: Bool!
+    var numberViewIndexSelected: Int!
     
     
     /*
@@ -52,11 +52,13 @@ class MergePracticeViewController: UIViewController {
  
     */
     var spaces: [[[UIView]]]!
+    var isNumberSelected: Bool!
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isNumberSelected = false
         spaces = []
         
         // Do any additional setup after loading the view.
@@ -380,7 +382,7 @@ class MergePracticeViewController: UIViewController {
     
     @objc func spacePressed (_ sender: MergeSpaceViewTapGestureRecognizer) {
         print("Level: \(sender.level) , Container: \(sender.container) , Space: \(sender.space) ")
-        var space = Space()
+        let space = Space()
         space.level = sender.level
         space.container = sender.container
         space.space = sender.space
@@ -388,6 +390,53 @@ class MergePracticeViewController: UIViewController {
         let vista = getViewInSpace(space: space)
         
         vista.backgroundColor = .green
+        
+        let numView = numViews[numberViewIndexSelected]
+        numView.backgroundColor = .yellow
+        
+        
+        
+        //1. To get the frame of the space, we would need to get it in respect to the stack that it is at
+        //2. Then that convert it in respect to its container
+        //3. That in respect to the stack of containers that is at
+        //4. That in respect to the level view that is at
+        //5.That in respect to the whole view.
+        //That will give you the actual x and y coordinates
+        //Size will stay the same
+        
+        
+        //1 and 2
+        let spacesStack = vista.superview
+        let containerView = spacesStack?.superview
+        let pointInRespectToContainer = spacesStack?.convert(vista.frame.origin, to: containerView)
+        
+        print("Point In Respect To Container: ", pointInRespectToContainer!)
+        
+        
+        //3
+        let containersStack = containerView?.superview
+        
+        let pointInRespectToContainersStack = containerView?.convert(pointInRespectToContainer!, to: containersStack)
+        print("Point In Respect To Containers Stack: ", pointInRespectToContainersStack!)
+
+        //4
+        let levelView = containersStack?.superview
+        let pointInRespectToLevelView = containersStack?.convert(pointInRespectToContainersStack!, to: levelView)
+        print("Point In Respect To Level: ", pointInRespectToLevelView!)
+        
+        //5
+        let pointInRespectToTheWholeView = levelView?.convert(pointInRespectToLevelView!, to: view)
+        print("Point In Respect To Whole View: ", pointInRespectToTheWholeView!)
+
+        
+        
+        let spaceFrame: CGRect = vista.frame
+        let numViewFrame: CGRect = numView.frame
+        UIView.animate(withDuration: 2, animations: {
+            numView.frame = spaceFrame
+        }) { (true) in
+            self.isNumberSelected = false
+        }
         
     }
     
@@ -414,7 +463,8 @@ class MergePracticeViewController: UIViewController {
     
     @objc func numberViewPressed (_ sender: MergeNumberViewTapGestureRecognizer) {
         print(sender.index)
-        
+        numberViewIndexSelected = sender.index
+        isNumberSelected = true
         
     }
     
@@ -430,7 +480,8 @@ class MergePracticeViewController: UIViewController {
             numView.tag = i
             
             let gestureRecognizer = MergeNumberViewTapGestureRecognizer(target: self, action: #selector(self.numberViewPressed(_:)))
-            gestureRecognizer.index = i
+            gestureRecognizer.index = index
+            gestureRecognizer.value = i
             
             numView.addGestureRecognizer(gestureRecognizer)
             
