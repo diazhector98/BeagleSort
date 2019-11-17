@@ -861,6 +861,9 @@
                                         <state key="normal" title="Buscar partida">
                                             <color key="titleColor" name="Background"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSearchPress:" destination="Tmy-pc-bRp" eventType="touchUpInside" id="t12-uZ-22T"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-LG-vBS">
                                         <rect key="frame" x="0.0" y="66" width="315" height="49"/>
