@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         InsertionSort.create()
         QuickSort.create()
         SelectionSort.create()
+
+        FirebaseApp.configure();
         return true
     }
 
