@@ -35,6 +35,7 @@
 		9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B97234FFC2A008DC827 /* BubbleSort.swift */; };
 		9EECBF182381E76800365166 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EECBF172381E76800365166 /* GoogleService-Info.plist */; };
 		9EECBF1A2381EB5300365166 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF192381EB5300365166 /* LoginViewController.swift */; };
+		9EECBF1C2381F1D300365166 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */; };
 		D31E0E3321AE0D1BBBCB68A2 /* Pods_BeagleSort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8870B05E83A55E9D4A18B /* Pods_BeagleSort.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		9EA43B97234FFC2A008DC827 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
 		9EECBF172381E76800365166 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EECBF192381EB5300365166 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		BBC8870B05E83A55E9D4A18B /* Pods_BeagleSort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeagleSort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
 				9EECBF192381EB5300365166 /* LoginViewController.swift */,
+				9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */,
 			);
 			path = BeagleSort;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */,
 				9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */,
 				9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */,
+				9EECBF1C2381F1D300365166 /* CreateAccountViewController.swift in Sources */,
 				9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */,
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
