@@ -77,7 +77,7 @@ class LobbyViewController: UIViewController {
             let algorithm = dict["algorithm"] as! String;
             let arr = (dict["arr"] as! NSArray as? [Int])!;
             
-            self.performSegue(withIdentifier: "enterGame", sender: [otherPlayer, algorithm, arr]);
+            self.performSegue(withIdentifier: "enterGameSegue", sender: [otherPlayer, algorithm, arr]);
         }
     }
 
@@ -86,13 +86,14 @@ class LobbyViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "enterGame") {
-//            let vc = segue.destination as! GameViewController;
-//            let data = sender as! NSArray;
-//            vc.otherPlayerName = (data[0] as! String);
-//            vc.algorithm = (data[1] as! String);
-//            vc.arr = data[2] as! [Int];
-//            vc.socket = self.socket;
-//        }
+        if (segue.identifier == "enterGameSegue") {
+            let vc = segue.destination as! GameViewController;
+            let data = sender as! NSArray;
+            vc.otherPlayerName = (data[0] as! String);
+            vc.algorithm = (data[1] as! String);
+            vc.arr = data[2] as! [Int];
+            vc.socket = self.socket;
+            self.btnSearch.isEnabled = true;
+        }
     }
 }
