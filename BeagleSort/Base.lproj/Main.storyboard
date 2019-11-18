@@ -758,7 +758,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uom-F7-k23">
                                 <rect key="frame" x="9.5" y="264.5" width="356" height="118"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="Background"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S68-HZ-CCA">
                                 <rect key="frame" x="187.5" y="156" width="0.0" height="0.0"/>
@@ -778,7 +778,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="Uom-F7-k23" firstAttribute="height" secondItem="bv7-NG-feg" secondAttribute="height" multiplier="0.2" id="4lD-eW-TzQ"/>
                             <constraint firstItem="bv7-NG-feg" firstAttribute="bottom" secondItem="54c-LC-sra" secondAttribute="bottom" constant="100" id="4qB-s3-gBu"/>

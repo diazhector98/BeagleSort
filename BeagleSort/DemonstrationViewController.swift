@@ -107,6 +107,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
             numView.backgroundColor = .blue
+            StylesHelper.addNodeStyles(node: numView);
+
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -183,6 +185,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             
             //Agregar views a stackview (esto es importante ya que las coordenadas estan con respecto a
             //la stackview y no a la super view
+            StylesHelper.addNodeStyles(node: viewA);
+            StylesHelper.addNodeStyles(node: viewB);
+            
             stackView.addSubview(viewA)
             stackView.addSubview(viewB)
             

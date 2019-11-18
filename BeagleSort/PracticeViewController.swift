@@ -30,7 +30,7 @@ class PracticeViewController: UIViewController {
     let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
     let wrongColor = UIColor(red: 255.0/255, green: 78.0/255, blue: 72.0/255, alpha: 1)
     let selectedColor = UIColor(red: 91.0/255, green: 132.0/255, blue: 255, alpha: 1)
-    let defaultColor = UIColor.lightGray
+    let defaultColor = UIColor.white
     
     // Variables de segue
     var array : [Int]!
@@ -128,6 +128,8 @@ class PracticeViewController: UIViewController {
             button.backgroundColor = defaultColor
             button.tag = index + 1;
             button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+            StylesHelper.addNodeStyles(node: button);
+            
             frames.append(button.frame.origin)
             buttons.append(button)
             //Agregar la vista al arreglo
@@ -376,6 +378,9 @@ class PracticeViewController: UIViewController {
             buttonB.tag = originalViewB!.tag;
             buttonB.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside);
             
+            StylesHelper.addNodeStyles(node: buttonA);
+            StylesHelper.addNodeStyles(node: buttonB);
+
             // agregar a stackview
             buttonStackView.addSubview(buttonA);
             buttonStackView.addSubview(buttonB);
