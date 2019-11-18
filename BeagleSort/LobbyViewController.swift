@@ -15,7 +15,7 @@ class LobbyViewController: UIViewController {
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var btnLeaderboard: UIButton!
     
-    let manager = SocketManager(socketURL: URL(string: "http://localhost:3000")!, config: [.log(true), .compress]);
+    let manager = SocketManager(socketURL: URL(string: "https://beagle-sort.herokuapp.com/")!, config: [.log(true), .compress]);
     
     private var socket: SocketIOClient!;
     
