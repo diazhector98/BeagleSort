@@ -28,6 +28,9 @@
 		9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31314235416BF00A6195E /* AlgorithmStep.swift */; };
 		9DC3131723541E7F00A6195E /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131623541E7F00A6195E /* Comparison.swift */; };
 		9DC3131923541EE900A6195E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131823541EE900A6195E /* Transition.swift */; };
+		9E2DC8FD23822BA7004966A5 /* HighscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */; };
+		9E2DC8FF23822D52004966A5 /* HighscoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */; };
+		9E2DC90123822D7F004966A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC90023822D7F004966A5 /* UserModel.swift */; };
 		9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */; };
 		9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */; };
 		9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */; };
@@ -67,6 +70,9 @@
 		9DC31314235416BF00A6195E /* AlgorithmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStep.swift; sourceTree = "<group>"; };
 		9DC3131623541E7F00A6195E /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
 		9DC3131823541EE900A6195E /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreTableViewCell.swift; sourceTree = "<group>"; };
+		9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresViewController.swift; sourceTree = "<group>"; };
+		9E2DC90023822D7F004966A5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesHelper.swift; sourceTree = "<group>"; };
 		9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTableViewCell.swift; sourceTree = "<group>"; };
 		9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmListViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */,
 				9EECBF1D2381F3A000365166 /* LobbyViewController.swift */,
 				9EECBF1F2382046600365166 /* GameViewController.swift */,
+				9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */,
+				9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */,
+				9E2DC90023822D7F004966A5 /* UserModel.swift */,
 			);
 			path = BeagleSort;
 			sourceTree = "<group>";
@@ -324,6 +333,9 @@
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
 				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,
+				9E2DC8FD23822BA7004966A5 /* HighscoreTableViewCell.swift in Sources */,
+				9E2DC8FF23822D52004966A5 /* HighscoresViewController.swift in Sources */,
+				9E2DC90123822D7F004966A5 /* UserModel.swift in Sources */,
 				9EECBF1E2381F3A000365166 /* LobbyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
