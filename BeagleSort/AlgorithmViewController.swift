@@ -60,7 +60,11 @@ class AlgorithmViewController: UIViewController {
             let vista = segue.destination as! PracticeViewController
             vista.algorithm = algorithm
             vista.array = [3,4,2,5,2,8,7]
-            
+            if (sgmOrder.selectedSegmentIndex == 0) {
+                vista.isAscending = true
+            } else {
+                vista.isAscending = false
+            }
         } else if segue.identifier == "practicaMerge" {
             let vista = segue.destination as! MergePracticeViewController
             vista.array = [3,4,2,5,2,8,7]
