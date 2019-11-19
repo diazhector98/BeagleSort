@@ -603,31 +603,10 @@ class MergePracticeViewController: UIViewController {
     }
     
     func generateStatesInOrder() {
-        
-        
-        /*
-         Create states of level 2
-        */
-        
-        //States of first two numbers
-        
-//
-        
-        
         let statesLevelTwo: [State] = generateStatesOfLevelTwo()
+        let statesLevelThree: [State] = generateStatesOfLevelThree()
+        let statesLevelFour: [State] = generateStatesOfLevelFour()
         
-        
-        
-        
-        
-        /*
-         Create states of level 3
-         */
-        
-        
-        /*
-         Create states of level 4
-         */
     }
     
     func generateStatesOfLevelTwo () -> [State] {
@@ -649,6 +628,42 @@ class MergePracticeViewController: UIViewController {
         return [state1, state2, state3, state4, state5, state6, state7]
     }
     
+    func generateStatesOfLevelThree () -> [State] {
+        var numbersContainer1: [Number] = []
+        var numbersContainer2: [Number] = []
+        
+        for i in 0...3 {
+            numbersContainer1.append(numbers[i])
+        }
+        for i in 4...7 {
+            numbersContainer2.append(numbers[i])
+        }
+        
+        var spacesContainer1: [Space] = []
+        var spacesContainer2: [Space] = []
+        
+        for space in spaces[1][0] {
+            spacesContainer1.append(space)
+        }
+        for space in spaces[1][1] {
+            spacesContainer2.append(space)
+        }
+        
+        let statesContainer1: [State] = createLevelThreeState(numbers: numbersContainer1, spaces: spacesContainer1)
+        let statescContainer2: [State] = createLevelThreeState(numbers: numbersContainer2, spaces: spacesContainer2)
+        
+        var result: [State] = []
+        
+        for state in statesContainer1 {
+            result.append(state)
+        }
+        for state in statescContainer2 {
+            result.append(state)
+        }
+        return result
+        
+    }
+    
     func createLevelTwoState (numberA: Number, numberB: Number, space0: Space, space1: Space)->(State, State){
         let stateA = State()
         stateA.number = numberA
@@ -665,9 +680,55 @@ class MergePracticeViewController: UIViewController {
         return (stateA, stateB)
     }
     
-    func createLevelThreeState (numberA: Number, numberB: Number, numberC: Number, numberD: Number){
+    func createLevelThreeState (numbers: [Number], spaces: [Space])->[State] {
         
+        var numbersIndices: [Int] = []
+        for i in 0...numbers.count-1{
+            numbersIndices.append(i)
+        }
+        
+        for i in 0...numbersIndices.count-1 {
+            for j in (i + 1)...numbersIndices.count-1  {
+                if (numbers[numbersIndices[j]].value < numbers[numbersIndices[i]].value){
+                    let temp = numbersIndices[i]
+                    numbersIndices[i] = numbersIndices[j]
+                    numbersIndices[j] = temp
+                }
+            }
+        }
+        
+        
+        var levelThreeStates: [State] = []
+        var i = 0
+        for space in spaces {
+            let state = State()
+            state.number = numbers[numbersIndices[i]]
+            state.space = space
+            i += 1
+            levelThreeStates.append(state)
+        }
+        
+        
+        
+        return levelThreeStates
     }
+    
+    func generateStatesOfLevelFour() -> [State] {
+        var nums: [Number] = []
+        for n in numbers {
+            nums.append(n)
+        }
+        
+        var spacesContainer: [Space] = []
+        for space in spaces[2][0] {
+            spacesContainer.append(space)
+        }
+        
+        let result:[State] = createLevelThreeState(numbers: nums, spaces: spacesContainer)
+        
+        return result
+    }
+ 
     
     
     
