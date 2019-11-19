@@ -687,7 +687,7 @@ class MergePracticeViewController: UIViewController {
         let (state3, state4) = createLevelTwoState(numberA: numbers[2], numberB: numbers[3], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
         
         container = 2
-        let (state5, state6) = createLevelTwoState(numberA: numbers[2], numberB: numbers[3], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
+        let (state5, state6) = createLevelTwoState(numberA: numbers[4], numberB: numbers[5], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
         
         container = 3
         let state7 = State()
