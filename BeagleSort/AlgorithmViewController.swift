@@ -18,9 +18,12 @@ class AlgorithmViewController: UIViewController {
     @IBOutlet weak var sgmOrder: UISegmentedControl!
     
     var algorithm : Algorithm!
+    var randomArray: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        randomArray = []
+        generateArray()
         lbPromedio.text = algorithm.averageCase
         lbPeor.text = algorithm.worstCase
         lbMemoria.text = algorithm.spaceComplexity
@@ -46,6 +49,15 @@ class AlgorithmViewController: UIViewController {
         }
     }
     
+    func generateArray () {
+        for _ in 1...7 {
+            var num = Int.random(in: 1...99)
+            while (randomArray.contains(num)) {
+                num = Int.random(in: 1...99)
+            }
+            randomArray.append(num)
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -53,17 +65,26 @@ class AlgorithmViewController: UIViewController {
         if segue.identifier == "demostracion" {
             let vista = segue.destination as! DemonstrationViewController
             vista.algorithm = algorithm
-            vista.array = [3,4,2,5,2,8,7]
+            vista.array = randomArray
+            if (sgmOrder.selectedSegmentIndex == 0) {
+                vista.isAscending = true
+            } else {
+                vista.isAscending = false
+            }
             
         } else if segue.identifier == "practica" {
             
             let vista = segue.destination as! PracticeViewController
             vista.algorithm = algorithm
-            vista.array = [3,4,2,5,2,8,7]
-            
+            vista.array = randomArray
+            if (sgmOrder.selectedSegmentIndex == 0) {
+                vista.isAscending = true
+            } else {
+                vista.isAscending = false
+            }
         } else if segue.identifier == "practicaMerge" {
             let vista = segue.destination as! MergePracticeViewController
-            vista.array = [3,4,2,5,2,8,7]
+            vista.array = randomArray
         }
     }
 

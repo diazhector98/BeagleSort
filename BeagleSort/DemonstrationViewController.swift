@@ -17,6 +17,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     //Pasados con segue
     var array: [Int]!
     var algorithm: Algorithm!
+    var isAscending: Bool!
     
     
     //Obtenidos en viewDidLoad
@@ -35,7 +36,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         //generar el arreglo de las views para cada numero
         numViews = generateNumViews(arr: array)
-        algorithmAnimation = AlgorithmAnimation(algorithm: algorithm, array: array)
+        algorithmAnimation = AlgorithmAnimation(algorithm: algorithm, array: array, isAscending: isAscending)
         
         //crear la stack view con el arreglo de esas views (tal vez refactorar o ajustar coding standards aqui lol)
         stackView = UIStackView(arrangedSubviews: numViews)

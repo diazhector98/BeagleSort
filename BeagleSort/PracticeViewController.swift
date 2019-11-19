@@ -36,9 +36,9 @@ class PracticeViewController: UIViewController {
     var array : [Int]!
     var algorithm: Algorithm!
     var buttonStackView: UIStackView!
+    var isAscending: Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         buttons = generateButtons(arr: array)
         buttonStackView = UIStackView(arrangedSubviews: buttons)
         
@@ -140,6 +140,21 @@ class PracticeViewController: UIViewController {
         return views
     }
     
+    func compare(actual: Int, comparedTo: Int) -> Bool {
+        if (isAscending) {
+            if (actual > comparedTo) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            if (actual < comparedTo) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
     
     func createStates() {
         let algorithmName = algorithm.name
@@ -161,7 +176,7 @@ class PracticeViewController: UIViewController {
     }
     
     // Crea ArrayStates para Bubble Sort
-    func bubbleSortStates() {
+    func bubbleSortStates2() {
         var changed = true
         var limit = array.count-2
         var order = [0, 1, 2, 3, 4, 5, 6]
@@ -169,7 +184,7 @@ class PracticeViewController: UIViewController {
         while (changed && limit > 0) {
             changed = false
             for i in 0...limit {
-                if (array[i] > array[i+1]) {
+                if (compare(actual: array[i], comparedTo: array[i+1])) {
                     let temp = array[i]
                     array[i] = array[i+1]
                     array[i+1] = temp
@@ -184,6 +199,53 @@ class PracticeViewController: UIViewController {
         }
     }
     
+    func bubbleSortStates () {
+        let n = array.count
+        var i = n - 1
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        while (i >= 1) {
+            for j in 0...i-1 {
+                if (compare(actual: array[j], comparedTo: array[j+1])) {
+                    let temp = array[j]
+                    array[j] = array[j+1]
+                    array[j+1] = temp
+                    let temp2 = order[j]
+                    order[j] = order[j+1]
+                    order[j+1] = temp2
+                    states.append(ArrayState(array: order))
+                }
+            }
+            i = i - 1
+        }
+    }
+    /*
+     func initBubbleSortTransitions() {
+         let n = array.count
+         var i = n - 1
+         while (i >= 1){
+             for j in 0...i-1{
+                 var sign: String!
+                 if (isAscending) {
+                     sign = ">"
+                 } else {
+                     sign = "<"
+                 }
+                 let comparison = Comparison(indexA: j, indexB: j + 1, valueA: array[j], valueB: array[j+1], sign: sign)
+                 steps.append(comparison)
+                 if (compare(actual: array[j], comparedTo: array[j+1])) {
+                     let transition = Transition(from: j, to: j+1, fromValue: array[j], toValue: array[j+1])
+                     steps.append(transition)
+                     let temp = array[j]
+                     array[j] = array[j+1]
+                     array[j+1] = temp
+                 }
+             }
+             i = i - 1
+         }
+     }
+     */
+    
     func insertionSortStates() {
         var curr = 1
         let n = array.count
@@ -191,7 +253,7 @@ class PracticeViewController: UIViewController {
         states.append(ArrayState(array: order))
         while (curr < n) {
             var c = curr - 1
-            while (c >= 0 && array[c] > array[c+1]) {
+            while (c >= 0 && compare(actual: array[c], comparedTo: array[c+1])) {
                 let temp = array[c+1]
                 array[c+1] = array[c]
                 array[c] = temp
@@ -213,8 +275,14 @@ class PracticeViewController: UIViewController {
             var minimum = i
             var j = i + 1
             while(j < n) {
-                if (array[j] < array[minimum]) {
-                    minimum = j
+                if (isAscending) {
+                    if (array[j] < array[minimum]) {
+                        minimum = j
+                    }
+                } else {
+                    if (array[j] > array[minimum]) {
+                        minimum = j
+                    }
                 }
                 j += 1
             }
@@ -239,22 +307,39 @@ class PracticeViewController: UIViewController {
         var left = startIndex + 1
         var right = endIndex
         while (left <= right) {
-            if (array[left] > pivot && array[right] < pivot) {
-                if (left != right) {
-                    let temp = array[left]
-                    array[left] = array[right]
-                    array[right] = temp
-                    let temp2 = quickOrder[left]
-                    quickOrder[left] = quickOrder[right]
-                    quickOrder[right] = temp2
-                    states.append(ArrayState(array: quickOrder))
+            var shouldSwap = false
+            if (isAscending) {
+                if (array[left] > pivot && array[right] < pivot) {
+                    shouldSwap = true
+                }
+            } else {
+                if (array[left] < pivot && array[right] > pivot) {
+                    shouldSwap = true
                 }
             }
-            if (array[left] <= pivot) {
-                left += 1
+            if (shouldSwap && left != right) {
+                let temp = array[left]
+                array[left] = array[right]
+                array[right] = temp
+                let temp2 = quickOrder[left]
+                quickOrder[left] = quickOrder[right]
+                quickOrder[right] = temp2
+                states.append(ArrayState(array: quickOrder))
             }
-            if (array[right] >= pivot) {
-                right -= 1
+            if (isAscending){
+                if (array[left] <= pivot) {
+                    left += 1
+                }
+                if (array[right] >= pivot) {
+                    right -= 1
+                }
+            } else {
+                if (array[left] >= pivot) {
+                    left += 1
+                }
+                if (array[right] <= pivot) {
+                    right -= 1
+                }
             }
         }
         if (startIndex != right) {
