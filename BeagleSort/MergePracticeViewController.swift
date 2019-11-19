@@ -77,6 +77,12 @@ class MergePracticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        levelOneView.backgroundColor = .clear
+        levelTwoView.backgroundColor = .clear
+        levelThreeView.backgroundColor = .clear
+        levelFourView.backgroundColor = .clear
+        
         isNumberSelected = false
         spacesViews = []
         numbers = []
@@ -102,13 +108,13 @@ class MergePracticeViewController: UIViewController {
         let stackLevelOneDictionary = ["stackView":stackLevelOne]
         
         let stackViewOne_H = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+            withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: stackLevelOneDictionary)
         
         let stackViewOne_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+            withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: stackLevelOneDictionary)
@@ -177,13 +183,13 @@ class MergePracticeViewController: UIViewController {
         let stackLevelTwoDictionary = ["stackView":stackLevelTwo]
         
         let stackViewLevelTwo_H = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+            withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: stackLevelTwoDictionary)
         
         let stackViewLevelTwo_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+            withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: stackLevelTwoDictionary)
@@ -200,13 +206,13 @@ class MergePracticeViewController: UIViewController {
         let stackLevelThreeDictionary = ["stackView":stackLevelThree]
         
         let stackViewLevelThree_H = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+            withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: stackLevelThreeDictionary)
         
         let stackViewLevelThree_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+            withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: stackLevelThreeDictionary)
@@ -222,13 +228,13 @@ class MergePracticeViewController: UIViewController {
         let stackLevelFourDictionary = ["stackView":stackLevelFour]
         
         let stackViewLevelFour_H = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+            withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: stackLevelFourDictionary)
         
         let stackViewLevelFour_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+            withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: stackLevelFourDictionary)
@@ -286,13 +292,13 @@ class MergePracticeViewController: UIViewController {
             let stackDictionary = ["stackView":stackView]
             
             let stackView_H = NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+                withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
                 options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: nil,
                 views: stackDictionary)
             
             let stackView_V = NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+                withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
                 options: NSLayoutFormatOptions(rawValue:0),
                 metrics: nil,
                 views: stackDictionary)
@@ -341,13 +347,13 @@ class MergePracticeViewController: UIViewController {
             let stackDictionary = ["stackView":stackView]
             
             let stackView_H = NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+                withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
                 options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: nil,
                 views: stackDictionary)
             
             let stackView_V = NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+                withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
                 options: NSLayoutFormatOptions(rawValue:0),
                 metrics: nil,
                 views: stackDictionary)
@@ -395,13 +401,13 @@ class MergePracticeViewController: UIViewController {
             let stackDictionary = ["stackView":stackView]
             
             let stackView_H = NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-10-[stackView]-10-|",  //horizontal constraint 20 points from left and right side
+                withVisualFormat: "H:|-1-[stackView]-1-|",  //horizontal constraint 20 points from left and right side
                 options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: nil,
                 views: stackDictionary)
             
             let stackView_V = NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-10-[stackView]-10-|", //vertical constraint 30 points from top and bottom
+                withVisualFormat: "V:|-1-[stackView]-1-|", //vertical constraint 30 points from top and bottom
                 options: NSLayoutFormatOptions(rawValue:0),
                 metrics: nil,
                 views: stackDictionary)
@@ -419,24 +425,6 @@ class MergePracticeViewController: UIViewController {
         spaces.append(spacesLevelFour)
         
         i = 0
-        for numView in numViews {
-            //Crear label y ajustar propiedades
-            let numLabel = UILabel()
-            numLabel.text = "\(array[i])"
-            numLabel.textColor = .black
-            numLabel.textAlignment = .center
-            //translatesAutoresizingMaskIntoConstraints es importante hacer
-            numLabel.translatesAutoresizingMaskIntoConstraints = false
-            //Agregar label al view antes de poner constraints..
-            numView.addSubview(numLabel)
-            //Agregar constraints
-            numLabel.centerYAnchor.constraint(equalTo: numView.centerYAnchor).isActive = true
-            numLabel.centerXAnchor.constraint(equalTo: numView.centerXAnchor).isActive = true
-            
-            numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
-            i += 1
-        }
-        
         
         
     }
@@ -472,73 +460,57 @@ class MergePracticeViewController: UIViewController {
     }
     
     @objc func spacePressed (_ sender: MergeSpaceViewTapGestureRecognizer) {
-        print("Level: \(sender.level) , Container: \(sender.container) , Space: \(sender.space) ")
-        let space = Space()
-        space.level = sender.level
-        space.container = sender.container
-        space.space = sender.space
         
-        let vista = getViewInSpace(space: space)
-        
-        vista.backgroundColor = .green
-        
-        let superViews = numSuperViews
-        let index = numberViewIndexSelected
-        
-        
-        let numView = numberSelected.numView
-        numView?.backgroundColor = .yellow
-        
-        
-        print(isCorrectMove(space: space, number: numberSelected, level: space.level))
-        
-        
-        //1. To get the frame of the space, we would need to get it in respect to the stack that it is at
-        //2. Then that convert it in respect to its container
-        //3. That in respect to the stack of containers that is at
-        //4. That in respect to the level view that is at
-        //5.That in respect to the whole view.
-        //That will give you the actual x and y coordinates
-        //Size will stay the same
-        
-        
-        //1 and 2
-        let spacesStack = vista.superview
-        let containerView = spacesStack?.superview
-        let pointInRespectToContainer = spacesStack?.convert(vista.frame.origin, to: containerView)
-        
-        print("Point In Respect To Container: ", pointInRespectToContainer!)
-        
-        
-        //3
-        let containersStack = containerView?.superview
-        
-        let pointInRespectToContainersStack = containerView?.convert(pointInRespectToContainer!, to: containersStack)
-        print("Point In Respect To Containers Stack: ", pointInRespectToContainersStack!)
+        if (isNumberSelected) {
+            let space = Space()
+            space.level = sender.level
+            space.container = sender.container
+            space.space = sender.space
+            
+            let spaceView = getViewInSpace(space: space)
+            let numView = numberSelected.numView
+            
+            let isCorrect = isCorrectMove(space: space, number: numberSelected, level: space.level)
+            if (isCorrect){
+                spaceView.backgroundColor = .green
+                
+                //Get correct coordinates
+                let spacesStack = spaceView.superview
+                let containerView = spacesStack?.superview
+                let pointInRespectToContainer = spacesStack?.convert(spaceView.frame.origin, to: containerView)
+                let containersStack = containerView?.superview
+                let pointInRespectToContainersStack = containerView?.convert(pointInRespectToContainer!, to: containersStack)
+                let levelView = containersStack?.superview
+                let pointInRespectToLevelView = containersStack?.convert(pointInRespectToContainersStack!, to: levelView)
+                var pointInRespectToTheWholeView = levelView?.convert(pointInRespectToLevelView!, to: view)
+                
+                
+                //Get frames
+                let spaceFrame: CGRect = spaceView.frame
+                let numViewFrame: CGRect = numView!.frame
+                UIView.animate(withDuration: 1, animations: {
+                    let diffBetweenHeights = numViewFrame.size.height - spaceFrame.size.height
+                    let diffBetweenWidths = numViewFrame.size.width - spaceFrame.size.width
+                    pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
+                    pointInRespectToTheWholeView?.y -= diffBetweenHeights / 2
+                    numView?.frame.origin = pointInRespectToTheWholeView!
+                    numView?.backgroundColor = .orange
+                }) { (true) in
+                    self.isNumberSelected = false
+                }
+            } else if (!isCorrect){
+                UIView.animate(withDuration: 1, animations: {
+                    spaceView.backgroundColor = .red
+                }) { (true) in
+                    UIView.animate(withDuration: 0.5, animations: {
+                        spaceView.backgroundColor = .clear
+                    }, completion: { (true) in
 
-        //4
-        let levelView = containersStack?.superview
-        let pointInRespectToLevelView = containersStack?.convert(pointInRespectToContainersStack!, to: levelView)
-        print("Point In Respect To Level: ", pointInRespectToLevelView!)
-        
-        //5
-        var pointInRespectToTheWholeView = levelView?.convert(pointInRespectToLevelView!, to: view)
-        print("Point In Respect To Whole View: ", pointInRespectToTheWholeView!)
-
-        
-        print("Dimensions of whole view: ", view.frame.height, view.frame.width)
-        
-        let spaceFrame: CGRect = vista.frame
-        let numViewFrame: CGRect = numView!.frame
-        print("Frame of number: ", numViewFrame)
-        UIView.animate(withDuration: 2, animations: {
-            let diffBetweenHeights = numViewFrame.size.height - spaceFrame.size.height
-            let diffBetweenWidths = numViewFrame.size.width - spaceFrame.size.width
-            pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
-            pointInRespectToTheWholeView?.y -= diffBetweenHeights / 2
-            numView?.frame.origin = pointInRespectToTheWholeView!
-        }) { (true) in
-            self.isNumberSelected = false
+                    })
+                }
+            }
+        } else if (!isNumberSelected){
+            
         }
     }
     
@@ -569,7 +541,9 @@ class MergePracticeViewController: UIViewController {
                 gestureRecognizer.space = i - 1
                 numView.addGestureRecognizer(gestureRecognizer)
             }
-            numView.backgroundColor = color
+            numView.layer.borderWidth = 1
+            numView.layer.borderColor = color.cgColor
+            numView.backgroundColor = .clear
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -591,10 +565,27 @@ class MergePracticeViewController: UIViewController {
     }
     
     @objc func numberViewPressed (_ sender: MergeNumberViewTapGestureRecognizer) {
-        print("Index pressed: ", sender.index)
-        numberViewIndexSelected = sender.index
-        isNumberSelected = true
-        numberSelected = sender.number
+        
+        if (isNumberSelected){
+            let old = numberSelected.numView
+            UIView.animate(withDuration: 0.5, animations: {
+                self.numberViewIndexSelected = sender.index
+                self.isNumberSelected = true
+                self.numberSelected = sender.number
+                let new = sender.number.numView
+                old?.backgroundColor = .orange
+                new?.backgroundColor = .blue
+            }) { (true) in
+            }
+        } else {
+            numberViewIndexSelected = sender.index
+            isNumberSelected = true
+            numberSelected = sender.number
+            let v = sender.number.numView
+            UIView.animate(withDuration: 0.5) {
+                v?.backgroundColor = .blue
+            }
+        }
         
     }
     
@@ -605,7 +596,7 @@ class MergePracticeViewController: UIViewController {
         for i in arr {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
-            numView.backgroundColor = .red
+            numView.backgroundColor = .clear
             
             numView.tag = i
             
