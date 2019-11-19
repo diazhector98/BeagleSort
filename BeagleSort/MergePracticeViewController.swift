@@ -66,9 +66,12 @@ class MergePracticeViewController: UIViewController {
     */
     var spacesViews: [[[UIView]]]!
     var isNumberSelected: Bool!
+    var numberSelected: Number!
     var numbers: [Number]!
     
     var spaces: [[[Space]]]!
+    
+    var correctStates: [[State]]!
 
 
     
@@ -78,6 +81,7 @@ class MergePracticeViewController: UIViewController {
         spacesViews = []
         numbers = []
         spaces = []
+        correctStates = []
         
         // Do any additional setup after loading the view.
         
@@ -458,6 +462,8 @@ class MergePracticeViewController: UIViewController {
             numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
             i += 1
         }
+        
+        generateStatesInOrder()
     }
 
     
@@ -478,9 +484,13 @@ class MergePracticeViewController: UIViewController {
         
         let superViews = numSuperViews
         let index = numberViewIndexSelected
-        let numView = numSuperViews[numberViewIndexSelected]
-        numView.backgroundColor = .yellow
         
+        
+        let numView = numberSelected.numView
+        numView?.backgroundColor = .yellow
+        
+        
+        print(isCorrectMove(space: space, number: numberSelected, level: space.level))
         
         
         //1. To get the frame of the space, we would need to get it in respect to the stack that it is at
@@ -519,18 +529,31 @@ class MergePracticeViewController: UIViewController {
         print("Dimensions of whole view: ", view.frame.height, view.frame.width)
         
         let spaceFrame: CGRect = vista.frame
-        let numViewFrame: CGRect = numView.frame
+        let numViewFrame: CGRect = numView!.frame
         print("Frame of number: ", numViewFrame)
         UIView.animate(withDuration: 2, animations: {
             let diffBetweenHeights = numViewFrame.size.height - spaceFrame.size.height
             let diffBetweenWidths = numViewFrame.size.width - spaceFrame.size.width
             pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
             pointInRespectToTheWholeView?.y -= diffBetweenHeights / 2
-            numView.frame.origin = pointInRespectToTheWholeView!
+            numView?.frame.origin = pointInRespectToTheWholeView!
         }) { (true) in
             self.isNumberSelected = false
         }
+    }
+    
+    func isCorrectMove(space: Space!, number: Number!, level: Int) -> Bool {
         
+        for state in correctStates[level - 2] {
+            if state.number.numView == number.numView && areSpacesEqual(spaceA: state.space, spaceB: space) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func areSpacesEqual(spaceA: Space, spaceB: Space) -> Bool {
+        return spaceA.container == spaceB.container && spaceA.level == spaceB.level && spaceA.space == spaceB.space
     }
     
     func generateContainerViews(num: Int, color: UIColor, level: Int, container: Int) -> [UIView] {
@@ -571,6 +594,7 @@ class MergePracticeViewController: UIViewController {
         print("Index pressed: ", sender.index)
         numberViewIndexSelected = sender.index
         isNumberSelected = true
+        numberSelected = sender.number
         
     }
     
@@ -617,10 +641,18 @@ class MergePracticeViewController: UIViewController {
             //Create super num view with that frame
             let superNumView = UIView(frame: frame)
             
+            
+            //Create Number object with that view and add it to array
+            let number = Number()
+            number.numView = superNumView
+            number.value = array[index]
+            numbers.append(number)
+            
             //Create and add gesture recognizer
             let gestureRecognizer = MergeNumberViewTapGestureRecognizer(target: self, action: #selector(self.numberViewPressed(_:)))
             gestureRecognizer.index = index
             gestureRecognizer.value = array[index]
+            gestureRecognizer.number = number
             superNumView.addGestureRecognizer(gestureRecognizer)
 
             //Change background
@@ -631,12 +663,6 @@ class MergePracticeViewController: UIViewController {
             //Add to array of superviews
             views.append(superNumView)
             
-            //Create Number object with that view and add it to array
-            let number = Number()
-            number.numView = superNumView
-            number.value = array[index]
-            numbers.append(number)
-            
             index += 1
         }
         return views
@@ -646,7 +672,10 @@ class MergePracticeViewController: UIViewController {
         let statesLevelTwo: [State] = generateStatesOfLevelTwo()
         let statesLevelThree: [State] = generateStatesOfLevelThree()
         let statesLevelFour: [State] = generateStatesOfLevelFour()
-        
+        correctStates.append(statesLevelTwo)
+        correctStates.append(statesLevelThree)
+        correctStates.append(statesLevelFour)
+
     }
     
     func generateStatesOfLevelTwo () -> [State] {
@@ -675,7 +704,7 @@ class MergePracticeViewController: UIViewController {
         for i in 0...3 {
             numbersContainer1.append(numbers[i])
         }
-        for i in 4...7 {
+        for i in 4...6 {
             numbersContainer2.append(numbers[i])
         }
         
@@ -689,8 +718,12 @@ class MergePracticeViewController: UIViewController {
             spacesContainer2.append(space)
         }
         
-        let statesContainer1: [State] = createLevelThreeState(numbers: numbersContainer1, spaces: spacesContainer1)
-        let statescContainer2: [State] = createLevelThreeState(numbers: numbersContainer2, spaces: spacesContainer2)
+        let _ = spacesContainer2.popLast()
+        
+        print("Creating states of level 3 container 1")
+        let statesContainer1: [State] = createLevelThreeState(nums: numbersContainer1, spaces: spacesContainer1)
+        print("Creating states of level 3 container 2")
+        let statescContainer2: [State] = createLevelThreeState(nums: numbersContainer2, spaces: spacesContainer2)
         
         var result: [State] = []
         
@@ -720,35 +753,35 @@ class MergePracticeViewController: UIViewController {
         return (stateA, stateB)
     }
     
-    func createLevelThreeState (numbers: [Number], spaces: [Space])->[State] {
+    func createLevelThreeState (nums: [Number], spaces: [Space])->[State] {
         
         var numbersIndices: [Int] = []
-        for i in 0...numbers.count-1{
+        for i in 0...nums.count-1{
             numbersIndices.append(i)
         }
         
         for i in 0...numbersIndices.count-1 {
-            for j in (i + 1)...numbersIndices.count-1  {
-                if (numbers[numbersIndices[j]].value < numbers[numbersIndices[i]].value){
+            print(i+1, numbersIndices.count - 1)
+            var j = i + 1
+            while (j <= numbersIndices.count - 1) {
+                if (nums[numbersIndices[j]].value < nums[numbersIndices[i]].value){
                     let temp = numbersIndices[i]
                     numbersIndices[i] = numbersIndices[j]
                     numbersIndices[j] = temp
                 }
+                j += 1
             }
         }
-        
-        
         var levelThreeStates: [State] = []
         var i = 0
         for space in spaces {
             let state = State()
-            state.number = numbers[numbersIndices[i]]
+            print("i:", i)
+            state.number = nums[numbersIndices[i]]
             state.space = space
             i += 1
             levelThreeStates.append(state)
         }
-        
-        
         
         return levelThreeStates
     }
@@ -764,7 +797,7 @@ class MergePracticeViewController: UIViewController {
             spacesContainer.append(space)
         }
         
-        let result:[State] = createLevelThreeState(numbers: nums, spaces: spacesContainer)
+        let result:[State] = createLevelThreeState(nums: nums, spaces: spacesContainer)
         
         return result
     }
