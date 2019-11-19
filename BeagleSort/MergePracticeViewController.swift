@@ -611,7 +611,12 @@ class MergePracticeViewController: UIViewController {
         
         //States of first two numbers
         
-//        let (state1, state2) = createLevelTwoState(numberA: numbers[0], numberB: numbers[1], space0: <#T##Space#>, space1: <#T##Space#>)
+//
+        
+        
+        let statesLevelTwo: [State] = generateStatesOfLevelTwo()
+        
+        
         
         
         
@@ -623,7 +628,25 @@ class MergePracticeViewController: UIViewController {
         /*
          Create states of level 4
          */
+    }
+    
+    func generateStatesOfLevelTwo () -> [State] {
+        let level = 2
+        var container = 0
+        let (state1, state2) = createLevelTwoState(numberA: numbers[0], numberB: numbers[1], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
         
+        container = 1
+        let (state3, state4) = createLevelTwoState(numberA: numbers[2], numberB: numbers[3], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
+        
+        container = 2
+        let (state5, state6) = createLevelTwoState(numberA: numbers[2], numberB: numbers[3], space0: spaces[level-2][container][0], space1: spaces[level-2][container][1])
+        
+        container = 3
+        let state7 = State()
+        state7.number = numbers[6]
+        state7.space = spaces[level - 2][container][0]
+        
+        return [state1, state2, state3, state4, state5, state6, state7]
     }
     
     func createLevelTwoState (numberA: Number, numberB: Number, space0: Space, space1: Space)->(State, State){
