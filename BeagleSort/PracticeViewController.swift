@@ -39,8 +39,6 @@ class PracticeViewController: UIViewController {
     var isAscending: Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Is it ascending?")
-        print(isAscending)
         buttons = generateButtons(arr: array)
         buttonStackView = UIStackView(arrangedSubviews: buttons)
         
@@ -178,7 +176,7 @@ class PracticeViewController: UIViewController {
     }
     
     // Crea ArrayStates para Bubble Sort
-    func bubbleSortStates() {
+    func bubbleSortStates2() {
         var changed = true
         var limit = array.count-2
         var order = [0, 1, 2, 3, 4, 5, 6]
@@ -200,6 +198,53 @@ class PracticeViewController: UIViewController {
             limit -= 1
         }
     }
+    
+    func bubbleSortStates () {
+        let n = array.count
+        var i = n - 1
+        var order = [0, 1, 2, 3, 4, 5, 6]
+        states.append(ArrayState(array: order))
+        while (i >= 1) {
+            for j in 0...i-1 {
+                if (compare(actual: array[j], comparedTo: array[j+1])) {
+                    let temp = array[j]
+                    array[j] = array[j+1]
+                    array[j+1] = temp
+                    let temp2 = order[j]
+                    order[j] = order[j+1]
+                    order[j+1] = temp2
+                    states.append(ArrayState(array: order))
+                }
+            }
+            i = i - 1
+        }
+    }
+    /*
+     func initBubbleSortTransitions() {
+         let n = array.count
+         var i = n - 1
+         while (i >= 1){
+             for j in 0...i-1{
+                 var sign: String!
+                 if (isAscending) {
+                     sign = ">"
+                 } else {
+                     sign = "<"
+                 }
+                 let comparison = Comparison(indexA: j, indexB: j + 1, valueA: array[j], valueB: array[j+1], sign: sign)
+                 steps.append(comparison)
+                 if (compare(actual: array[j], comparedTo: array[j+1])) {
+                     let transition = Transition(from: j, to: j+1, fromValue: array[j], toValue: array[j+1])
+                     steps.append(transition)
+                     let temp = array[j]
+                     array[j] = array[j+1]
+                     array[j+1] = temp
+                 }
+             }
+             i = i - 1
+         }
+     }
+     */
     
     func insertionSortStates() {
         var curr = 1
@@ -276,7 +321,6 @@ class PracticeViewController: UIViewController {
                 let temp = array[left]
                 array[left] = array[right]
                 array[right] = temp
-                print(array)
                 let temp2 = quickOrder[left]
                 quickOrder[left] = quickOrder[right]
                 quickOrder[right] = temp2
@@ -301,7 +345,6 @@ class PracticeViewController: UIViewController {
         if (startIndex != right) {
             array[startIndex] = array[right]
             array[right] = pivot
-            print(array)
             quickOrder[startIndex] = quickOrder[right]
             quickOrder[right] = pivot2
             states.append(ArrayState(array: quickOrder))
