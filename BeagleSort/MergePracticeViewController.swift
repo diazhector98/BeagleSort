@@ -51,6 +51,9 @@ class MergePracticeViewController: UIViewController {
     
     var numberViewIndexSelected: Int!
     
+    var numbersInNewLevel = 0
+    var levelsCompleted:  Int! = 1
+    
     
     /*
      
@@ -471,7 +474,15 @@ class MergePracticeViewController: UIViewController {
             let numView = numberSelected.numView
             
             let isCorrect = isCorrectMove(space: space, number: numberSelected, level: space.level)
-            if (isCorrect){
+            if (isCorrect && space.level == levelsCompleted + 1){
+                numbersInNewLevel += 1
+                
+                if (numbersInNewLevel == 7){
+                    levelsCompleted = levelsCompleted + 1
+                    numbersInNewLevel = 0
+                }
+                
+                
                 spaceView.backgroundColor = .green
                 
                 //Get correct coordinates
@@ -498,7 +509,7 @@ class MergePracticeViewController: UIViewController {
                 }) { (true) in
                     self.isNumberSelected = false
                 }
-            } else if (!isCorrect){
+            } else if (!isCorrect && space.level == levelsCompleted + 1){
                 UIView.animate(withDuration: 1, animations: {
                     spaceView.backgroundColor = .red
                 }) { (true) in
