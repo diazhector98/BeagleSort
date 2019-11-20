@@ -25,6 +25,9 @@ class PracticeViewController: UIViewController {
     var firstTouched = -1
     var quickOrder = [0, 1, 2, 3, 4, 5, 6]
     var dictionary: [Int: UIButton]!;
+    var constraints: [[NSLayoutConstraint]]!
+    var buttonStackView: UIStackView!
+    var originalArray: [Int]!
     
     // Colores para feedback
     let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
@@ -35,11 +38,12 @@ class PracticeViewController: UIViewController {
     // Variables de segue
     var array : [Int]!
     var algorithm: Algorithm!
-    var buttonStackView: UIStackView!
     var isAscending: Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttons = generateButtons(arr: array)
+        constraints = []
+        originalArray = array
+        buttons = generateButtons(arr: originalArray)
         buttonStackView = UIStackView(arrangedSubviews: buttons)
         
         buttonStackView.axis = .horizontal
@@ -57,13 +61,13 @@ class PracticeViewController: UIViewController {
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: viewsDictionary)
-        
+        constraints.append(stackView_H)
         let stackView_V = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|-30-[stackView]-30-|", //vertical constraint 30 points from top and bottom
             options: NSLayoutFormatOptions(rawValue:0),
             metrics: nil,
             views: viewsDictionary)
-        
+        constraints.append(stackView_V)
         buttonHolder.addConstraints(stackView_H)
         buttonHolder.addConstraints(stackView_V)
         
@@ -110,6 +114,7 @@ class PracticeViewController: UIViewController {
 //
 //        }
         storedFrames = frames
+        buttonUndo.setTitle("Reiniciar", for: .normal)
         StylesHelper.addButtonStyles(button: buttonUndo);
 
         // Formar arreglo de estados
@@ -501,6 +506,54 @@ class PracticeViewController: UIViewController {
     }
     
     @IBAction func undo(_ sender: UIButton) {
+        for view in buttonHolder.subviews{
+            view.removeFromSuperview()
+        }
+        buttonHolder.removeConstraints(constraints[0])
+        buttonHolder.removeConstraints(constraints[1])
+        constraints.removeAll()
+        frames.removeAll()
+        storedTags = [1, 2, 3, 4, 5, 6, 7]
+        currentState = ArrayState(array: [0, 1, 2, 3, 4, 5, 6])
+        stateIndex = 1
+        firstTouched = -1
+        
+        
+        buttonStackView = UIStackView(arrangedSubviews: buttons)
+        buttons = generateButtons(arr: originalArray)
+        buttonStackView = UIStackView(arrangedSubviews: buttons)
+        
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.alignment = .center
+        buttonStackView.spacing = 10
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonHolder.addSubview(buttonStackView)
+        
+        let viewsDictionary = ["stackView":buttonStackView]
+        let stackView_H = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-20-[stackView]-20-|",  //horizontal constraint 20 points from left and right side
+            options: NSLayoutFormatOptions(rawValue: 0),
+            metrics: nil,
+            views: viewsDictionary)
+        constraints.append(stackView_H)
+        let stackView_V = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-30-[stackView]-30-|", //vertical constraint 30 points from top and bottom
+            options: NSLayoutFormatOptions(rawValue:0),
+            metrics: nil,
+            views: viewsDictionary)
+        constraints.append(stackView_V)
+        buttonHolder.addConstraints(stackView_H)
+        buttonHolder.addConstraints(stackView_V)
+        
+        for button in buttons {
+            button.heightAnchor.constraint(equalTo: button.widthAnchor).isActive = true
+        }
+        storedFrames = frames
+        lbEstado.text = "Reiniciado"
+        lbEstado.textColor = defaultColor
+        /*
         // Cargar ultimo estado correcto
         currentState.array = states[stateIndex-1].array
         for i in 0...6 {
@@ -511,6 +564,7 @@ class PracticeViewController: UIViewController {
         firstTouched = -1
         lbEstado.text = "Correcto"
         lbEstado.textColor = correctColor
+         */
     }
     /*
     // MARK: - Navigation
