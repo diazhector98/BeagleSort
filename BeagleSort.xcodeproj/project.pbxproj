@@ -16,6 +16,8 @@
 		9D31DD28237DDEDC006AEEEA /* SelectionSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31DD27237DDEDC006AEEEA /* SelectionSort.swift */; };
 		9D33A400237C79C500865650 /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A3FF237C79C500865650 /* QuickSort.swift */; };
 		9D33A402237CC45900865650 /* PivotSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D33A401237CC45900865650 /* PivotSelection.swift */; };
+		9D50661F2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D50661E2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift */; };
+		9D5066212380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5066202380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift */; };
 		9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */; };
 		9D683EAC234B8C6B0060ECDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D683EAB234B8C6B0060ECDE /* ViewController.swift */; };
 		9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D683EAD234B8C6B0060ECDE /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 		9D31DD27237DDEDC006AEEEA /* SelectionSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSort.swift; sourceTree = "<group>"; };
 		9D33A3FF237C79C500865650 /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		9D33A401237CC45900865650 /* PivotSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PivotSelection.swift; sourceTree = "<group>"; };
+		9D50661E2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeNumberViewTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		9D5066202380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSpaceViewTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		9D683EA6234B8C6B0060ECDE /* BeagleSort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeagleSort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D683EA9234B8C6B0060ECDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D683EAB234B8C6B0060ECDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				9D683EAD234B8C6B0060ECDE /* Main.storyboard */,
 				75CE21DB2353EAB8007B1196 /* ArrayState.swift */,
 				9D788F1323807AD500260078 /* MergePracticeViewController.swift */,
+				9D5066202380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift */,
+				9D50661E2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift */,
 				75CE21D92353A6A1007B1196 /* PracticeViewController.swift */,
 				9DC31312235201A700A6195E /* AlgorithmViewController.swift */,
 				9DC313102351931C00A6195E /* DemonstrationViewController.swift */,
@@ -317,7 +323,9 @@
 				9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */,
 				9EECBF1C2381F1D300365166 /* CreateAccountViewController.swift in Sources */,
 				9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */,
+				9D50661F2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift in Sources */,
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
+				9D5066212380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
 				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,
 				9EECBF1E2381F3A000365166 /* LobbyViewController.swift in Sources */,
