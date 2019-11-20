@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateAccountViewController: UIViewController {
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var txtEmail: UITextField!
-    @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var txtRetype: UITextField!
     @IBOutlet weak var btnContinue: UIButton!
     
     override func viewDidLoad() {
@@ -26,17 +27,40 @@ class CreateAccountViewController: UIViewController {
         StylesHelper.addViewStyles(view: self.passwordView);
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func showAlert(_ message: String) -> Void {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert);
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alert.addAction(ok);
+        present(alert, animated: false);
     }
-    */
 
+    @IBAction func onContinuarPress(_ sender: Any) {
+        if self.txtEmail.text?.count == 0 || self.txtPassword.text?.count == 0 || self.txtRetype.text?.count == 0 {
+            showAlert("Por favor llenar todas los campos.");
+            return;
+        }
+        
+        // check that passwords are the same
+        if self.txtPassword.text! != self.txtRetype.text! {
+            showAlert("Las contraseñas no son iguales.");
+            return;
+        }
+        
+        self.btnContinue.isEnabled = false;
+        
+        // crear cuenta
+        let email = self.txtEmail.text!;
+        let password = self.txtPassword.text!;
+        Auth.auth().createUser(withEmail: email, password: password) { (auth, err) in
+            if err == nil {
+                self.performSegue(withIdentifier: "continueSegue", sender: nil);
+            } else {
+                self.showAlert(err?.localizedDescription ?? "No se pudo crear la cuenta nueva.");
+                self.btnContinue.isEnabled = true;
+            }
+        }
+    }
+    
     @IBAction func ontap(_ sender: Any) {
         view.endEditing(true);
     }
