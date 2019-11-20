@@ -25,6 +25,10 @@ class LoginViewController: UIViewController {
         StylesHelper.addViewStyles(view: self.emailView);
         StylesHelper.addViewStyles(view: self.passwordView);
         
+        if (Auth.auth().currentUser != nil) {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil);
+        }
+        
         self.btnContinue.setTitleColor(UIColor(named: "Disabled"), for: .disabled);
         self.btnCreateAccount.setTitleColor(UIColor(named: "Disabled"), for: .disabled);
     }
@@ -58,7 +62,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true);

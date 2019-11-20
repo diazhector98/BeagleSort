@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -982,7 +982,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kcT-bs-fGI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eH3-F7-v75"/>
+                    <navigationItem key="navigationItem" id="eH3-F7-v75">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="gCF-YY-LQQ">
+                            <connections>
+                                <action selector="onLogoutPress:" destination="Tmy-pc-bRp" id="640-aX-RLw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnLeaderboard" destination="cVI-LG-vBS" id="WXE-QA-xzs"/>
                         <outlet property="btnSearch" destination="aL2-L2-0IY" id="E4Z-WT-a0K"/>
@@ -1103,6 +1109,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h0t-5E-d3Q"/>
+        <segue reference="Ypp-EY-Khe"/>
     </inferredMetricsTieBreakers>
 </document>

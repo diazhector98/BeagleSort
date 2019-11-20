@@ -26,6 +26,9 @@ class LobbyViewController: UIViewController {
         StylesHelper.addButtonStyles(button: self.btnLeaderboard);
         self.btnSearch.setTitleColor(UIColor(named: "Disabled"), for: .disabled);
         
+        let username = Auth.auth().currentUser!.email!;
+        self.title = username;
+        
         // init socket
         self.socket = manager.defaultSocket;
         createSocketHandlers();
@@ -33,11 +36,7 @@ class LobbyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController!.setNavigationBarHidden(true, animated: true);
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController!.setNavigationBarHidden(false, animated: true);
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func showAlert(_ message: String) -> Void {
@@ -75,9 +74,10 @@ class LobbyViewController: UIViewController {
             let dict = (data[0] as? NSDictionary)!;
             let otherPlayer = dict["otherPlayerName"] as! String;
             let algorithm = dict["algorithm"] as! String;
+            let ascending = dict["ascending"] as! Bool;
             let arr = (dict["arr"] as! NSArray as? [Int])!;
             
-            self.performSegue(withIdentifier: "enterGameSegue", sender: [otherPlayer, algorithm, arr]);
+            self.performSegue(withIdentifier: "enterGameSegue", sender: [otherPlayer, algorithm, ascending, arr]);
         }
     }
 
@@ -91,9 +91,20 @@ class LobbyViewController: UIViewController {
             let data = sender as! NSArray;
             vc.otherPlayerName = (data[0] as! String);
             vc.algorithm = (data[1] as! String);
-            vc.arr = data[2] as! [Int];
+            vc.ascending = (data[2] as! Bool);
+            vc.arr = data[3] as! [Int];
             vc.socket = self.socket;
             self.btnSearch.isEnabled = true;
         }
+    }
+    
+    @IBAction func onLogoutPress(_ sender: Any) {
+        do {
+            try Auth.auth().signOut();
+        } catch {
+            print("ZAZ");
+        }
+        
+        self.dismiss(animated: true, completion: nil);
     }
 }

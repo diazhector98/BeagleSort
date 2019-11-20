@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     // segue variables
     public var otherPlayerName: String!;
     public var algorithm: String!;
+    public var ascending: Bool!;
     public var arr = [Int]();
     public var socket: SocketIOClient!;
     
@@ -32,6 +33,7 @@ class GameViewController: UIViewController {
     let defaultColor = UIColor.white
     
     // instance variables
+    private var hasEnded: Bool!;
     private var user: User!;
     private var player1Buttons = [UIButton]();
     private var player1Dictionary: [Int: UIButton]!;
@@ -44,13 +46,14 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // set data
+        self.hasEnded = false;
         self.user = Auth.auth().currentUser!;
         self.lblPlayer1.text = self.user.email!;
         self.lblPlayer2.text = self.otherPlayerName;
         self.lblAlgorithm.text = self.algorithm;
-        
+        self.lblOrder.text = (self.ascending ? "Ascendente" : "Descendente");
         createSocketHandlers();
         
         // player 1 views
@@ -130,6 +133,13 @@ class GameViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController!.setNavigationBarHidden(false, animated: true);
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // tell server player quit early
+        if (!self.hasEnded) {
+            self.socket.emit("player_exit_early")
+        }
     }
 
     private func generateButtons(arr: [Int]) -> [UIButton] {
@@ -328,15 +338,27 @@ class GameViewController: UIViewController {
         // listen for when the game has ended
         self.socket.on("game_ended") { (data, ack) in
             let dict = (data[0] as? NSDictionary)!;
-            let won = dict["won"] as! Bool;
+            let won = dict["won"] as? Bool;
+            let tie = dict["tie"] as? Bool;
+            let autoWin = dict["autoWin"] as? Bool;
             
-            if (won) {
-                self.lblStatus.text = "Has ganado!!!";
-                self.lblStatus.textColor = self.correctColor;
+            self.hasEnded = true;
+            if (tie != nil && tie!) {
+                self.lblStatus.text = "Se acabó el tiempo. Empate.";
+                self.lblStatus.textColor = .black;
             } else {
-                self.lblStatus.text = "Has perdido.";
-                self.lblStatus.textColor = self.wrongColor;
+                if (won!) {
+                    if (autoWin!) {
+                        self.showAlert("El otro jugador se ha desconectado. ¡Ganaste automáticamente!");
+                    }
+                    self.lblStatus.text = "Has ganado!!!";
+                    self.lblStatus.textColor = self.correctColor;
+                } else {
+                    self.lblStatus.text = "Has perdido.";
+                    self.lblStatus.textColor = self.wrongColor;
+                }
             }
+            
             self.lblStatus.isHidden = false;
             
             // disable buttons
@@ -349,5 +371,12 @@ class GameViewController: UIViewController {
                self.navigationController!.setNavigationBarHidden(false, animated: true);
             }
         }
+    }
+    
+    private func showAlert(_ message: String) -> Void {
+        let alert = UIAlertController(title: "Mensaje", message: message, preferredStyle: .alert);
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil);
+        alert.addAction(ok);
+        present(alert, animated: false);
     }
 }
