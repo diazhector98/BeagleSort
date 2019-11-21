@@ -26,6 +26,11 @@ class State {
 
 class MergePracticeViewController: UIViewController {
 
+    let correctColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 59.0/255, alpha: 1)
+    let wrongColor = UIColor(red: 255.0/255, green: 78.0/255, blue: 72.0/255, alpha: 1)
+    let selectedColor = UIColor(red: 91.0/255, green: 132.0/255, blue: 255, alpha: 1)
+    let defaultColor = UIColor.white
+    
     
     @IBOutlet weak var levelOneView: UIView!
     @IBOutlet weak var levelTwoView: UIView!
@@ -483,7 +488,7 @@ class MergePracticeViewController: UIViewController {
                 }
                 
                 
-                spaceView.backgroundColor = .green
+                spaceView.backgroundColor = self.correctColor
                 
                 //Get correct coordinates
                 let spacesStack = spaceView.superview
@@ -505,13 +510,13 @@ class MergePracticeViewController: UIViewController {
                     pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
                     pointInRespectToTheWholeView?.y -= diffBetweenHeights / 2
                     numView?.frame.origin = pointInRespectToTheWholeView!
-                    numView?.backgroundColor = .orange
+                    numView?.backgroundColor = self.defaultColor
                 }) { (true) in
                     self.isNumberSelected = false
                 }
             } else if (!isCorrect && space.level == levelsCompleted + 1){
                 UIView.animate(withDuration: 1, animations: {
-                    spaceView.backgroundColor = .red
+                    spaceView.backgroundColor = self.wrongColor
                 }) { (true) in
                     UIView.animate(withDuration: 0.5, animations: {
                         spaceView.backgroundColor = .clear
@@ -555,6 +560,7 @@ class MergePracticeViewController: UIViewController {
             numView.layer.borderWidth = 1
             numView.layer.borderColor = color.cgColor
             numView.backgroundColor = .clear
+            numView.layer.cornerRadius = 10
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -584,8 +590,8 @@ class MergePracticeViewController: UIViewController {
                 self.isNumberSelected = true
                 self.numberSelected = sender.number
                 let new = sender.number.numView
-                old?.backgroundColor = .orange
-                new?.backgroundColor = .blue
+                old?.backgroundColor = self.defaultColor
+                new?.backgroundColor = self.selectedColor
             }) { (true) in
             }
         } else {
@@ -594,7 +600,7 @@ class MergePracticeViewController: UIViewController {
             numberSelected = sender.number
             let v = sender.number.numView
             UIView.animate(withDuration: 0.5) {
-                v?.backgroundColor = .blue
+                v?.backgroundColor = self.selectedColor
             }
         }
         
@@ -643,6 +649,12 @@ class MergePracticeViewController: UIViewController {
             //Create super num view with that frame
             let superNumView = UIView(frame: frame)
             
+            superNumView.layer.cornerRadius = 10
+            superNumView.layer.shadowColor = UIColor.black.cgColor
+            superNumView.layer.shadowOpacity = 0.2
+            superNumView.layer.shadowOffset = CGSize(width: -1, height: 1)
+
+            superNumView.layer.shadowRadius = 1
             
             //Create Number object with that view and add it to array
             let number = Number()
@@ -658,8 +670,7 @@ class MergePracticeViewController: UIViewController {
             superNumView.addGestureRecognizer(gestureRecognizer)
 
             //Change background
-            superNumView.backgroundColor = .orange
-            
+            superNumView.backgroundColor = self.defaultColor
             //Add to view
             view.addSubview(superNumView)
             //Add to array of superviews
