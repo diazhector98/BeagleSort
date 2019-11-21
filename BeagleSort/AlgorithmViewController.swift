@@ -38,7 +38,12 @@ class AlgorithmViewController: UIViewController {
         StylesHelper.addButtonStyles(button: self.descendingButton);
         ascendingButton.isEnabled = false
         descendingButton.backgroundColor = UIColor(named: "Disabled")
-        
+        if (algorithm.name == "MergeSort") {
+            ascendingButton.isHidden = true
+            descendingButton.isHidden = true
+            ascendingButton.isEnabled = false
+            descendingButton.isEnabled = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
