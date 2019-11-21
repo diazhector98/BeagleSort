@@ -34,6 +34,10 @@ class AlgorithmListViewController: UIViewController, UITableViewDelegate, UITabl
         return 100;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true);
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "algorithmCell")! as! AlgorithmTableViewCell;
         let algorithm = self.algorithms[indexPath.row];
