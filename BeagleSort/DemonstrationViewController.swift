@@ -63,6 +63,10 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             metrics: nil,
             views: viewsDictionary)
         
+        
+        
+        
+        
         grayView.addConstraints(stackView_H)
         grayView.addConstraints(stackView_V)
         
@@ -107,9 +111,13 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         for _ in arr {
             //Crear la vista contenedor del numero y agregar propiedades
             let numView = UIView()
-            numView.backgroundColor = .blue
-            StylesHelper.addNodeStyles(node: numView);
+            numView.layer.cornerRadius = 10
+            numView.layer.shadowColor = UIColor.black.cgColor
+            numView.layer.shadowOpacity = 0.2
+            numView.layer.shadowOffset = CGSize(width: -1, height: 1)
+            numView.layer.shadowRadius = 1
 
+            numView.backgroundColor = .white
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -158,6 +166,23 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             let viewB = UIView(frame: frameB)
             viewA.backgroundColor = .blue
             viewB.backgroundColor = .blue
+            
+            viewA.layer.cornerRadius = 10
+            viewA.layer.shadowColor = UIColor.black.cgColor
+            viewA.layer.shadowOpacity = 0.2
+            viewA.layer.shadowOffset = CGSize(width: -1, height: 1)
+            viewA.layer.shadowRadius = 1
+            
+            viewA.backgroundColor = .white
+            
+            viewB.layer.cornerRadius = 10
+            viewB.layer.shadowColor = UIColor.black.cgColor
+            viewB.layer.shadowOpacity = 0.2
+            viewB.layer.shadowOffset = CGSize(width: -1, height: 1)
+            viewB.layer.shadowRadius = 1
+            
+            viewB.backgroundColor = .white
+            
             
             // Agregar labels a las nuevas views
             let labelA = UILabel()
@@ -244,6 +269,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             viewA?.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
             viewB?.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
             
+            
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 viewA?.backgroundColor = .blue
                 viewB?.backgroundColor = .blue
@@ -285,6 +312,14 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             for frame in numberFrames {
                 let vista = UIView(frame: frame)
                 vista.backgroundColor = .blue
+                
+                vista.layer.cornerRadius = 10
+                vista.layer.shadowColor = UIColor.black.cgColor
+                vista.layer.shadowOpacity = 0.2
+                vista.layer.shadowOffset = CGSize(width: -1, height: 1)
+                vista.layer.shadowRadius = 1
+                
+                vista.backgroundColor = .white
                 
                 //Crear labels
                 let label = UILabel()
@@ -348,8 +383,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                     let vistaA = numberViews[indexA! - merge.start]
                     let vistaB = numberViews[indexB! - merge.start]
                     
-                    vistaA.backgroundColor = .blue
-                    vistaB.backgroundColor = .blue
+                    vistaA.backgroundColor = .white
+                    vistaB.backgroundColor = .white
                 }, completion: { (true) in
                     self.handleMergeSteps(merge: merge, numberViews: numberViews, mergeStepIndex: mergeStepIndex + 1, animIndex: animIndex)
                     
