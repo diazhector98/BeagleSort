@@ -470,7 +470,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MQk-fo-yNa"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Práctica" id="chY-xd-78j"/>
+                    <navigationItem key="navigationItem" title="Práctica" id="chY-xd-78j">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="0nI-PR-fSX">
+                            <connections>
+                                <action selector="goBack:" destination="6X9-KX-gS5" id="cgm-9j-kbX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="sfy-6r-iOZ" id="6Mz-n1-XWv"/>
                     </connections>

@@ -26,6 +26,10 @@ class AlgorithmListViewController: UIViewController, UITableViewDelegate, UITabl
         self.algorithms.append(SelectionSort.instance)
     }
     
+    @IBAction func goBack(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.algorithms.count;
     }
