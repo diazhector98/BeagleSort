@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.cesar.BeagleSort</string>
+	<string>com.cesar2.BeagleSort</string>
 	<key>PROJECT_ID</key>
 	<string>beaglesort</string>
 	<key>STORAGE_BUCKET</key>
