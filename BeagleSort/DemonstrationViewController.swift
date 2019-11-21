@@ -367,7 +367,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
         let algoStep = merge.steps[mergeStepIndex]
         
         if let comparison = algoStep as? Comparison {
-            
+            comparisons.append(comparison)
+            tableView.reloadData()
             let indexA = comparison.indexA
             let indexB = comparison.indexB
             
