@@ -518,7 +518,7 @@ class MergePracticeViewController: UIViewController {
                 UIView.animate(withDuration: 0.3, animations: {
                     spaceView.backgroundColor = self.wrongColor
                 }) { (true) in
-                    UIView.animate(withDuration: 0.5, animations: {
+                    UIView.animate(withDuration: 0.1, animations: {
                         spaceView.backgroundColor = .clear
                     }, completion: { (true) in
 
@@ -585,7 +585,7 @@ class MergePracticeViewController: UIViewController {
         
         if (isNumberSelected){
             let old = numberSelected.numView
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.numberViewIndexSelected = sender.index
                 self.isNumberSelected = true
                 self.numberSelected = sender.number
@@ -599,7 +599,7 @@ class MergePracticeViewController: UIViewController {
             isNumberSelected = true
             numberSelected = sender.number
             let v = sender.number.numView
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.1) {
                 v?.backgroundColor = self.selectedColor
             }
         }
