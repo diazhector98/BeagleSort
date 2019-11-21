@@ -13,21 +13,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.diaz.BeagleSort</string>
+	<string>com.cesar.BeagleSort</string>
 	<key>PROJECT_ID</key>
 	<string>beaglesort</string>
 	<key>STORAGE_BUCKET</key>
 	<string>beaglesort.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:66864649145:ios:18f4b792e8614061779c68</string>
 	<key>DATABASE_URL</key>

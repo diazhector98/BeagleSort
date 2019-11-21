@@ -348,7 +348,7 @@ class GameViewController: UIViewController {
                 self.lblStatus.textColor = .black;
             } else {
                 if (won!) {
-                    if (autoWin!) {
+                    if (autoWin != nil && autoWin!) {
                         self.showAlert("El otro jugador se ha desconectado. ¡Ganaste automáticamente!");
                     }
                     self.lblStatus.text = "Has ganado!!!";
