@@ -557,7 +557,7 @@ class PracticeViewController: UIViewController {
         }
         storedFrames = frames
         lbEstado.text = "Reiniciado"
-        lbEstado.textColor = defaultColor
+        lbEstado.textColor = UIColor.darkGray
         /*
         // Cargar ultimo estado correcto
         currentState.array = states[stateIndex-1].array
