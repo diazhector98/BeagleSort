@@ -15,10 +15,13 @@ class AlgorithmViewController: UIViewController {
     @IBOutlet weak var lbCodigo: UILabel!
     @IBOutlet weak var btnViewAnimation: UIButton!
     @IBOutlet weak var btnPractice: UIButton!
-    @IBOutlet weak var sgmOrder: UISegmentedControl!
+    @IBOutlet weak var ascendingButton: UIButton!
+    
+    @IBOutlet weak var descendingButton: UIButton!
     
     var algorithm : Algorithm!
     var randomArray: [Int]!
+    var isAscending = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +34,11 @@ class AlgorithmViewController: UIViewController {
         
         StylesHelper.addButtonStyles(button: self.btnViewAnimation);
         StylesHelper.addButtonStyles(button: self.btnPractice);
+        StylesHelper.addButtonStyles(button: self.ascendingButton);
+        StylesHelper.addButtonStyles(button: self.descendingButton);
+        ascendingButton.isEnabled = false
+        descendingButton.backgroundColor = UIColor(named: "Disabled")
         
-        self.sgmOrder.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +53,23 @@ class AlgorithmViewController: UIViewController {
         } else {
             performSegue(withIdentifier: "practica", sender: self)
         }
+    }
+    
+    
+    @IBAction func makeAscending(_ sender: UIButton) {
+        isAscending = true
+        sender.isEnabled = false
+        sender.backgroundColor = UIColor(named: "PrimaryBlue")
+        descendingButton.isEnabled = true
+        descendingButton.backgroundColor = UIColor(named: "Disabled")
+    }
+    
+    @IBAction func makeDescending(_ sender: UIButton) {
+        isAscending = false
+        sender.isEnabled = false
+        sender.backgroundColor = UIColor(named: "PrimaryBlue")
+        ascendingButton.isEnabled = true
+        ascendingButton.backgroundColor = UIColor(named: "Disabled")
     }
     
     func generateArray () {
@@ -66,22 +89,13 @@ class AlgorithmViewController: UIViewController {
             let vista = segue.destination as! DemonstrationViewController
             vista.algorithm = algorithm
             vista.array = randomArray
-            if (sgmOrder.selectedSegmentIndex == 0) {
-                vista.isAscending = true
-            } else {
-                vista.isAscending = false
-            }
-            
+            vista.isAscending = isAscending
         } else if segue.identifier == "practica" {
             
             let vista = segue.destination as! PracticeViewController
             vista.algorithm = algorithm
             vista.array = randomArray
-            if (sgmOrder.selectedSegmentIndex == 0) {
-                vista.isAscending = true
-            } else {
-                vista.isAscending = false
-            }
+            vista.isAscending = isAscending
         } else if segue.identifier == "practicaMerge" {
             let vista = segue.destination as! MergePracticeViewController
             vista.array = randomArray
