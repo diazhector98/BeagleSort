@@ -9,6 +9,100 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Credits View Controller-->
+        <scene sceneID="EZu-yG-2KC">
+            <objects>
+                <viewController id="sVY-pL-K1e" customClass="CreditsViewController" customModule="BeagleSort" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZwT-Ys-OuB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Créditos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKW-yz-BqI">
+                                <rect key="frame" x="126.5" y="74" width="122" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhl-Ti-2w3">
+                                <rect key="frame" x="30" y="125" width="314" height="176"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="176" id="8Oj-39-i9L"/>
+                                </constraints>
+                                <string key="text">La aplicación BeagleSort ha sido desarrollada por estudiantes del Tecnológico de Monterrey durante el semestre Agosto-Diciembre 2019, como parte del curso "Desarrollo de Aplicaciones para Dispositivos Móviles" y asesorados por la maestra Yolanda Martínez Treviño.</string>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desarrolladores:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1V-Gw-vUg">
+                                <rect key="frame" x="30" y="313" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Héctor Luis Díaz Aceves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFl-XM-8VH">
+                                <rect key="frame" x="30" y="370.5" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="César Francisco Barraza Aguilar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE4-QL-24h">
+                                <rect key="frame" x="30" y="337.5" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pedro Fernando Villezca Garza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3X-E2-6Fw">
+                                <rect key="frame" x="30" y="403.5" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeagleSort se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4I-DM-qMy">
+                                <rect key="frame" x="30" y="443.5" width="314" height="61"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-eC-hXu">
+                                <rect key="frame" x="166" y="538" width="43" height="30"/>
+                                <state key="normal" title="Volver"/>
+                                <connections>
+                                    <action selector="onBackPress:" destination="sVY-pL-K1e" eventType="touchUpInside" id="zlF-bq-oNc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="j4I-DM-qMy" firstAttribute="top" secondItem="o3X-E2-6Fw" secondAttribute="bottom" constant="19.5" id="4lG-Xg-5Dx"/>
+                            <constraint firstItem="o3X-E2-6Fw" firstAttribute="top" secondItem="fFl-XM-8VH" secondAttribute="bottom" constant="12.5" id="5qC-n4-lYZ"/>
+                            <constraint firstItem="jhl-Ti-2w3" firstAttribute="top" secondItem="rKW-yz-BqI" secondAttribute="bottom" constant="8" id="7A6-u9-ZmJ"/>
+                            <constraint firstItem="v1V-Gw-vUg" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="9ZW-mU-kJb"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="j4I-DM-qMy" secondAttribute="trailing" constant="31" id="ALg-Sk-Ba9"/>
+                            <constraint firstItem="v1V-Gw-vUg" firstAttribute="top" secondItem="jhl-Ti-2w3" secondAttribute="bottom" constant="12" id="Ee8-6v-fgi"/>
+                            <constraint firstItem="r0d-eC-hXu" firstAttribute="top" secondItem="j4I-DM-qMy" secondAttribute="bottom" constant="33.5" id="GrL-3w-vOV"/>
+                            <constraint firstItem="rKW-yz-BqI" firstAttribute="centerX" secondItem="ZwT-Ys-OuB" secondAttribute="centerX" id="HOW-53-nIs"/>
+                            <constraint firstItem="r0d-eC-hXu" firstAttribute="centerX" secondItem="ZwT-Ys-OuB" secondAttribute="centerX" id="HRw-xb-ZCw"/>
+                            <constraint firstItem="j4I-DM-qMy" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="NR6-dE-JCo"/>
+                            <constraint firstItem="fFl-XM-8VH" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="Pwu-Pw-uZa"/>
+                            <constraint firstItem="OE4-QL-24h" firstAttribute="top" secondItem="v1V-Gw-vUg" secondAttribute="bottom" constant="4" id="V5s-xM-xaS"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="fFl-XM-8VH" secondAttribute="trailing" constant="31" id="bX9-oy-cyu"/>
+                            <constraint firstItem="rKW-yz-BqI" firstAttribute="top" secondItem="Ju7-tq-v5i" secondAttribute="top" constant="74" id="bvI-Jo-SaW"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="o3X-E2-6Fw" secondAttribute="trailing" constant="31" id="fib-Wk-SpC"/>
+                            <constraint firstItem="fFl-XM-8VH" firstAttribute="top" secondItem="OE4-QL-24h" secondAttribute="bottom" constant="12.5" id="h7K-4j-yTO"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="jhl-Ti-2w3" secondAttribute="trailing" constant="31" id="pA4-5U-nIR"/>
+                            <constraint firstItem="OE4-QL-24h" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="s4Y-lE-sLb"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="OE4-QL-24h" secondAttribute="trailing" constant="31" id="u3Z-Hl-LOP"/>
+                            <constraint firstItem="jhl-Ti-2w3" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="uid-gf-Fqb"/>
+                            <constraint firstItem="o3X-E2-6Fw" firstAttribute="leading" secondItem="Ju7-tq-v5i" secondAttribute="leading" constant="30" id="wpA-cF-GdC"/>
+                            <constraint firstItem="Ju7-tq-v5i" firstAttribute="trailing" secondItem="v1V-Gw-vUg" secondAttribute="trailing" constant="31" id="wxm-qq-lky"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ju7-tq-v5i"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ado-rk-FKD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-714.39999999999998" y="26.53673163418291"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -58,10 +152,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIy-AY-cZU">
+                                <rect key="frame" x="156.5" y="599" width="62" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Créditos"/>
+                                <connections>
+                                    <segue destination="sVY-pL-K1e" kind="presentation" id="oSX-wd-BZm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="Amq-wF-DV0" firstAttribute="top" secondItem="w59-1c-9QT" secondAttribute="bottom" constant="57.5" id="4TV-YH-1rH"/>
+                            <constraint firstItem="SIy-AY-cZU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="B6n-VX-vYa"/>
                             <constraint firstItem="3RU-Z0-dTf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gaf-w2-7po"/>
                             <constraint firstItem="Rtm-8J-cqK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="NhK-0X-c8e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rtm-8J-cqK" secondAttribute="bottom" constant="108" id="UME-kl-SHJ"/>
@@ -70,6 +173,8 @@
                             <constraint firstItem="3RU-Z0-dTf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="dCX-PC-i36"/>
                             <constraint firstItem="Amq-wF-DV0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-30" id="dwN-f4-NTj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rtm-8J-cqK" secondAttribute="trailing" constant="31" id="hw3-NW-QPI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SIy-AY-cZU" secondAttribute="bottom" constant="36" id="kG0-mP-Q8U"/>
+                            <constraint firstItem="SIy-AY-cZU" firstAttribute="top" secondItem="Rtm-8J-cqK" secondAttribute="bottom" constant="40" id="oBk-fY-agh"/>
                             <constraint firstItem="w59-1c-9QT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tDn-9f-Jtw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -1171,6 +1276,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h0t-5E-d3Q"/>
+        <segue reference="Ypp-EY-Khe"/>
     </inferredMetricsTieBreakers>
 </document>

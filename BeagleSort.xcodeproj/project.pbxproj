@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24991E5123863FDE00D789A0 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24991E5023863FDE00D789A0 /* CreditsViewController.swift */; };
 		75CE21DA2353A6A1007B1196 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21D92353A6A1007B1196 /* PracticeViewController.swift */; };
 		75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE21DB2353EAB8007B1196 /* ArrayState.swift */; };
 		9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01FEFD236CC72600C85E06 /* Merge.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0BC2643F39D61812E13F6A77 /* Pods-BeagleSort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.release.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.release.xcconfig"; sourceTree = "<group>"; };
+		24991E5023863FDE00D789A0 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		75CE21D92353A6A1007B1196 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		75CE21DB2353EAB8007B1196 /* ArrayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayState.swift; sourceTree = "<group>"; };
 		9A7B97749AE83DD592577D9D /* Pods-BeagleSort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.debug.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */,
 				9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */,
 				9E2DC90023822D7F004966A5 /* UserModel.swift */,
+				24991E5023863FDE00D789A0 /* CreditsViewController.swift */,
 			);
 			path = BeagleSort;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */,
 				9D50661F2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift in Sources */,
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
+				24991E5123863FDE00D789A0 /* CreditsViewController.swift in Sources */,
 				9D5066212380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
 				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,

@@ -167,20 +167,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             viewA.backgroundColor = .blue
             viewB.backgroundColor = .blue
             
-            viewA.layer.cornerRadius = 10
-            viewA.layer.shadowColor = UIColor.black.cgColor
-            viewA.layer.shadowOpacity = 0.2
-            viewA.layer.shadowOffset = CGSize(width: -1, height: 1)
-            viewA.layer.shadowRadius = 1
-            
+            StylesHelper.addNodeStyles(node: viewA);
+            StylesHelper.addNodeStyles(node: viewB);
             viewA.backgroundColor = .white
-            
-            viewB.layer.cornerRadius = 10
-            viewB.layer.shadowColor = UIColor.black.cgColor
-            viewB.layer.shadowOpacity = 0.2
-            viewB.layer.shadowOffset = CGSize(width: -1, height: 1)
-            viewB.layer.shadowRadius = 1
-            
             viewB.backgroundColor = .white
             
             
