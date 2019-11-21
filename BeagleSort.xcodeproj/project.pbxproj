@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,16 +30,27 @@
 		9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC31314235416BF00A6195E /* AlgorithmStep.swift */; };
 		9DC3131723541E7F00A6195E /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131623541E7F00A6195E /* Comparison.swift */; };
 		9DC3131923541EE900A6195E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3131823541EE900A6195E /* Transition.swift */; };
+		9E2DC8FD23822BA7004966A5 /* HighscoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */; };
+		9E2DC8FF23822D52004966A5 /* HighscoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */; };
+		9E2DC90123822D7F004966A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2DC90023822D7F004966A5 /* UserModel.swift */; };
 		9EA43B8F234FF5F5008DC827 /* StylesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */; };
 		9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */; };
 		9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */; };
 		9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B94234FF9BE008DC827 /* Algorithm.swift */; };
 		9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA43B97234FFC2A008DC827 /* BubbleSort.swift */; };
+		9EECBF182381E76800365166 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EECBF172381E76800365166 /* GoogleService-Info.plist */; };
+		9EECBF1A2381EB5300365166 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF192381EB5300365166 /* LoginViewController.swift */; };
+		9EECBF1C2381F1D300365166 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */; };
+		9EECBF1E2381F3A000365166 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF1D2381F3A000365166 /* LobbyViewController.swift */; };
+		9EECBF202382046600365166 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EECBF1F2382046600365166 /* GameViewController.swift */; };
+		D31E0E3321AE0D1BBBCB68A2 /* Pods_BeagleSort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8870B05E83A55E9D4A18B /* Pods_BeagleSort.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BC2643F39D61812E13F6A77 /* Pods-BeagleSort.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.release.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.release.xcconfig"; sourceTree = "<group>"; };
 		75CE21D92353A6A1007B1196 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		75CE21DB2353EAB8007B1196 /* ArrayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayState.swift; sourceTree = "<group>"; };
+		9A7B97749AE83DD592577D9D /* Pods-BeagleSort.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeagleSort.debug.xcconfig"; path = "Target Support Files/Pods-BeagleSort/Pods-BeagleSort.debug.xcconfig"; sourceTree = "<group>"; };
 		9D01FEFD236CC72600C85E06 /* Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
 		9D09DCD6236E804800CCC78E /* Insertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insertion.swift; sourceTree = "<group>"; };
 		9D09DCD8236E8E5E00CCC78E /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
@@ -63,11 +74,20 @@
 		9DC31314235416BF00A6195E /* AlgorithmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStep.swift; sourceTree = "<group>"; };
 		9DC3131623541E7F00A6195E /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
 		9DC3131823541EE900A6195E /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreTableViewCell.swift; sourceTree = "<group>"; };
+		9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoresViewController.swift; sourceTree = "<group>"; };
+		9E2DC90023822D7F004966A5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesHelper.swift; sourceTree = "<group>"; };
 		9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmTableViewCell.swift; sourceTree = "<group>"; };
 		9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmListViewController.swift; sourceTree = "<group>"; };
 		9EA43B94234FF9BE008DC827 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		9EA43B97234FFC2A008DC827 /* BubbleSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleSort.swift; sourceTree = "<group>"; };
+		9EECBF172381E76800365166 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EECBF192381EB5300365166 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		9EECBF1D2381F3A000365166 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		9EECBF1F2382046600365166 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		BBC8870B05E83A55E9D4A18B /* Pods_BeagleSort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeagleSort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,12 +95,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31E0E3321AE0D1BBBCB68A2 /* Pods_BeagleSort.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E6FA4B29AEA539EAB73DC7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8870B05E83A55E9D4A18B /* Pods_BeagleSort.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +128,8 @@
 			children = (
 				9D683EA8234B8C6B0060ECDE /* BeagleSort */,
 				9D683EA7234B8C6B0060ECDE /* Products */,
+				B4E7295567BC962ADB2FA4C2 /* Pods */,
+				5E6FA4B29AEA539EAB73DC7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,11 +158,19 @@
 				9D683EB0234B8C6E0060ECDE /* Assets.xcassets */,
 				9D683EB2234B8C6E0060ECDE /* LaunchScreen.storyboard */,
 				9D683EB5234B8C6E0060ECDE /* Info.plist */,
+				9EECBF172381E76800365166 /* GoogleService-Info.plist */,
 				9EA43B8E234FF5F5008DC827 /* StylesHelper.swift */,
 				9EA43B90234FF8C7008DC827 /* AlgorithmTableViewCell.swift */,
 				9EA43B92234FF92E008DC827 /* AlgorithmListViewController.swift */,
 				9D09DCD5236E7FEA00CCC78E /* AlgorithmSteps */,
 				9DC3130E23512F0500A6195E /* AlgorithmAnimation.swift */,
+				9EECBF192381EB5300365166 /* LoginViewController.swift */,
+				9EECBF1B2381F1D300365166 /* CreateAccountViewController.swift */,
+				9EECBF1D2381F3A000365166 /* LobbyViewController.swift */,
+				9EECBF1F2382046600365166 /* GameViewController.swift */,
+				9E2DC8FC23822BA7004966A5 /* HighscoreTableViewCell.swift */,
+				9E2DC8FE23822D52004966A5 /* HighscoresViewController.swift */,
+				9E2DC90023822D7F004966A5 /* UserModel.swift */,
 			);
 			path = BeagleSort;
 			sourceTree = "<group>";
@@ -149,6 +188,15 @@
 			path = algorithms;
 			sourceTree = "<group>";
 		};
+		B4E7295567BC962ADB2FA4C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A7B97749AE83DD592577D9D /* Pods-BeagleSort.debug.xcconfig */,
+				0BC2643F39D61812E13F6A77 /* Pods-BeagleSort.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9D683EB8234B8C6E0060ECDE /* Build configuration list for PBXNativeTarget "BeagleSort" */;
 			buildPhases = (
+				E4EAF613A390A53376337FC6 /* [CP] Check Pods Manifest.lock */,
 				9D683EA2234B8C6B0060ECDE /* Sources */,
 				9D683EA3234B8C6B0060ECDE /* Frameworks */,
 				9D683EA4234B8C6B0060ECDE /* Resources */,
+				B889A9789D788FEA88DA46D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,12 +258,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D683EB4234B8C6E0060ECDE /* LaunchScreen.storyboard in Resources */,
+				9EECBF182381E76800365166 /* GoogleService-Info.plist in Resources */,
 				9D683EB1234B8C6E0060ECDE /* Assets.xcassets in Resources */,
 				9D683EAF234B8C6B0060ECDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B889A9789D788FEA88DA46D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeagleSort/Pods-BeagleSort-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BeagleSort/Pods-BeagleSort-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeagleSort/Pods-BeagleSort-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4EAF613A390A53376337FC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeagleSort-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9D683EA2234B8C6B0060ECDE /* Sources */ = {
@@ -232,6 +325,8 @@
 				9EA43B95234FF9BE008DC827 /* Algorithm.swift in Sources */,
 				9D01FEFE236CC72600C85E06 /* Merge.swift in Sources */,
 				9DC3130F23512F0500A6195E /* AlgorithmAnimation.swift in Sources */,
+				9EECBF1A2381EB5300365166 /* LoginViewController.swift in Sources */,
+				9EECBF202382046600365166 /* GameViewController.swift in Sources */,
 				9D33A400237C79C500865650 /* QuickSort.swift in Sources */,
 				9EA43B91234FF8C7008DC827 /* AlgorithmTableViewCell.swift in Sources */,
 				75CE21DC2353EAB8007B1196 /* ArrayState.swift in Sources */,
@@ -239,12 +334,17 @@
 				9EA43B93234FF92E008DC827 /* AlgorithmListViewController.swift in Sources */,
 				9EA43B98234FFC2A008DC827 /* BubbleSort.swift in Sources */,
 				9D683EAA234B8C6B0060ECDE /* AppDelegate.swift in Sources */,
+				9EECBF1C2381F1D300365166 /* CreateAccountViewController.swift in Sources */,
 				9D788F1423807AD500260078 /* MergePracticeViewController.swift in Sources */,
 				9D50661F2380B1EE009AD333 /* MergeNumberViewTapGestureRecognizer.swift in Sources */,
 				9DC3131723541E7F00A6195E /* Comparison.swift in Sources */,
 				9D5066212380B55D009AD333 /* MergeSpaceViewTapGestureRecognizer.swift in Sources */,
 				9D33A402237CC45900865650 /* PivotSelection.swift in Sources */,
 				9DC31315235416BF00A6195E /* AlgorithmStep.swift in Sources */,
+				9E2DC8FD23822BA7004966A5 /* HighscoreTableViewCell.swift in Sources */,
+				9E2DC8FF23822D52004966A5 /* HighscoresViewController.swift in Sources */,
+				9E2DC90123822D7F004966A5 /* UserModel.swift in Sources */,
+				9EECBF1E2381F3A000365166 /* LobbyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,16 +486,17 @@
 		};
 		9D683EB9234B8C6E0060ECDE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A7B97749AE83DD592577D9D /* Pods-BeagleSort.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H776QDNMS8;
+				DEVELOPMENT_TEAM = F28X8GKFKY;
 				INFOPLIST_FILE = BeagleSort/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.diaz.BeagleSort;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cesar.BeagleSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -404,16 +505,17 @@
 		};
 		9D683EBA234B8C6E0060ECDE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BC2643F39D61812E13F6A77 /* Pods-BeagleSort.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H776QDNMS8;
+				DEVELOPMENT_TEAM = F28X8GKFKY;
 				INFOPLIST_FILE = BeagleSort/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.diaz.BeagleSort;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cesar.BeagleSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

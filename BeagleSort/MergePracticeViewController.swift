@@ -504,7 +504,7 @@ class MergePracticeViewController: UIViewController {
                 //Get frames
                 let spaceFrame: CGRect = spaceView.frame
                 let numViewFrame: CGRect = numView!.frame
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     let diffBetweenHeights = numViewFrame.size.height - spaceFrame.size.height
                     let diffBetweenWidths = numViewFrame.size.width - spaceFrame.size.width
                     pointInRespectToTheWholeView?.x -= diffBetweenWidths / 2
@@ -515,7 +515,7 @@ class MergePracticeViewController: UIViewController {
                     self.isNumberSelected = false
                 }
             } else if (!isCorrect && space.level == levelsCompleted + 1){
-                UIView.animate(withDuration: 1, animations: {
+                UIView.animate(withDuration: 0.3, animations: {
                     spaceView.backgroundColor = self.wrongColor
                 }) { (true) in
                     UIView.animate(withDuration: 0.5, animations: {
