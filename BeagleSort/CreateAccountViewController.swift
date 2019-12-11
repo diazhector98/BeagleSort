@@ -52,7 +52,7 @@ class CreateAccountViewController: UIViewController {
         self.btnContinue.isEnabled = false;
         
         // crear cuenta
-        let email = self.txtEmail.text!;
+        let email = self.txtEmail.text! + "@beaglesort.com";
         let password = self.txtPassword.text!;
         Auth.auth().createUser(withEmail: email, password: password) { (auth, err) in
             if err == nil {
