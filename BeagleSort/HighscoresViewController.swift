@@ -33,6 +33,7 @@ class HighscoresViewController: UIViewController, UITableViewDelegate, UITableVi
             for (_, value) in data {
                 let dict = (value as? NSDictionary)!;
                 self.highscores.append(UserModel(name: (dict["username"] as! String).components(separatedBy: "@")[0], won: dict["won"] as! Int, lost: dict["lost"] as! Int));
+                self.highscores = self.highscores.sorted(by: {$0.won > $1.won})
                 self.tableView.reloadData();
             }
         }) { (err) in
