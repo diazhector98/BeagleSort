@@ -26,6 +26,9 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     var arrayViewsDictionary: [Int: UIView]!
     var algorithmAnimation: AlgorithmAnimation!
     
+    // Control
+    var didAnimation = false
+    
     
     
     //TableView
@@ -101,7 +104,10 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
     //Se deben hacer las animaciones con este método (que corre después de viewDidLoad), cuando ya están establecidos los frames
     //de los números
     override func viewDidAppear(_ animated: Bool) {
-        animateTransitions()
+        if (!didAnimation) {
+            animateTransitions()
+            didAnimation = true
+        }
     }
     
     func generateNumViews(arr: [Int]) -> [UIView] {
@@ -118,6 +124,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             numView.layer.shadowRadius = 1
 
             numView.backgroundColor = .white
+            StylesHelper.addNodeStyles(node: numView)
             //Agregar la vista al arreglo
             views.append(numView)
             //Agregar la vista al diccionario de vistas(index, view)
@@ -164,8 +171,6 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             //Crear views con esos frames
             let viewA = UIView(frame: frameA)
             let viewB = UIView(frame: frameB)
-            viewA.backgroundColor = .blue
-            viewB.backgroundColor = .blue
             
             StylesHelper.addNodeStyles(node: viewA);
             StylesHelper.addNodeStyles(node: viewB);
@@ -261,8 +266,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                viewA?.backgroundColor = .blue
-                viewB?.backgroundColor = .blue
+                viewA?.backgroundColor = .white
+                viewB?.backgroundColor = .white
                 self.animateTransitionsHelper(animIndex: animIndex + 1)
             }
         } else if let merge = algorithmStep as? Merge {
@@ -300,7 +305,6 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
             var numberViews: [UIView] = []
             for frame in numberFrames {
                 let vista = UIView(frame: frame)
-                vista.backgroundColor = .blue
                 
                 vista.layer.cornerRadius = 10
                 vista.layer.shadowColor = UIColor.black.cgColor
@@ -309,6 +313,7 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 vista.layer.shadowRadius = 1
                 
                 vista.backgroundColor = .white
+                StylesHelper.addNodeStyles(node: vista)
                 
                 //Crear labels
                 let label = UILabel()
@@ -365,8 +370,8 @@ class DemonstrationViewController: UIViewController, UITableViewDelegate, UITabl
                 let vistaA = numberViews[indexA! - merge.start]
                 let vistaB = numberViews[indexB! - merge.start]
                 
-                vistaA.backgroundColor = .red
-                vistaB.backgroundColor = .red
+                vistaA.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
+                vistaB.backgroundColor = UIColor(red:0.31, green:0.78, blue:0.65, alpha:1.0)
             }) { (true) in
                 
                 UIView.animate(withDuration: 1, animations: {

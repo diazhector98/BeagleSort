@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         self.btnCreateAccount.isEnabled = false;
         
         // authenticate
-        let email = self.txtEmail.text!;
+        let email = self.txtEmail.text! + "@beaglesort.com";
         let password = self.txtPassword.text!;
         Auth.auth().signIn(withEmail: email, password: password) { (auth, err) in
             if err == nil {

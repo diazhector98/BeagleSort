@@ -50,7 +50,7 @@ class GameViewController: UIViewController {
         // set data
         self.hasEnded = false;
         self.user = Auth.auth().currentUser!;
-        self.lblPlayer1.text = self.user.email!;
+        self.lblPlayer1.text = (self.user.email!).components(separatedBy: "@")[0];
         self.lblPlayer2.text = self.otherPlayerName;
         self.lblAlgorithm.text = self.algorithm;
         self.lblOrder.text = (self.ascending ? "Ascendente" : "Descendente");

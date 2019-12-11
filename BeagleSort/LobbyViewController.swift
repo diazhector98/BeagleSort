@@ -26,7 +26,8 @@ class LobbyViewController: UIViewController {
         StylesHelper.addButtonStyles(button: self.btnLeaderboard);
         self.btnSearch.setTitleColor(UIColor(named: "Disabled"), for: .disabled);
         
-        let username = Auth.auth().currentUser!.email!;
+        var username = Auth.auth().currentUser!.email!;
+        username = username.components(separatedBy: "@")[0];
         self.title = username;
         
         // init socket
@@ -89,7 +90,7 @@ class LobbyViewController: UIViewController {
         if (segue.identifier == "enterGameSegue") {
             let vc = segue.destination as! GameViewController;
             let data = sender as! NSArray;
-            vc.otherPlayerName = (data[0] as! String);
+            vc.otherPlayerName = (data[0] as! String).components(separatedBy: "@")[0];
             vc.algorithm = (data[1] as! String);
             vc.ascending = (data[2] as! Bool);
             vc.arr = data[3] as! [Int];

@@ -58,7 +58,7 @@ class MergePracticeViewController: UIViewController {
     
     var numbersInNewLevel = 0
     var levelsCompleted:  Int! = 1
-    
+    var didLoad = false;
     
     /*
      
@@ -438,28 +438,31 @@ class MergePracticeViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //After knowing constraints and actual frames
-        numSuperViews = generateNumSuperViews(nums: numViews)
-        var i = 0
-        for numView in numSuperViews {
-            //Crear label y ajustar propiedades
-            let numLabel = UILabel()
-            numLabel.text = "\(array[i])"
-            numLabel.textColor = .black
-            numLabel.textAlignment = .center
-            //translatesAutoresizingMaskIntoConstraints es importante hacer
-            numLabel.translatesAutoresizingMaskIntoConstraints = false
-            //Agregar label al view antes de poner constraints..
-            numView.addSubview(numLabel)
-            //Agregar constraints
-            numLabel.centerYAnchor.constraint(equalTo: numView.centerYAnchor).isActive = true
-            numLabel.centerXAnchor.constraint(equalTo: numView.centerXAnchor).isActive = true
+        if (!self.didLoad) {
+            //After knowing constraints and actual frames
+            numSuperViews = generateNumSuperViews(nums: numViews)
+            var i = 0
+            for numView in numSuperViews {
+                //Crear label y ajustar propiedades
+                let numLabel = UILabel()
+                numLabel.text = "\(array[i])"
+                numLabel.textColor = .black
+                numLabel.textAlignment = .center
+                //translatesAutoresizingMaskIntoConstraints es importante hacer
+                numLabel.translatesAutoresizingMaskIntoConstraints = false
+                //Agregar label al view antes de poner constraints..
+                numView.addSubview(numLabel)
+                //Agregar constraints
+                numLabel.centerYAnchor.constraint(equalTo: numView.centerYAnchor).isActive = true
+                numLabel.centerXAnchor.constraint(equalTo: numView.centerXAnchor).isActive = true
+                
+                numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
+                i += 1
+            }
             
-            numView.heightAnchor.constraint(equalTo: numView.widthAnchor).isActive = true
-            i += 1
+            generateStatesInOrder()
+            self.didLoad = true;
         }
-        
-        generateStatesInOrder()
     }
 
     
